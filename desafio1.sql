@@ -5,52 +5,52 @@ CREATE SCHEMA SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE planos(
-	plano_id TINYINT PRIMARY KEY AUTO_INCREMENT,
-    tipo_plano VARCHAR(20) NOT NULL,
-    valor_plano DECIMAL(4,2)
+plano_id TINYINT PRIMARY KEY AUTO_INCREMENT,
+tipo_plano VARCHAR(20) NOT NULL,
+valor_plano DECIMAL(4,2)
 );
 
 CREATE TABLE artistas(
-	artista_id TINYINT PRIMARY KEY AUTO_INCREMENT,
-    nome_artista VARCHAR(50) NOT NULL
+artista_id TINYINT PRIMARY KEY AUTO_INCREMENT,
+nome_artista VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE usuario(
-	usuario_id TINYINT PRIMARY KEY AUTO_INCREMENT,
-    usuario VARCHAR(50) NOT NULL,
-    idade INT NOT NULL,
-    plano_id TINYINT,
-    FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
+usuario_id TINYINT PRIMARY KEY AUTO_INCREMENT,
+usuario VARCHAR(50) NOT NULL,
+idade INT NOT NULL,
+plano_id TINYINT,
+FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
 );
 
 CREATE TABLE seguindoArtistas(
-	usuario_id TINYINT,
-    artista_id TINYINT,
-    PRIMARY KEY (usuario_id, artista_id),
-    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
-    FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id)
+usuario_id TINYINT,
+artista_id TINYINT,
+PRIMARY KEY (usuario_id, artista_id),
+FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
+FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id)
 );
 
 CREATE TABLE albuns(
-	album_id TINYINT PRIMARY KEY AUTO_INCREMENT,
-    artista_id TINYINT,
-    album_name VARCHAR(50) NOT NULL,
-    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
+album_id TINYINT PRIMARY KEY AUTO_INCREMENT,
+artista_id TINYINT,
+album_name VARCHAR(50) NOT NULL,
+FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 );
 
 CREATE TABLE songs(
-	song_id TINYINT PRIMARY KEY AUTO_INCREMENT,
-    album_id TINYINT,
-    song_name VARCHAR(50) NOT NULL,
-    FOREIGN KEY (album_id) REFERENCES albuns(album_id)
+song_id TINYINT PRIMARY KEY AUTO_INCREMENT,
+album_id TINYINT,
+song_name VARCHAR(50) NOT NULL,
+FOREIGN KEY (album_id) REFERENCES albuns(album_id)
 );
 
 CREATE TABLE historicoMusicas(
-	usuario_id TINYINT,
-    song_id TINYINT,
-    PRIMARY KEY (usuario_id, song_id),
-    FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id),
-    FOREIGN KEY (song_id) REFERENCES songs(song_id)
+usuario_id TINYINT,
+song_id TINYINT,
+PRIMARY KEY (usuario_id, song_id),
+FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id),
+FOREIGN KEY (song_id) REFERENCES songs(song_id)
 );
 
 INSERT INTO planos(tipo_plano, valor_plano)
