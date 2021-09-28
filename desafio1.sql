@@ -56,7 +56,7 @@ INSERT INTO artists(name)
 VALUES ('Walter Phoenix'),
         ('Peter Strong'),
         ('Lance Day'),
-        ('Freedie Shanno');
+        ('Freedie Shannon');
 
 INSERT INTO plans(name, value)
 VALUES ('gratuito', 0),
