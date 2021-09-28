@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`user_songs_history` (
   CONSTRAINT `fk_user_songs_history_1`
     FOREIGN KEY (`user_id`)
     REFERENCES `SpotifyClone`.`users` (`user_id`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_songs_history_2`
     FOREIGN KEY (`song_id`)
@@ -218,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`user_followage` (
   CONSTRAINT `fk_user_followage_2`
     FOREIGN KEY (`user_id`)
     REFERENCES `SpotifyClone`.`users` (`user_id`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
