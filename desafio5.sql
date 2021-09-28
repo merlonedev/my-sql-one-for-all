@@ -1,7 +1,6 @@
-CREATE VIEW top_2_hits_do_momento AS
     SELECT 
         m.musica_nome AS `cancao`,
-        COUNT(sh.usuario_id) AS `reproducoes`
+        COUNT(m.musica_id) AS `reproducoes`
     FROM
         SpotifyClone.Historico AS sh
             INNER JOIN
