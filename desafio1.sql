@@ -16,11 +16,6 @@ CREATE TABLE usuarios(
   FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
 )engine=InnoDB;
 
-CREATE TABLE cancoes(
-	cancao_id INT PRIMARY KEY AUTO_INCREMENT,
-  cancao VARCHAR(64) NOT NULL
-)engine=InnoDB;
-
 CREATE TABLE artistas(
 	artista_id INT PRIMARY KEY AUTO_INCREMENT,
   artista VARCHAR(32)
@@ -33,10 +28,17 @@ CREATE TABLE albuns(
   FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 )engine=InnoDB;
 
+CREATE TABLE cancoes(
+	cancao_id INT PRIMARY KEY AUTO_INCREMENT,
+  cancao VARCHAR(64) NOT NULL,
+  album_id INT,
+  FOREIGN KEY (album_id) REFERENCES albuns(album_id)
+)engine=InnoDB;
+
 CREATE TABLE reproducoes(
 	cancao_id INT,
   usuario_id INT,
-  PRIMARY KEY(cancao_id, usuario_id),
+  CONSTRAINT PRIMARY KEY(cancao_id, usuario_id),
   FOREIGN KEY(cancao_id) REFERENCES cancoes(cancao_id),
   FOREIGN KEY(usuario_id) REFERENCES usuarios(usuario_id)
 )engine=InnoDB;
@@ -44,7 +46,7 @@ CREATE TABLE reproducoes(
 CREATE TABLE seguindo(
 	artista_id INT,
   usuario_id INT,
-  PRIMARY KEY(artista_id, usuario_id),
+  CONSTRAINT PRIMARY KEY(artista_id, usuario_id),
   FOREIGN KEY(artista_id) REFERENCES artistas(artista_id),
   FOREIGN KEY(usuario_id) REFERENCES usuarios(usuario_id)
 )engine=InnoDB;
@@ -61,28 +63,7 @@ VALUES
 	('Cintia', 35, 3),
 	('Bill', 20, 2),
 	('Roger', 45, 1);
-    
-INSERT INTO cancoes(cancao)
-VALUES
-	('Sou'),
-	('Magic Circus'),
-	('Diamong Power'),
-	('Thang Of Thunder'),
-	('Home Forever'),
-	('Words Of Her Life'),
-	('Reflections Of Magic'),
-	('Honey, Let\'s Be Silly'),
-	('Troubles Of My Inner Fire'),
-	('Dance With Her Own'),
-	('Without My Streets'),
-	('Celebration Of More'),
-	('Time Fireworks'),
-	('Honey, So Do I'),
-	('Sweetie, Let\'s Go Wild'),
-	('She Knows'),
-	('Fantasy For Me'),
-	('Rock His Everything');
-    
+
 INSERT INTO artistas(artista)
 VALUES
 	('Walter Phoenix'),
@@ -97,6 +78,27 @@ VALUES
 	('Hallowed Steam', 2),
 	('Incandescent', 3),
 	('Temporary Culture', 4);
+    
+INSERT INTO cancoes(cancao, album_id)
+VALUES
+	('Soul For Us', 1),
+	('Magic Circus', 3),
+	('Diamond Power', 4),
+	('Thang Of Thunder', 5),
+	('Home Forever', 4),
+	('Words Of Her Life', 5),
+	('Reflections Of Magic', 1),
+	('Honey, Let\'s Be Silly', 4),
+	('Troubles Of My Inner Fire', 2),
+	('Dance With Her Own', 1), 
+	('Without My Streets', 5),
+	('Celebration Of More', 4),
+	('Time Fireworks', 2),
+	('Honey, So Do I', 3),
+	('Sweetie, Let\'s Go Wild', 3),
+	('She Knows', 3),
+	('Fantasy For Me', 4),
+	('Rock His Everything', 4);
     
 INSERT INTO reproducoes(cancao_id, usuario_id)
 VALUES

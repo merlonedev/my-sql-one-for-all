@@ -16,9 +16,9 @@ INNER JOIN
 ON
   al.artista_id = ar.artista_id
 WHERE
-  ar.artista = nome_artista;
+  ar.artista = nome_artista
 ORDER BY
-  `artista`
+  `artista`;
 END $$
 
 DELIMITER ;
