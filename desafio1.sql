@@ -76,10 +76,10 @@ VALUES('Soul For Us', 1, 1),
       
 CREATE TABLE historico_reproducao (
 	usuario_id INT,
-    cancao_id INT,
-    CONSTRAINT PRIMARY KEY(usuario_id, cancao_id),
+	cancao_id INT,
+	CONSTRAINT PRIMARY KEY(usuario_id, cancao_id),
 	FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
-    FOREIGN KEY (cancao_id) REFERENCES cancoes (cancao_id)
+	FOREIGN KEY (cancao_id) REFERENCES cancoes (cancao_id)
 );
 
 INSERT INTO historico_reproducao(usuario_id, cancao_id)
