@@ -1,7 +1,7 @@
 {
-  "coluna_usuario": "usuario_nome",
+  "coluna_usuario": "usuario_id",
   "tabela_que_contem_usuario": "Usuario",
-  "coluna_plano": "plano_nome",
+  "coluna_plano": "plano_id",
   "tabela_que_contem_plano": "Plano",
   "coluna_historico_de_reproducoes": "musica_id",
   "tabela_que_contem_historico_de_reproducoes": "Historico",
