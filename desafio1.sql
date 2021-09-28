@@ -45,7 +45,15 @@ CREATE TABLE usuario_historico (
     FOREIGN KEY (musica_id) REFERENCES musicas(id)
 );
 
-INSERT INTO artistas (nome)
+CREATE TABLE usuario_seguindo (
+    usuario_id INT NOT NULL,
+    artista_id INT NOT NULL,
+    PRIMARY KEY (usuario_id, artista_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (artista_id) REFERENCES artistas(id)
+);
+
+INSERT INTO artistas(nome)
 VALUES
 ('Walter Phoenix'),
 ('Peter Strong'),
@@ -110,3 +118,14 @@ VALUES
 (4, 3),
 (4, 18),
 (4, 11);
+
+INSERT INTO usuario_seguindo(usuario_id, artista_id)
+VALUES
+(1, 1),
+(1, 4),
+(1, 3),
+(2, 1),
+(2, 3),
+(3, 2),
+(3, 1),
+(4, 4);
