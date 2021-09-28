@@ -113,7 +113,7 @@ FOREIGN KEY(usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY(cancao_id) REFERENCES cancoes(cancao_id)
 )ENGINE=InnoDB;
 
-INSERT INTO historico_de_reproducoes(usuario_id, musica_id)
+INSERT INTO usuariosCancoes(usuario_id, musica_id)
 VALUE
 (1,1),
 (1,6),
