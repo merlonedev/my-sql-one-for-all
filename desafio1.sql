@@ -21,7 +21,7 @@ CREATE TABLE `SpotifyClone`.`Users` (
     age INT NOT NULL,
     sub_id INT NOT NULL,
     CONSTRAINT PRIMARY KEY (`user_id`),
-    FOREIGN KEY (`user_id`)
+    FOREIGN KEY (`sub_id`)
         REFERENCES `SpotifyClone`.`Subscriptions` (`sub_id`)
 )  ENGINE=INNODB;
 
