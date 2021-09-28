@@ -4,7 +4,7 @@
   "coluna_plano": "plan_name",
   "tabela_que_contem_plano": "Plans",
   "coluna_historico_de_reproducoes": "history_ID",
-  "tabela_que_contem_historico_de_reproducoes": "HistoriesUsers_Artists",
+  "tabela_que_contem_historico_de_reproducoes": "HistoriesUsers_Songs",
   "coluna_seguindo_artistas": "artist_ID",
   "tabela_que_contem_seguindo_artistas": "FollowUsers_Artists",
   "coluna_artista": "artist_name",

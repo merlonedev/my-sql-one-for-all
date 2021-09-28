@@ -93,7 +93,7 @@ VALUES(1, 1),
   (3, 1),
   (4, 4);
   
-CREATE TABLE HistoriesUsers_Artists(
+CREATE TABLE HistoriesUsers_Songs(
   history_ID INT UNIQUE AUTO_INCREMENT,
   user_ID INT NOT NULL,
   song_ID INT NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE HistoriesUsers_Artists(
   FOREIGN KEY(user_ID) REFERENCES Users(user_ID),
   FOREIGN KEY(song_ID) REFERENCES Songs(song_ID)
 );
-INSERT INTO HistoriesUsers_Artists(user_ID, song_ID)
+INSERT INTO HistoriesUsers_Songs(user_ID, song_ID)
 VALUES(1, 1),
   (1, 6),
   (1, 14),
