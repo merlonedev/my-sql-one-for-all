@@ -14,7 +14,7 @@ CREATE TABLE Usuario(
 usuario_id INT PRIMARY KEY AUTO_INCREMENT,
 usuario_nome VARCHAR(50) NOT NULL,
 usuario_idade INT NOT NULL,
-plano_id INT NOT NULL,
+plano_id INT,
 FOREIGN KEY (plano_id) REFERENCES Plano (plano_id)
 ) engine = InnoDB;
 
@@ -42,7 +42,7 @@ FOREIGN KEY (album_id) REFERENCES Album (album_id)
 CREATE TABLE Seguindo(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
-PRIMARY KEY (usuario_id, artista_id),
+CONSTRAINT P  RIMARY KEY (usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id),
 FOREIGN KEY (artista_id) REFERENCES Artista (artista_id)
 ) engine = InnoDB;
@@ -50,7 +50,7 @@ FOREIGN KEY (artista_id) REFERENCES Artista (artista_id)
 CREATE TABLE Historico(
 usuario_id INT NOT NULL,
 musica_id INT NOT NULL,
-PRIMARY KEY (usuario_id, musica_id),
+CONSTRAINT PRIMARY KEY (usuario_id, musica_id),
 FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id),
 FOREIGN KEY (musica_id) REFERENCES Musica (musica_id)
 ) engine = InnoDB;
