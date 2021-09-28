@@ -124,77 +124,77 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 INSERT INTO artista (nome)
 VALUES
-	('Walter Phoenix'),
-  ('Freddie Shannon'),
-  ('Lance Day'),
-  ('Peter Strong');
+('Walter Phoenix'),
+('Freddie Shannon'),
+('Lance Day'),
+('Peter Strong');
     
 INSERT INTO album (nome, id_artista)
 VALUES
-	('Envious', 1),
-  ('Exuberant', 1),
-  ('Hallowed Steam', 4),
-  ('Incandescent', 3),
-  ('Temporary Culture', 2);
+('Envious', 1),
+('Exuberant', 1),
+('Hallowed Steam', 4),
+('Incandescent', 3),
+('Temporary Culture', 2);
     
 INSERT INTO cancao (nome, id_album)
 VALUES
-	('Soul For Us', 1),
-  ('Reflections Of Magic', 1),
-  ('Dance With Her Own', 1),
-  ('Troubles Of My Inner Fire', 2),
-  ('Time Fireworks', 2),
-  ('Magic Circus', 3),
-  ('Honey, So Do I', 3),
-  ('Sweetie, Let\'s Go Wild', 3),
-  ('She Knows', 3),
-  ('Fantasy For Me', 4),
-  ('Celebration Of More', 4),
-  ('Rock His Everything', 4),
-  ('Home Forever', 4),
-  ('Diamond Power', 4),
-  ('Honey, Let\'s Be Silly', 4),
-  ('Thang Of Thunder', 5),
-  ('Words Of Her Life', 5),
-  ('Without My Streets', 5);
+('Soul For Us', 1),
+('Reflections Of Magic', 1),
+('Dance With Her Own', 1),
+('Troubles Of My Inner Fire', 2),
+('Time Fireworks', 2),
+('Magic Circus', 3),
+('Honey, So Do I', 3),
+('Sweetie, Let\'s Go Wild', 3),
+('She Knows', 3),
+('Fantasy For Me', 4),
+('Celebration Of More', 4),
+('Rock His Everything', 4),
+('Home Forever', 4),
+('Diamond Power', 4),
+('Honey, Let\'s Be Silly', 4),
+('Thang Of Thunder', 5),
+('Words Of Her Life', 5),
+('Without My Streets', 5);
 
 INSERT INTO plano (nome, valor)
 VALUES
-	('gratuito', 0),
-  ('universitario', 5.99),
-  ('familiar', 7.99);
+('gratuito', 0),
+('universitario', 5.99),
+('familiar', 7.99);
 
 INSERT INTO usuario (nome, idade, id_plano)
 VALUES
-	('Thati', 23, 1),
-  ('Cintia', 35, 3),
-  ('Bill', 20, 2),
-  ('Roger', 45, 1);
+('Thati', 23, 1),
+('Cintia', 35, 3),
+('Bill', 20, 2),
+('Roger', 45, 1);
     
 INSERT INTO usuario_segue_artista (id_usuario, id_artista)
 VALUES
-	(1, 1),
-  (1, 2),
-  (1, 3),
-  (2, 1),
-  (2, 3),
-  (3, 4),
-  (3, 1),
-  (4, 2);
+(1, 1),
+(1, 2),
+(1, 3),
+(2, 1),
+(2, 3),
+(3, 4),
+(3, 1),
+(4, 2);
 
 INSERT INTO usuario_ouviu_cancao (id_usuario, id_cancao, id_album)
 VALUES
-	(1, 1, 1),
-  (1, 6, 3),
-  (1, 14, 4),
-  (1, 16, 5),
-  (2, 13, 4),
-  (2, 17, 5),
-  (2, 2, 1),
-  (2, 15, 4),
-  (3, 4, 2),
-  (3, 16, 5),
-  (3, 6, 3),
-  (4, 3, 1),
-  (4, 18, 5),
-  (4, 11, 4);
+(1, 1, 1),
+(1, 6, 3),
+(1, 14, 4),
+(1, 16, 5),
+(2, 13, 4),
+(2, 17, 5),
+(2, 2, 1),
+(2, 15, 4),
+(3, 4, 2),
+(3, 16, 5),
+(3, 6, 3),
+(4, 3, 1),
+(4, 18, 5),
+(4, 11, 4);
