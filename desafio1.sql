@@ -50,3 +50,7 @@ ADD FOREIGN KEY (plan_id) REFERENCES plans(id);
 
 ALTER TABLE albums
 ADD FOREIGN KEY (artist_id) REFERENCES artists(id);
+
+ALTER TABLE songs
+ADD FOREIGN KEY (album_id) REFERENCES albums(id),
+ADD FOREIGN KEY (artist_id) REFERENCES artists(id);
