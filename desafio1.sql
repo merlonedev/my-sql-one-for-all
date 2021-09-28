@@ -1,9 +1,7 @@
 DROP DATABASE IF EXISTS `SpotifyClone` ;
 
-CREATE DATABASE IF NOT EXISTS `SpotifyClone` ;
+CREATE DATABASE `SpotifyClone` ;
 USE `SpotifyClone` ;
-
-DROP TABLE IF EXISTS `SpotifyClone`.`plans` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`plans` (
   `plan_id` INT NOT NULL AUTO_INCREMENT,
@@ -17,8 +15,6 @@ VALUES
   ('gratuito', 0),
   ('familiar', 7.99),
   ('universitário', 5.99);
-
-DROP TABLE IF EXISTS `SpotifyClone`.`users` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`users` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
@@ -38,8 +34,6 @@ VALUES
   ('Bill', 20, 3),
   ('Roger', 45, 1);
 
-DROP TABLE IF EXISTS `SpotifyClone`.`artists` ;
-
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artists` (
   `artist_id` INT NOT NULL AUTO_INCREMENT,
   `artist_name` VARCHAR(45) NOT NULL,
@@ -52,8 +46,6 @@ VALUES
   ('Peter Strong'),
   ('Lance Day'),
   ('Freedie Shannon');
-
-DROP TABLE IF EXISTS `SpotifyClone`.`albums` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albums` (
   `album_id` INT NOT NULL AUTO_INCREMENT,
@@ -72,8 +64,6 @@ VALUES
   ('Hallowed Steam', 2),
   ('Incandescent', 3),
   ('Temporary Culture', 4);
-
-DROP TABLE IF EXISTS `SpotifyClone`.`songs` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`songs` (
   `song_id` INT NOT NULL AUTO_INCREMENT,
@@ -110,8 +100,6 @@ VALUES
   ('Words Of Her Life', 5, 4),
   ('Without My Streets', 5, 4);
 
-DROP TABLE IF EXISTS `SpotifyClone`.`user_songs_history` ;
-
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`user_songs_history` (
   `user_id` INT NOT NULL,
   `song_id` INT NOT NULL,
@@ -142,8 +130,6 @@ VALUES
   (4, 3),
   (4, 18),
   (4, 11);
-
-DROP TABLE IF EXISTS `SpotifyClone`.`user_followage` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`user_followage` (
   `user_id` INT NOT NULL,
