@@ -38,9 +38,9 @@ CREATE TABLE musics (
 ) engine = InnoDB;
 
 CREATE TABLE user_history (
-    id INT PRIMARY KEY AUTO_INCREMENT,
     user INT NOT NULL,
     music INT NOT NULL,
+    PRIMARY KEY (user, music),
     FOREIGN KEY (user) REFERENCES users(id),
     FOREIGN KEY (music) REFERENCES musics(id)
 ) engine = InnoDB;
