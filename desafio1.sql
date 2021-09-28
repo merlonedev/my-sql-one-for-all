@@ -1,11 +1,13 @@
 DROP DATABASE IF EXISTS spotifyClone;
+
 CREATE DATABASE spotifyClone;
+
 USE spotifyClone;
 
 CREATE TABLE plans (
 plan_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 plan_name VARCHAR(20) NOT NULL,
-price DECIMAL(3, 2) NOT NULL
+price DECIMAL(5, 2) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE users (
