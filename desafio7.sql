@@ -8,4 +8,4 @@ CREATE VIEW perfil_artistas AS
   JOIN SpotifyClone.artists AS ar ON ua.id_artist = ar.id_artist
   JOIN SpotifyClone.albums AS al ON ua.id_artist = al.id_artist
   GROUP BY `artista`, `album`
-  ORDER BY `seguidores` DESC, `artista`;
+  ORDER BY `seguidores` DESC, `artista`, `album`;
