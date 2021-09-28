@@ -40,6 +40,16 @@ CREATE TABLE cancoes (
         REFERENCES albuns (album_id)
 );
 
+CREATE TABLE album_cancoes (
+    album_id INT NOT NULL,
+    cancao_id INT NOT NULL,
+    PRIMARY KEY (cancao_id , album_id),
+    FOREIGN KEY (cancao_id)
+        REFERENCES cancoes (cancao_id),
+    FOREIGN KEY (album_id)
+        REFERENCES albuns (album_id)
+);
+
 CREATE TABLE artista_cancoes (
     artista_id INT NOT NULL,
     cancao_id INT NOT NULL,
