@@ -1,15 +1,8 @@
+DROP DATABASE IF EXISTS SpotifyClone;
+
 CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
-
-CREATE TABLE `tb_cancoes_usuario` (
-  `id_usuario` int NOT NULL,
-  `id_cancao` int NOT NULL,
-  PRIMARY KEY (`id_usuario`,`id_cancao`),
-  KEY `fk_cancao_id_idx` (`id_cancao`),
-  CONSTRAINT `cancao_id_fk` FOREIGN KEY (`id_cancao`) REFERENCES `tb_cancoes` (`id_cancao`),
-  CONSTRAINT `usuario_id_fk` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`usuario_id`)
-) ENGINE=InnoDB;
 
 CREATE TABLE `tb_planos` (
   `id_plano` int NOT NULL AUTO_INCREMENT,
@@ -17,17 +10,7 @@ CREATE TABLE `tb_planos` (
   `valor_plano` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_plano`),
   UNIQUE KEY `id_plano_UNIQUE` (`id_plano`)
-) ENGINE=InnoDB;
-
-CREATE TABLE `tb_usuarios` (
-  `usuario_id` int NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(50) NOT NULL,
-  `idade` int NOT NULL,
-  `id_plano` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`usuario_id`),
-  KEY `id_plano_idx` (`id_plano`),
-  CONSTRAINT `fk_id_plano` FOREIGN KEY (`id_plano`) REFERENCES `tb_planos` (`id_plano`)
-) ENGINE=InnoDB;
+)ENGINE=InnoDB;
 
 CREATE TABLE `tb_artistas` (
   `id_artista` int NOT NULL AUTO_INCREMENT,
@@ -36,13 +19,24 @@ CREATE TABLE `tb_artistas` (
   UNIQUE KEY `id_artista_UNIQUE` (`id_artista`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `tb_artistas_usuarios` (
-  `id_usuario` int NOT NULL,
+CREATE TABLE `tb_usuarios` (
+  `usuario_id` int AUTO_INCREMENT,
+  `usuario` varchar(50) NOT NULL,
+  `idade` int NOT NULL,
+  `id_plano` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`usuario_id`),
+  KEY `id_plano_idx` (`id_plano`),
+  CONSTRAINT `fk_id_plano` FOREIGN KEY (`id_plano`) REFERENCES `tb_planos` (`id_plano`)
+) ENGINE=InnoDB;
+
+CREATE TABLE `tb_albuns` (
+  `album_id` int NOT NULL AUTO_INCREMENT,
+  `album` varchar(45) NOT NULL,
   `id_artista` int NOT NULL,
-  PRIMARY KEY (`id_usuario`,`id_artista`),
+  PRIMARY KEY (`album_id`),
+  UNIQUE KEY `album_id_UNIQUE` (`album_id`),
   KEY `id_artista_idx` (`id_artista`),
-  CONSTRAINT `fk_artista_id` FOREIGN KEY (`id_artista`) REFERENCES `tb_artistas` (`id_artista`),
-  CONSTRAINT `fk_usuario_id` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`usuario_id`)
+  CONSTRAINT `fk_id_artista` FOREIGN KEY (`id_artista`) REFERENCES `tb_artistas` (`id_artista`) ON UPDATE RESTRICT
 ) ENGINE=InnoDB;
 
 CREATE TABLE `tb_cancoes` (
@@ -55,15 +49,26 @@ CREATE TABLE `tb_cancoes` (
   CONSTRAINT `fk_album_idD` FOREIGN KEY (`album_id`) REFERENCES `tb_albuns` (`album_id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `tb_albuns` (
-  `album_id` int NOT NULL AUTO_INCREMENT,
-  `album` varchar(45) NOT NULL,
-  `id_artista` int NOT NULL,
-  PRIMARY KEY (`album_id`),
-  UNIQUE KEY `album_id_UNIQUE` (`album_id`),
-  KEY `id_artista_idx` (`id_artista`),
-  CONSTRAINT `fk_id_artista` FOREIGN KEY (`id_artista`) REFERENCES `tb_artistas` (`id_artista`) ON UPDATE RESTRICT
+CREATE TABLE `tb_cancoes_usuario` (
+  `id_usuario` int NOT NULL,
+  `id_cancao` int NOT NULL,
+  PRIMARY KEY (`id_usuario`,`id_cancao`),
+  KEY `fk_cancao_id_idx` (`id_cancao`),
+  CONSTRAINT `cancao_id_fk` FOREIGN KEY (`id_cancao`) REFERENCES `tb_cancoes` (`id_cancao`),
+  CONSTRAINT `usuario_id_fk` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`usuario_id`)
 ) ENGINE=InnoDB;
+
+
+CREATE TABLE `tb_artistas_usuarios` (
+  `id_usuario` int NOT NULL,
+  `id_artista` int NOT NULL,
+  PRIMARY KEY (`id_usuario`,`id_artista`),
+  KEY `id_artista_idx` (`id_artista`),
+  CONSTRAINT `fk_artista_id` FOREIGN KEY (`id_artista`) REFERENCES `tb_artistas` (`id_artista`),
+  CONSTRAINT `fk_usuario_id` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`usuario_id`)
+) ENGINE=InnoDB;
+
+
 
 INSERT INTO `tb_planos` VALUES (1,'gratuito',0.00),(2,'familiar',7.99),(3,'universitario',5.99);
 INSERT INTO `tb_artistas` VALUES (1,'Walter Phoenix'),(2,'Freddie Shannon'),(3,'Lance Day'),(4,'Peter Strong');
