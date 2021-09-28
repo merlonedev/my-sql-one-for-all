@@ -10,6 +10,7 @@ FROM
     albums al ON at.artist_id = al.artist_id
 WHERE
     at.artist_name = name
+ORDER BY al.album_name
 ;
 END $$
 
