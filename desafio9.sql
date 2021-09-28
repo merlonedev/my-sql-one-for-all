@@ -10,5 +10,3 @@ CREATE PROCEDURE albuns_do_artista(IN Artist VARCHAR(50))
   END $$
   
   DELIMITER ; 
-  
-  
