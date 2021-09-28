@@ -1,16 +1,16 @@
-{
-  "coluna_usuario": "username",
-  "tabela_que_contem_usuario": "usuarios",
+{  
   "coluna_plano": "plano_name",
   "tabela_que_contem_plano": "planos",
-  "coluna_historico_de_reproducoes": "history_id",
-  "tabela_que_contem_historico_de_reproducoes": "historico",
-  "coluna_seguindo_artistas": "artist_id",
-  "tabela_que_contem_seguindo_artistas": "user_follow",
+  "coluna_usuario": "username",
+  "tabela_que_contem_usuario": "usuarios",
   "coluna_artista": "artist_name",
   "tabela_que_contem_artista": "artistas",
   "coluna_album": "album_name",
   "tabela_que_contem_album": "albums",
   "coluna_cancoes": "music_name",
-  "tabela_que_contem_cancoes": "musics"
+  "tabela_que_contem_cancoes": "musics",
+  "coluna_historico_de_reproducoes": "history_id",
+  "tabela_que_contem_historico_de_reproducoes": "historico",
+  "coluna_seguindo_artistas": "artist_id",
+  "tabela_que_contem_seguindo_artistas": "user_follow"  
 } 
