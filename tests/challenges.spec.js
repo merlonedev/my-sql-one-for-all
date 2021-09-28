@@ -1,6 +1,7 @@
 const { readFileSync } = require('fs');
 const { Sequelize } = require('sequelize');
 const Importer = require('mysql-import');
+jest.setTimeout(15000);
 
 describe('Queries de seleção', () => {
   let sequelize;
@@ -32,7 +33,7 @@ describe('Queries de seleção', () => {
     await importer.disconnect();
   });
 
-  describe.only('1 - Normalize as tabelas para a 3ª Forma Normal', () => {
+  describe('1 - Normalize as tabelas para a 3ª Forma Normal', () => {
     const hasForeignKey = async (table, referencedTable) => {
       const [{ REFERENCE_COUNT: referenceCount }] = await sequelize.query(
         `SELECT COUNT(COLUMN_NAME) AS REFERENCE_COUNT
