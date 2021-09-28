@@ -1,12 +1,8 @@
 DROP DATABASE IF EXISTS SpotifyClone;
-
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
-
 USE SpotifyClone;
 
--- -----------------------------------------------------
 -- Table plano
--- -----------------------------------------------------
 DROP TABLE IF EXISTS plano;
 
 CREATE TABLE IF NOT EXISTS plano(
@@ -16,9 +12,7 @@ valor DECIMAL(5,2) NULL,
 PRIMARY KEY (id_plano)
 ) ENGINE = InnoDB;
 
--- -----------------------------------------------------
 -- Table usuario
--- -----------------------------------------------------
 DROP TABLE IF EXISTS usuario;
 
 CREATE TABLE IF NOT EXISTS usuario(
@@ -30,9 +24,7 @@ PRIMARY KEY (id_usuario),
 FOREIGN KEY (id_plano) REFERENCES plano(id_plano)
 ) ENGINE = InnoDB;
 
--- -----------------------------------------------------
 -- Table artista
--- -----------------------------------------------------
 DROP TABLE IF EXISTS artista;
 
 CREATE TABLE IF NOT EXISTS artista(
@@ -41,9 +33,7 @@ nome VARCHAR(100) NOT NULL,
 PRIMARY KEY (id_artista)
 ) ENGINE = InnoDB;
 
--- -----------------------------------------------------
 -- Table album
--- -----------------------------------------------------
 DROP TABLE IF EXISTS album;
 
 CREATE TABLE IF NOT EXISTS album(
@@ -54,9 +44,7 @@ PRIMARY KEY (id_album),
 FOREIGN KEY (id_artista) REFERENCES artista(id_artista)
 ) ENGINE = InnoDB;
 
--- -----------------------------------------------------
 -- Table musicas
--- -----------------------------------------------------
 DROP TABLE IF EXISTS musicas;
 
 CREATE TABLE IF NOT EXISTS musicas(
@@ -67,9 +55,7 @@ PRIMARY KEY (id_musica),
 FOREIGN KEY (id_album) REFERENCES album(id_album)
 ) ENGINE = InnoDB;
 
--- -----------------------------------------------------
 -- Table usuario_artista
--- -----------------------------------------------------
 DROP TABLE IF EXISTS usuario_artista;
 
 CREATE TABLE IF NOT EXISTS usuario_artista(
@@ -80,9 +66,7 @@ FOREIGN KEY (id_artista) REFERENCES artista(id_artista),
 FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
--- -----------------------------------------------------
 -- Table usuario_musicas
--- -----------------------------------------------------
 DROP TABLE IF EXISTS usuario_musicas;
 
 CREATE TABLE IF NOT EXISTS usuario_musicas(
@@ -93,9 +77,7 @@ FOREIGN KEY (id_musica) REFERENCES musicas(id_musica),
 FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
--- -----------------------------------------------------
 -- Inserts
--- -----------------------------------------------------
 INSERT INTO plano (nome, valor)
 VALUES
 ('gratuito', 0),
