@@ -1,0 +1,116 @@
+-- -----------------------------------------------------
+-- Schema spotifyclone
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `spotifyclone` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `spotifyclone` ;
+
+-- -----------------------------------------------------
+-- Table `spotifyclone`.`artistas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `spotifyclone`.`artistas` (
+  `id_artista` INT NOT NULL AUTO_INCREMENT,
+  `artista` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_artista`),
+  FULLTEXT INDEX `index_artista` (`artista`) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+-- -----------------------------------------------------
+-- Table `spotifyclone`.`album`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `spotifyclone`.`album` (
+  `id_album` INT NOT NULL AUTO_INCREMENT,
+  `album` VARCHAR(50) NULL DEFAULT NULL,
+  `id_artista` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_album`),
+  INDEX `id_artista` (`id_artista` ASC) VISIBLE,
+  CONSTRAINT `albuns_ibfk_1`
+    FOREIGN KEY (`id_artista`)
+    REFERENCES `spotifyclone`.`artistas` (`id_artista`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+-- -----------------------------------------------------
+-- Table `spotifyclone`.`planos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `spotifyclone`.`planos` (
+  `id_plano` INT NOT NULL AUTO_INCREMENT,
+  `plano` VARCHAR(50) NULL DEFAULT NULL,
+  `valor` DECIMAL(3,2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_plano`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+-- -----------------------------------------------------
+-- Table `spotifyclone`.`usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `spotifyclone`.`usuarios` (
+  `id_usuario` INT NOT NULL AUTO_INCREMENT,
+  `usuario` VARCHAR(50) NULL DEFAULT NULL,
+  `idade` INT NULL DEFAULT NULL,
+  `id_plano` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`),
+  INDEX `id_plano` (`id_plano` ASC) VISIBLE,
+  CONSTRAINT `usuarios_ibfk_1`
+    FOREIGN KEY (`id_plano`)
+    REFERENCES `spotifyclone`.`planos` (`id_plano`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+-- -----------------------------------------------------
+-- Table `spotifyclone`.`musicas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `spotifyclone`.`musicas` (
+  `id_musica` INT NOT NULL AUTO_INCREMENT,
+  `musica` VARCHAR(50) NULL DEFAULT NULL,
+  `id_album` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_musica`),
+  INDEX `id_album` (`id_album` ASC) VISIBLE,
+  CONSTRAINT `musicas_ibfk_1`
+    FOREIGN KEY (`id_album`)
+    REFERENCES `spotifyclone`.`album` (`id_album`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 19
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+-- -----------------------------------------------------
+-- Table `spotifyclone`.`historico_musicas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `spotifyclone`.`historico_musicas` (
+  `id_usuario` INT NOT NULL,
+  `id_musica` INT NOT NULL,
+  PRIMARY KEY (`id_usuario`, `id_musica`),
+  INDEX `id_musica` (`id_musica` ASC) VISIBLE,
+  CONSTRAINT `historico_musicas_ibfk_1`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `spotifyclone`.`usuarios` (`id_usuario`),
+  CONSTRAINT `historico_musicas_ibfk_2`
+    FOREIGN KEY (`id_musica`)
+    REFERENCES `spotifyclone`.`musicas` (`id_musica`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+-- -----------------------------------------------------
+-- Table `spotifyclone`.`seguindo_artistas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `spotifyclone`.`seguindo_artistas` (
+  `id_usuario` INT NOT NULL,
+  `id_artista` INT NOT NULL,
+  PRIMARY KEY (`id_usuario`, `id_artista`),
+  INDEX `id_artista` (`id_artista` ASC) VISIBLE,
+  CONSTRAINT `usuarios_seguindo_ibfk_1`
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `spotifyclone`.`usuarios` (`id_usuario`),
+  CONSTRAINT `usuarios_seguindo_ibfk_2`
+    FOREIGN KEY (`id_artista`)
+    REFERENCES `spotifyclone`.`artistas` (`id_artista`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
