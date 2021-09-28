@@ -1,6 +1,6 @@
 CREATE VIEW historico_reproducao_usuarios AS
 SELECT 
-usuarios.nome AS usuario, cancoes.nome AS nome
+usuarios.nome AS `usuario`, cancoes.nome AS `nome`
 FROM usuario_cancoes
 JOIN
 usuarios ON usuario_cancoes.usuario_id = usuarios.usuario_id
