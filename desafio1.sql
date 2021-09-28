@@ -22,7 +22,7 @@ CREATE TABLE artists(
 
 CREATE TABLE albums(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  table_name VARCHAR(50) NOT NULL,
+  album_name VARCHAR(50) NOT NULL,
   artist_id INT NOT NULL
 ) engine = innoDB;
 
