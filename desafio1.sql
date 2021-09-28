@@ -44,14 +44,15 @@ CREATE TABLE albuns (
 INSERT INTO albuns(nome_album, artist_id)
 VALUES('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4);
     
-CREATE TABLE cancoes (cancao_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE cancoes (
+    cancao_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome_cancao VARCHAR(250),
     artista_id INT,
     album_id INT,
-	FOREIGN KEY (artista_id)
-		REFERENCES artistas (artista_id),
-	FOREIGN KEY (album_id)
-		REFERENCES albuns (album_id)
+    FOREIGN KEY (artista_id)
+        REFERENCES artistas (artista_id),
+    FOREIGN KEY (album_id)
+        REFERENCES albuns (album_id)
 );
 
 INSERT INTO cancoes(nome_cancao, artista_id, album_id)
@@ -75,24 +76,26 @@ VALUES('Soul For Us', 1, 1),
 ('Without My Streets', 4, 5);
       
 CREATE TABLE historico_reproducao (
-	usuario_id INT,
-	cancao_id INT,
-	CONSTRAINT PRIMARY KEY(usuario_id, cancao_id),
-	FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
-	FOREIGN KEY (cancao_id) REFERENCES cancoes (cancao_id)
+    usuario_id INT,
+    cancao_id INT,
+    CONSTRAINT PRIMARY KEY (usuario_id , cancao_id),
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios (usuario_id),
+    FOREIGN KEY (cancao_id)
+        REFERENCES cancoes (cancao_id)
 );
 
 INSERT INTO historico_reproducao(usuario_id, cancao_id)
 VALUES(1, 1), (1, 6), (1, 14), (1, 16), (2, 13), (2, 17), (2, 2), (2, 15), (3, 4), (3, 16), (3, 6), (4, 3), (4, 18), (4, 11);
 
 CREATE TABLE seguindo_artistas (
-	usuario_id INT,
-	artista_id INT,
-	CONSTRAINT PRIMARY KEY(usuario_id, artista_id),
-	FOREIGN KEY (usuario_id)
-		REFERENCES usuarios (usuario_id),
-	FOREIGN KEY (artista_id)
-		REFERENCES artistas (artista_id)
+    usuario_id INT,
+    artista_id INT,
+    CONSTRAINT PRIMARY KEY (usuario_id , artista_id),
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios (usuario_id),
+    FOREIGN KEY (artista_id)
+        REFERENCES artistas (artista_id)
 );
 
 INSERT INTO seguindo_artistas(usuario_id, artista_id)
