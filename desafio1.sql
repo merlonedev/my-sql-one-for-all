@@ -44,3 +44,6 @@ CREATE TABLE user_song(
   user_id INT NOT NULL,
   song_id INT NOT NULL
 ) engine = innoDB;
+
+ALTER TABLE users
+ADD FOREIGN KEY (plan_id) REFERENCES plans(id);
