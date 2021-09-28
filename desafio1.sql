@@ -35,14 +35,16 @@ VALUES('Walter Phoenix'), ('Peter Strong'), ('Lance Day'), ('Freedie Shannon');
 
 CREATE TABLE albuns (
     album_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome_album VARCHAR(50)
+    nome_album VARCHAR(50),
+    artist_id INT,
+    FOREIGN KEY (artist_id)
+		REFERENCES artistas (artista_id)
 );
 
-INSERT INTO albuns(nome_album)
-VALUES('Envious'), ('Exuberant'), ('Hallowed Steam'), ('Incandescent'), ('Temporary Culture');
+INSERT INTO albuns(nome_album, artist_id)
+VALUES('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4);
     
-CREATE TABLE cancoes (
-	cancao_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE cancoes (cancao_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome_cancao VARCHAR(250),
     artista_id INT,
     album_id INT,
