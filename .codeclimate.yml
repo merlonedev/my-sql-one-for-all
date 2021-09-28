@@ -33,6 +33,9 @@ checks:
 plugins:
   editorconfig:
     enabled: true
+    channel: beta
+    config:
+      editorconfig: .editorconfig
   fixme:
     enabled: true
 exclude_patterns:
