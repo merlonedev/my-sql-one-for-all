@@ -38,7 +38,7 @@ CREATE TABLE albuns (
     nome_album VARCHAR(50),
     artist_id INT,
     FOREIGN KEY (artist_id)
-		REFERENCES artistas (artista_id)
+        REFERENCES artistas (artista_id)
 );
 
 INSERT INTO albuns(nome_album, artist_id)
