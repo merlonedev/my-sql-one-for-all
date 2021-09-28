@@ -8,4 +8,3 @@ CREATE VIEW top_2_hits_do_momento AS
     GROUP BY us.song_id
     ORDER BY COUNT(us.song_id) DESC , s.song_name ASC
     LIMIT 2);
-
