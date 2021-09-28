@@ -1,3 +1,4 @@
+USE SpotifyClone;
 DELIMITER $$
 
 CREATE PROCEDURE albuns_do_artista(IN artistaNome VARCHAR(30))
@@ -7,10 +8,10 @@ SELECT
 FROM
     Album AS alb
         JOIN
-    Artistas AS a ON a.id = alb.artista_id
+    Artista AS a ON a.id = alb.artista_id
 WHERE
     a.artista_nome = artistaNome
-ORDER BY album;
+ORDER BY alb.album;
 END $$
 
 DELIMITER ;
