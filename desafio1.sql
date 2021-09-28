@@ -26,12 +26,9 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`users` (
   `age` SMALLINT NOT NULL,
   `plan_id` INT NOT NULL,
   PRIMARY KEY (`user_id`),
-  INDEX `fk_users_1_idx` (`plan_id` ASC) VISIBLE,
   CONSTRAINT `fk_users_1`
     FOREIGN KEY (`plan_id`)
-    REFERENCES `SpotifyClone`.`plans` (`plan_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`plans` (`plan_id`))
 ENGINE = InnoDB;
 
 INSERT INTO `SpotifyClone`.`users` (username, age, plan_id)
@@ -63,12 +60,9 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albums` (
   `album_name` VARCHAR(50) NOT NULL,
   `artist_id` INT NOT NULL,
   PRIMARY KEY (`album_id`),
-  INDEX `fk_albums_1_idx` (`artist_id` ASC) VISIBLE,
   CONSTRAINT `fk_albums_1`
     FOREIGN KEY (`artist_id`)
-    REFERENCES `SpotifyClone`.`artists` (`artist_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`artists` (`artist_id`))
 ENGINE = InnoDB;
 
 INSERT INTO `SpotifyClone`.`albums` (album_name, artist_id)
@@ -87,18 +81,12 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`songs` (
   `album_id` INT NOT NULL,
   `artist_id` INT NOT NULL,
   PRIMARY KEY (`song_id`),
-  INDEX `fk_songs_1_idx` (`album_id` ASC) VISIBLE,
-  INDEX `fk_songs_2_idx` (`artist_id` ASC) VISIBLE,
   CONSTRAINT `fk_songs_1`
     FOREIGN KEY (`album_id`)
-    REFERENCES `SpotifyClone`.`albums` (`album_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `SpotifyClone`.`albums` (`album_id`),
   CONSTRAINT `fk_songs_2`
     FOREIGN KEY (`artist_id`)
-    REFERENCES `SpotifyClone`.`artists` (`artist_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`artists` (`artist_id`))
 ENGINE = InnoDB;
 
 INSERT INTO `SpotifyClone`.`songs` (song_name, album_id, artist_id)
@@ -128,20 +116,14 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`user_songs_history` (
   `user_id` INT NOT NULL,
   `song_id` INT NOT NULL,
   `history_id` INT NOT NULL AUTO_INCREMENT,
-  INDEX `fk_user_songs_history_1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_user_songs_history_2_idx` (`song_id` ASC) VISIBLE,
   PRIMARY KEY (`user_id`, `song_id`),
   UNIQUE INDEX `history_id_UNIQUE` (`history_id` ASC) VISIBLE,
   CONSTRAINT `fk_user_songs_history_1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `SpotifyClone`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `SpotifyClone`.`users` (`user_id`),
   CONSTRAINT `fk_user_songs_history_2`
     FOREIGN KEY (`song_id`)
-    REFERENCES `SpotifyClone`.`songs` (`song_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`songs` (`song_id`))
 ENGINE = InnoDB;
 
 INSERT INTO `SpotifyClone`.`user_songs_history` (user_id, song_id)
@@ -166,19 +148,13 @@ DROP TABLE IF EXISTS `SpotifyClone`.`user_followage` ;
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`user_followage` (
   `user_id` INT NOT NULL,
   `artist_id` INT NOT NULL,
-  INDEX `fk_user_followage_1_idx` (`artist_id` ASC) VISIBLE,
-  INDEX `fk_user_followage_2_idx` (`user_id` ASC) VISIBLE,
   PRIMARY KEY (`user_id`, `artist_id`),
   CONSTRAINT `fk_user_followage_1`
     FOREIGN KEY (`artist_id`)
-    REFERENCES `SpotifyClone`.`artists` (`artist_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `SpotifyClone`.`artists` (`artist_id`),
   CONSTRAINT `fk_user_followage_2`
     FOREIGN KEY (`user_id`)
-    REFERENCES `SpotifyClone`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`users` (`user_id`))
 ENGINE = InnoDB;
 
 INSERT INTO `SpotifyClone`.`user_followage` (user_id, artist_id)
