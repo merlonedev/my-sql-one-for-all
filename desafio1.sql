@@ -55,11 +55,7 @@ VALUES
   ('Guns'),
   ('Nirvana'),
   ('Legião Urbana'),
-  ('Titãs'),
-  ('Nando Reis'),
-  ('RCásia Eller'),
-  ('Marisa Monte'),
-  ('Maria Betânia');
+  ('Titãs');
 
 DROP TABLE IF EXISTS `SpotifyClone`.`albums` ;
 
@@ -82,10 +78,8 @@ VALUES
   ('Laços de Horror', 1),
   ('A casa verde-musgo, sem você', 1),
   ('Paz incandescente', 3),
-  ('Protelando sem dor', 2),
-  ('Perspectiva Social', 4),
-  ('A paz e o carnaval', 3);
-
+  ('Protelando sem dor', 2);
+ 
 DROP TABLE IF EXISTS `SpotifyClone`.`musics` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musics` (
@@ -205,5 +199,4 @@ VALUES
   (4, 4),
   (4, 3),
   (4, 1);
-
   
