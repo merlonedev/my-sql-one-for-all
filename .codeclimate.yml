@@ -33,9 +33,6 @@ checks:
 plugins:
   editorconfig:
     enabled: true
-    channel: beta
-    config:
-      editorconfig: .editorconfig
   fixme:
     enabled: true
 exclude_patterns:
@@ -43,3 +40,4 @@ exclude_patterns:
   - "images/"
   - "tests/"
   - "node_modules/"
+  - "desafio1.json/"
