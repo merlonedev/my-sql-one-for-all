@@ -50,8 +50,14 @@ CREATE TABLE historico(
     cancao_id INT,
     CONSTRAINT PRIMARY KEY(usuario_id, cancao_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
-    FOREIGN KEY (cancao_id) REFERENCES cancoes (artista_id)
+    FOREIGN KEY (cancao_id) REFERENCES cancoes (cancao_id)
 ) engine = InnoDB;
+
+INSERT INTO planos (plano_id, plano, valor_plano)
+VALUES
+  (1, 'gratuito', 0),
+  (2, 'familiar', 7.99),
+  (3, 'universitário', 5.99);
 
 INSERT INTO usuarios (usuario_id, usuario, idade, plano_id)
 VALUES
@@ -59,12 +65,6 @@ VALUES
   (2, 'Cintia', 35, 2),
   (3, 'Bill', 20, 3),
   (4, 'Roger', 45, 1);
-
-INSERT INTO planos (plano_id, plano, valor_plano)
-VALUES
-  (1, 'gratuito', 0),
-  (2, 'familiar', 7,99),
-  (3, 'universitário', 5,99);
   
 INSERT INTO artistas (artista_id, artista)
 VALUES
