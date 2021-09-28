@@ -20,14 +20,14 @@ usuario_id INT PRIMARY KEY AUTO_INCREMENT,
 usuario_nome VARCHAR(50) NOT NULL,
 usuario_idade INT NOT NULL,
 plano_id INT,
-FOREIGN KEY (plano_id) REFERENCES Plano (plano_id)
+FOREIGN KEY (plano_id) REFERENCES plano (plano_id)
 ) engine = InnoDB;
 
 CREATE TABLE album(
 album_id INT PRIMARY KEY AUTO_INCREMENT,
 album_nome VARCHAR(50) NOT NULL,
 artista_id INT NOT NULL,
-    FOREIGN KEY (artista_id) REFERENCES Artista (artista_id)
+    FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
 ) engine = InnoDB;
 
 CREATE TABLE musica(
@@ -35,24 +35,24 @@ musica_id INT PRIMARY KEY AUTO_INCREMENT,
 musica_nome VARCHAR(50) NOT NULL,
 artista_id INT NOT NULL,
 album_id INT NOT NULL,
-FOREIGN KEY (artista_id) REFERENCES Artista (artista_id),
-FOREIGN KEY (album_id) REFERENCES Album (album_id)
+FOREIGN KEY (artista_id) REFERENCES artista (artista_id),
+FOREIGN KEY (album_id) REFERENCES album (album_id)
 ) engine = InnoDB;
 
 CREATE TABLE seguindo(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
 CONSTRAINT PRIMARY KEY (usuario_id, artista_id),
-FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id),
-FOREIGN KEY (artista_id) REFERENCES Artista (artista_id)
+FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
+FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
 ) engine = InnoDB;
 
 CREATE TABLE historico(
 usuario_id INT NOT NULL,
 musica_id INT NOT NULL,
 CONSTRAINT PRIMARY KEY (usuario_id, musica_id),
-FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id),
-FOREIGN KEY (musica_id) REFERENCES Musica (musica_id)
+FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
+FOREIGN KEY (musica_id) REFERENCES musica (musica_id)
 ) engine = InnoDB;
 
 INSERT INTO plano (plano_nome, plano_preco)
