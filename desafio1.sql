@@ -10,19 +10,19 @@ CREATE TABLE `SpotifyClone`.`Subscriptions` (
     sub_value DECIMAL(5 , 2 ) NOT NULL
 )  ENGINE=INNODB;
 
+CREATE TABLE `SpotifyClone`.`Artists` (
+    artist_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    artist VARCHAR(40) NOT NULL
+)  ENGINE=INNODB;
+
 CREATE TABLE `SpotifyClone`.`Users` (
     user_id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(40) NOT NULL,
     age INT NOT NULL,
     sub_id INT NOT NULL,
     CONSTRAINT PRIMARY KEY (`user_id`),
-    FOREIGN KEY (`plan_id`)
+    FOREIGN KEY (`user_id`)
         REFERENCES `SpotifyClone`.`Subscriptions` (`sub_id`)
-)  ENGINE=INNODB;
-
-CREATE TABLE `SpotifyClone`.`Artists` (
-    artist_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    artist VARCHAR(40) NOT NULL
 )  ENGINE=INNODB;
 
 CREATE TABLE `SpotifyClone`.`Albums` (
@@ -49,10 +49,10 @@ CREATE TABLE `SpotifyClone`.`Tracks` (
 CREATE TABLE `SpotifyClone`.`Reproductions_history` (
     user_id INT NOT NULL,
     track_id INT NOT NULL,
-    CONSTRAINT PRIMARY KEY (`user_id` , `song_id`),
+    CONSTRAINT PRIMARY KEY (`user_id` , `track_id`),
     CONSTRAINT FOREIGN KEY (`user_id`)
         REFERENCES `SpotifyClone`.`Users` (`user_id`),
-    CONSTRAINT FOREIGN KEY (`song_id`)
+    CONSTRAINT FOREIGN KEY (`track_id`)
         REFERENCES `SpotifyClone`.`Tracks` (`track_id`)
 )  ENGINE=INNODB;
 
