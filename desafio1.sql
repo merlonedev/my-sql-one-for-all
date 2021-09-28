@@ -47,3 +47,6 @@ CREATE TABLE user_song(
 
 ALTER TABLE users
 ADD FOREIGN KEY (plan_id) REFERENCES plans(id);
+
+ALTER TABLE albums
+ADD FOREIGN KEY (artist_id) REFERENCES artists(id);
