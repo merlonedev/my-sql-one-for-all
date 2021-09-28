@@ -38,3 +38,9 @@ CREATE TABLE artist_user(
   artist_id INT NOT NULL,
   user_id INT NOT NULL
 ) engine = innoDB;
+
+CREATE TABLE user_song(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  song_id INT NOT NULL
+) engine = innoDB;
