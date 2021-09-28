@@ -4,13 +4,13 @@
   "coluna_plano": "nome",
   "tabela_que_contem_plano": "plano",
   "coluna_historico_de_reproducoes": "id_musica",
-  "tabela_que_contem_historico_de_reproducoes": "usuario-musicas",
+  "tabela_que_contem_historico_de_reproducoes": "usuario_musica",
   "coluna_seguindo_artistas": "id_artista",
-  "tabela_que_contem_seguindo_artistas": "usuario-artistas",
+  "tabela_que_contem_seguindo_artistas": "usuario_artista",
   "coluna_artista": "nome",
   "tabela_que_contem_artista": "artista",
   "coluna_album": "nome",
   "tabela_que_contem_album": "album",
   "coluna_cancoes": "nome",
-  "tabela_que_contem_cancoes": "musicas"
+  "tabela_que_contem_cancoes": "musica"
 }

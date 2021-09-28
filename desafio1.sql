@@ -45,9 +45,9 @@ FOREIGN KEY (id_artista) REFERENCES artista(id_artista)
 ) ENGINE = InnoDB;
 
 -- Table musicas
-DROP TABLE IF EXISTS musicas;
+DROP TABLE IF EXISTS musica;
 
-CREATE TABLE IF NOT EXISTS musicas(
+CREATE TABLE IF NOT EXISTS musica(
 id_musica INT NOT NULL AUTO_INCREMENT,
 nome VARCHAR(100) NOT NULL,
 id_album INT NOT NULL,
@@ -67,14 +67,14 @@ FOREIGN KEY (id_artista) REFERENCES artista(id_artista)
 ) ENGINE = InnoDB;
 
 -- Table usuario_musicas
-DROP TABLE IF EXISTS usuario_musicas;
+DROP TABLE IF EXISTS usuario_musica;
 
-CREATE TABLE IF NOT EXISTS usuario_musicas(
+CREATE TABLE IF NOT EXISTS usuario_musica(
 id_usuario INT NOT NULL,
 id_musica INT NOT NULL,
 PRIMARY KEY (id_usuario, id_musica),
 FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-FOREIGN KEY (id_musica) REFERENCES musicas(id_musica)
+FOREIGN KEY (id_musica) REFERENCES musica(id_musica)
 ) ENGINE = InnoDB;
 
 -- Inserts
@@ -106,7 +106,7 @@ VALUES
 ('Incandescent', 3),
 ('Temporary Culture', 4);
 
-INSERT INTO musicas (nome, id_album)
+INSERT INTO musica (nome, id_album)
 VALUES
 ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
@@ -138,7 +138,7 @@ VALUES
 (3, 1),
 (4, 4);
 
-INSERT INTO usuario_musicas (id_usuario, id_musica)
+INSERT INTO usuario_musica (id_usuario, id_musica)
 VALUES
 (1, 1),
 (1, 6),
