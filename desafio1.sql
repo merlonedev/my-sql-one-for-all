@@ -71,7 +71,7 @@ CREATE TABLE `tb_artistas_usuarios` (
 
 
 INSERT INTO `tb_planos` VALUES (1,'gratuito',0.00),(2,'familiar',7.99),(3,'universitario',5.99);
-INSERT INTO `tb_artistas` VALUES (1,'Walter Phoenix'),(2,'Freddie Shannon'),(3,'Lance Day'),(4,'Peter Strong');
+INSERT INTO `tb_artistas` VALUES (1,'Walter Phoenix'),(2,'Freedie Shannon'),(3,'Lance Day'),(4,'Peter Strong');
 INSERT INTO `tb_usuarios` VALUES (1,'Thati',23,1),(2,'Cintia',35,2),(3,'Bill',20,3),(4,'Roger',45,1);
 INSERT INTO `tb_artistas_usuarios` VALUES (1,1),(2,1),(3,1),(1,2),(4,2),(1,3),(2,3),(3,4);
 INSERT INTO `tb_albuns` VALUES (1,'Envious',1),(2,'Exuberant',1),(3,'Hallowed Steam',4),(4,'Incandescent',3),(5,'Temporary Culture',2);
