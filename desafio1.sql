@@ -82,3 +82,11 @@ VALUES
   ('Peter Strong'),
   ('Lance Day'),
   ('Freedie Shannon');
+
+INSERT INTO albums(album_name, artist_id)
+VALUES
+  ('Envious', 1),
+  ('Exuberant', 1),
+  ('Hallowed Steam', 2),
+  ('Incandescent', 3),
+  ('Temporary Culture', 4);
