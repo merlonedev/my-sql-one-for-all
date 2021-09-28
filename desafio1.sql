@@ -37,12 +37,11 @@ ENGINE = InnoDB;
 
 INSERT INTO `SpotifyClone`.`usuarios` (username, age, plano_id)
 VALUES
-  ('Maria Padilha', 19, 1),
-  ('Marcio Rocha', 25, 1),
-  ('Casio Silva', 22, 2),
-  ('Luana Alves', 38, 2),
-  ('Pedro Dias', 54, 3);
-
+  ('Maria', 19, 1),
+  ('Marcio', 25, 1),
+  ('Casio', 22, 2),
+  ('Luana', 38, 2);
+ 
 DROP TABLE IF EXISTS `SpotifyClone`.`artistas` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artistas` (
@@ -127,7 +126,8 @@ VALUES
   ('I Cant', 4, 3),
   ('The clone of water', 5, 4),
   ('My way', 5, 4),
-  ('Print me', 5, 4);
+  ('Print me', 5, 4),
+  ('Log my heart', 5, 4);
 
 DROP TABLE IF EXISTS `SpotifyClone`.`historico` ;
 
@@ -205,3 +205,4 @@ VALUES
   (4, 4),
   (4, 3),
   (4, 1);
+  
