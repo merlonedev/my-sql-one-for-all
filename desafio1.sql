@@ -68,3 +68,10 @@ VALUES
   ('gratuito', 0),
   ('universitário', 5.99),
   ('familiar', 7.99);
+
+INSERT INTO users(user_name, age, plan_id)
+VALUES
+  ('Thati', 23, 1),
+  ('Cintia', 35, 3),
+  ('Bili', 20, 2),
+  ('Roger', 45, 1);
