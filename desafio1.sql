@@ -6,7 +6,7 @@ USE SpotifyClone;
 
 CREATE TABLE usuarios(
     usuario_id INT PRIMARY KEY,
-	usuario VARCHAR(20) NOT NULL,
+    usuario VARCHAR(20) NOT NULL,
     idade INT NOT NULL,
     plano_id INT NOT NULL,
     FOREIGN KEY (plano_id) REFERENCES planos (plano_id)
@@ -42,7 +42,7 @@ CREATE TABLE usuario_artista(
     artista_id INT,
     CONSTRAINT PRIMARY KEY(usuario_id, artista_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
-	FOREIGN KEY (artista_id) REFERENCES artistas (artista_id)
+    FOREIGN KEY (artista_id) REFERENCES artistas (artista_id)
 ) engine = InnoDB;
 
 CREATE TABLE historico(
@@ -50,7 +50,7 @@ CREATE TABLE historico(
     cancao_id INT,
     CONSTRAINT PRIMARY KEY(usuario_id, cancao_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
-	FOREIGN KEY (cancao_id) REFERENCES cancoes (artista_id)
+    FOREIGN KEY (cancao_id) REFERENCES cancoes (artista_id)
 ) engine = InnoDB;
 
 INSERT INTO usuarios (usuario_id, usuario, idade, plano_id)
@@ -129,3 +129,4 @@ VALUES
   (3, 2),
   (3, 1),
   (4, 4);
+  
