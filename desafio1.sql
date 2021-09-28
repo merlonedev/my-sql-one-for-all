@@ -97,7 +97,7 @@ VALUES
   (12, 'Celebration Of More', 4),
   (13, 'Time Fireworks', 2),
   (14, 'Rock His Everything', 4),
-  (15, 'Fantasy For Me', 4)
+  (15, 'Fantasy For Me', 4),
   (16, 'Honey, So Do I', 3),
   (17, "Sweetie, Let's Go Wild", 3),
   (18, 'She Knows', 3);
