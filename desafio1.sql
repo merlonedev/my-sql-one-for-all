@@ -128,7 +128,3 @@ INSERT INTO USUARIO_ARTISTAS (usuario_id, artista_id ) VALUES
 (3,	4),
 (3,	1),
 (4,	2);
-
-
-
-
