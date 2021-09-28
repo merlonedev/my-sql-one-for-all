@@ -65,7 +65,7 @@ album_id INT NOT NULL,
 FOREIGN KEY(album_id) REFERENCES albuns(album_id)
 )ENGINE=InnoDB;
 
-INSERT INTO musicas(cancao, album_id)
+INSERT INTO cancoes(cancao, album_id)
 VALUE
 ("Soul For Us", 1),
 ("Reflections Of Magic", 1),
@@ -94,7 +94,7 @@ FOREIGN KEY(usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY(artista_id) REFERENCES artistas(artista_id)
 )ENGINE=InnoDB;
 
-INSERT INTO seguindo_artistas(usuario_id, artista_id)
+INSERT INTO usuariosArtistas(usuario_id, artista_id)
 VALUE
 (1, 1),
 (1, 4),
