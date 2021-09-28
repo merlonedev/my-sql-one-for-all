@@ -10,17 +10,17 @@ plano_nome VARCHAR(15) NOT NULL,
 plano_preco DECIMAL(5,2) NOT NULL
 ) engine = InnoDB;
 
-CREATE TABLE Artista(
-artista_id INT PRIMARY KEY AUTO_INCREMENT,
-artista_nome VARCHAR(50) NOT NULL
-) engine = InnoDB;
-
 CREATE TABLE Usuario(
 usuario_id INT PRIMARY KEY AUTO_INCREMENT,
 usuario_nome VARCHAR(50) NOT NULL,
 usuario_idade INT NOT NULL,
-plano_id INT,
+plano_id INT NOT NULL,
 FOREIGN KEY (plano_id) REFERENCES Plano (plano_id)
+) engine = InnoDB;
+
+CREATE TABLE Artista(
+artista_id INT PRIMARY KEY AUTO_INCREMENT,
+artista_nome VARCHAR(100) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE Album(
@@ -33,16 +33,14 @@ artista_id INT NOT NULL,
 CREATE TABLE Musica(
 musica_id INT PRIMARY KEY AUTO_INCREMENT,
 musica_nome VARCHAR(50) NOT NULL,
-artista_id INT NOT NULL,
 album_id INT NOT NULL,
-FOREIGN KEY (artista_id) REFERENCES Artista (artista_id),
 FOREIGN KEY (album_id) REFERENCES Album (album_id)
 ) engine = InnoDB;
 
 CREATE TABLE Seguindo(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
-PRIMARY KEY (usuario_id, artista_id),
+CONSTRAINT PRIMARY KEY (usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id),
 FOREIGN KEY (artista_id) REFERENCES Artista (artista_id)
 ) engine = InnoDB;
@@ -50,7 +48,7 @@ FOREIGN KEY (artista_id) REFERENCES Artista (artista_id)
 CREATE TABLE Historico(
 usuario_id INT NOT NULL,
 musica_id INT NOT NULL,
-PRIMARY KEY (usuario_id, musica_id),
+CONSTRAINT PRIMARY KEY (usuario_id, musica_id),
 FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id),
 FOREIGN KEY (musica_id) REFERENCES Musica (musica_id)
 ) engine = InnoDB;
@@ -83,26 +81,26 @@ VALUES
 ('Incandescent', 3),
 ('Temporary Culture', 4);
     
-INSERT INTO Musica (musica_nome, artista_id, album_id)
+INSERT INTO Musica (musica_nome, album_id)
 VALUES
-('Soul For Us', 1, 1),
-('Reflections Of Magic', 1, 1),
-('Dance With Her Own', 1, 1),
-('Troubles Of My Inner Fire', 1, 2),
-('Time Fireworks', 1, 2),
-('Magic Circus', 2, 3),
-('Honey, So Do I', 2, 3),
-('Sweetie, Let"s Go Wild', 2, 3),
-('She Knows', 2, 3),
-('Fantasy For Me', 3, 4),
-('Celebration Of More', 3, 4),
-('Rock His Everything', 3, 4),
-('Home Forever', 3, 4),
-('Diamond Power', 3, 4),
-('Honey, Let"s Be Silly', 3, 4),
-('Thang Of Thunder', 4, 5),
-('Words Of Her Life', 4, 5),
-('Without My Streets', 4, 5);
+('Soul For Us', 1),
+('Reflections Of Magic', 1),
+('Dance With Her Own', 1),
+('Troubles Of My Inner Fire', 2),
+('Time Fireworks', 2),
+('Fantasy For Me', 4),
+('Celebration Of More', 4),
+('Rock His Everything', 4),
+('Home Forever', 4),
+('Diamond Power', 4),
+('Honey, So Do I', 3),
+('Thang Of Thunder', 5),
+('Words Of Her Life', 5),
+('Without My Streets', 5),
+('Magic Circus', 3),
+("Sweety, Let's Go Wild", 3),
+('She Knows', 3),
+("Honey, Let's Be Silly", 4);
     
 INSERT INTO Seguindo (usuario_id, artista_id)
 VALUES
