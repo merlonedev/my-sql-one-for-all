@@ -4,10 +4,10 @@ CREATE VIEW estatisticas_musicais AS
         (SELECT 
                 COUNT(*)
             FROM
-                SpotfiyClone.artists) AS artistas,
+                SpotifyClone.artists) AS artistas,
         (SELECT 
                 COUNT(*)
             FROM
-                SpotfiyClone.albums) AS albuns
+                SpotifyClone.albums) AS albuns
     FROM
-        SpotfiyClone.songs;
+        SpotifyClone.songs;

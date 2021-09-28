@@ -1,19 +1,19 @@
-DROP DATABASE IF EXISTS SpotfiyClone;
+DROP DATABASE IF EXISTS SpotifyClone;
 
-Create DATABASE SpotfiyClone;
+Create DATABASE SpotifyClone;
 
-Create Table SpotfiyClone.plans (
+Create Table SpotifyClone.plans (
 plan_id int primary key auto_increment,
 plan_name varchar(20) not null,
 price decimal(5,2) not null
 );
 
-INSERT into SpotfiyClone.plans (plan_name, price) 
+INSERT into SpotifyClone.plans (plan_name, price) 
 VALUES("gratuito", 0),
 ("universitário", 5.99),
 ("familiar", 7.99);
 
-Create Table SpotfiyClone.users (
+Create Table SpotifyClone.users (
 user_id int primary key auto_increment,
 username varchar(50) not null,
 age int not null,
@@ -21,38 +21,38 @@ plan_id int not null,
 foreign key (plan_id) references plans(plan_id)
 );
 
-INSERT INTO SpotfiyClone.users (username, age, plan_id) 
+INSERT INTO SpotifyClone.users (username, age, plan_id) 
 VALUES ("Thati", 23, 1),
 ("Cintia", 35, 3),
 ("Bill", 20, 2),
 ("Roger", 45, 1);
 
-Create Table SpotfiyClone.artists (
+Create Table SpotifyClone.artists (
 artist_id int primary key auto_increment,
 artist_name varchar(50) not null
 );
 
-INSERT INTO SpotfiyClone.artists (artist_name)
+INSERT INTO SpotifyClone.artists (artist_name)
 VALUES("Walter Phoenix"),
 ("Peter Strong"),
 ("Lance Day"),
 ("Freddie Shanno");
 
-Create Table SpotfiyClone.albums (
+Create Table SpotifyClone.albums (
 album_id int primary key auto_increment,
 album_name varchar(50) not null,
 artist_id int not null,
 foreign key (artist_id) references artists(artist_id)
 );
 
-INSERT INTO SpotfiyClone.albums (album_name, artist_id)
+INSERT INTO SpotifyClone.albums (album_name, artist_id)
 VALUES("Envious", 1),
 ("Exuberant", 1),
 ("Hallowed Steam", 2),
 ("Incandescent", 3),
 ("Temporary Culture", 4);
 
-Create Table SpotfiyClone.songs (
+Create Table SpotifyClone.songs (
 song_id int primary key auto_increment,
 song_name varchar(50) not null,
 album_id int not null,
@@ -61,7 +61,7 @@ foreign key (artist_id) references artists(artist_id),
 foreign key (album_id) references albums(album_id)
 );
 
-INSERT INTO SpotfiyClone.songs (song_name, album_id, artist_id)
+INSERT INTO SpotifyClone.songs (song_name, album_id, artist_id)
 VALUES ("Soul For Us", 1, 1),
 ("Reflections of Magic", 1, 1),
 ("Dance With Her Own", 1, 1),
@@ -81,7 +81,7 @@ VALUES ("Soul For Us", 1, 1),
 ("Words Of Her Life", 5, 4),
 ("Without My Streets", 5, 4);
 
-Create Table SpotfiyClone.histories (
+Create Table SpotifyClone.histories (
 history_id int unique auto_increment,
 user_id int not null,
 song_id int not null,
@@ -90,7 +90,7 @@ foreign key (user_id) references users(user_id),
 foreign key (song_id) references songs(song_id)
 );
 
-INSERT INTO SpotfiyClone.histories (user_id, song_id)
+INSERT INTO SpotifyClone.histories (user_id, song_id)
 VALUES (1, 1),
 (1, 6),
 (1, 14),
@@ -106,13 +106,13 @@ VALUES (1, 1),
 (4, 18),
 (4, 11);
 
-Create Table SpotfiyClone.user_follow (
+Create Table SpotifyClone.user_follow (
 user_id int not null,
 artist_id int not null,
 constraint primary key(user_id, artist_id)
 );
 
-INSERT INTO SpotfiyClone.user_follow (user_id, artist_id) 
+INSERT INTO SpotifyClone.user_follow (user_id, artist_id) 
 VALUES (1, 1),
 (1, 4),
 (1, 3),
