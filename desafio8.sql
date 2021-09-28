@@ -4,7 +4,7 @@ CREATE TRIGGER trigger_usuario_delete
   BEFORE DELETE ON SpotifyClone.Usuario
   FOR EACH ROW
 BEGIN
-  DELETE FROM SpotifyClone.Seguindo WHERE usuario_id = OLD.usuario_id;
-  DELETE FROM spotifyclone.Historico WHERE usuario_id = OLD.usuario_id;
+  DELETE FROM Seguindo WHERE OLD.usuario_id = usuario_id;
+  DELETE FROM Historico WHERE OLD.usuario_id = usario_id;
 END $$
 DELIMITER ;
