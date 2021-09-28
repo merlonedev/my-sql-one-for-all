@@ -9,8 +9,7 @@ CREATE TABLE `SpotifyClone`.`planos` (
   `plano_id` INT NOT NULL AUTO_INCREMENT,
   `plano` VARCHAR(20) NOT NULL,
   `plano_preco` DOUBLE NOT NULL,
-  PRIMARY KEY (`plano_id`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`plano_id`));
 
 INSERT INTO `SpotifyClone`.`planos` (`plano_id`, `plano`, `plano_preco`) VALUES (1, 'gratuito', 0);
 INSERT INTO `SpotifyClone`.`planos` (`plano_id`, `plano`, `plano_preco`) VALUES (2, 'universitario', 5.99);
@@ -23,13 +22,11 @@ CREATE TABLE `SpotifyClone`.`users` (
   `idade` INT NOT NULL,
   `plano_id` INT NOT NULL,
   PRIMARY KEY (`user_id`),
-  INDEX `plano_id_idx` (`plano_id` ASC) VISIBLE,
   CONSTRAINT `plano_id`
     FOREIGN KEY (`plano_id`)
     REFERENCES `SpotifyClone`.`planos` (`plano_id`)
     ON DELETE RESTRICT
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
+    ON UPDATE CASCADE);
 
 INSERT INTO `SpotifyClone`.`users` (`user_id`, `user`, `idade`, `plano_id`) VALUES (1, 'Thati', 23, 1);
 INSERT INTO `SpotifyClone`.`users` (`user_id`, `user`, `idade`, `plano_id`) VALUES (2, 'Cintia', 35, 2);
@@ -40,8 +37,7 @@ DROP TABLE IF EXISTS `SpotifyClone`.`artistas` ;
 CREATE TABLE `SpotifyClone`.`artistas` (
   `artista_id` INT NOT NULL AUTO_INCREMENT,
   `artista` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`artista_id`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`artista_id`));
 
 INSERT INTO `SpotifyClone`.`artistas` (`artista_id`, `artista`) VALUES (1, 'Walter Phoenix');
 INSERT INTO `SpotifyClone`.`artistas` (`artista_id`, `artista`) VALUES (2, 'Peter Strong');
@@ -54,13 +50,11 @@ CREATE TABLE `SpotifyClone`.`albuns` (
   `album` VARCHAR(100) NOT NULL,
   `artista_id` INT NOT NULL,
   PRIMARY KEY (`album_id`),
-  INDEX `artista_id_idx` (`artista_id` ASC) VISIBLE,
   CONSTRAINT `artista_id`
     FOREIGN KEY (`artista_id`)
     REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
     ON DELETE RESTRICT
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
+    ON UPDATE CASCADE);
 
 INSERT INTO `SpotifyClone`.`albuns` (`album_id`, `album`, `artista_id`) VALUES (1, 'Envious', 1);
 INSERT INTO `SpotifyClone`.`albuns` (`album_id`, `album`, `artista_id`) VALUES (2, 'Exuberant', 1);
@@ -75,8 +69,6 @@ CREATE TABLE `SpotifyClone`.`cancoes` (
   `artista_id` INT NOT NULL,
   `cancao` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`cancao_id`),
-  INDEX `album_id_idx` (`album_id` ASC) VISIBLE,
-  INDEX `artista_id_idx` (`artista_id` ASC) VISIBLE,
   CONSTRAINT `fk_album_id`
     FOREIGN KEY (`album_id`)
     REFERENCES `SpotifyClone`.`albuns` (`album_id`)
@@ -86,8 +78,7 @@ CREATE TABLE `SpotifyClone`.`cancoes` (
     FOREIGN KEY (`artista_id`)
     REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
     ON DELETE RESTRICT
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
+    ON UPDATE CASCADE);
 
 INSERT INTO `SpotifyClone`.`cancoes` (`cancao_id`, `album_id`, `artista_id`, `cancao`) VALUES (1, 1, 1, 'Soul For Us');
 INSERT INTO `SpotifyClone`.`cancoes` (`cancao_id`, `album_id`, `artista_id`, `cancao`) VALUES (2, 1, 1, 'Reflections Of Magic');
@@ -113,18 +104,15 @@ CREATE TABLE `SpotifyClone`.`artista_seguidores` (
   `user_id` INT NOT NULL,
   `artista_id` INT NOT NULL,
   PRIMARY KEY (`user_id`, `artista_id`),
-  INDEX `artista_id_idx` (`artista_id` ASC) VISIBLE,
   CONSTRAINT `fk_user_id`
     FOREIGN KEY (`user_id`)
     REFERENCES `SpotifyClone`.`users` (`user_id`)
-    ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `artista_id_fk`
     FOREIGN KEY (`artista_id`)
     REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
     ON DELETE RESTRICT
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
+    ON UPDATE CASCADE);
 
 INSERT INTO `SpotifyClone`.`artista_seguidores` (`user_id`, `artista_id`) VALUES (1, 1);
 INSERT INTO `SpotifyClone`.`artista_seguidores` (`user_id`, `artista_id`) VALUES (1, 4);
@@ -140,18 +128,16 @@ CREATE TABLE `SpotifyClone`.`historico` (
   `user_id` INT NOT NULL,
   `cancao_id` INT NOT NULL,
   PRIMARY KEY (`user_id`, `cancao_id`),
-  INDEX `cancao_id_idx` (`cancao_id` ASC) VISIBLE,
   CONSTRAINT `user_id`
     FOREIGN KEY (`user_id`)
     REFERENCES `SpotifyClone`.`users` (`user_id`)
-    ON DELETE RESTRICT
     ON UPDATE CASCADE,
   CONSTRAINT `cancao_id`
     FOREIGN KEY (`cancao_id`)
     REFERENCES `SpotifyClone`.`cancoes` (`cancao_id`)
     ON DELETE RESTRICT
     ON UPDATE CASCADE)
-ENGINE = InnoDB;
+;
 
 INSERT INTO `SpotifyClone`.`historico` (`user_id`, `cancao_id`) VALUES (1, 1);
 INSERT INTO `SpotifyClone`.`historico` (`user_id`, `cancao_id`) VALUES (1, 6);

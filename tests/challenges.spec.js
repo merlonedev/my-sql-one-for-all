@@ -17,13 +17,13 @@ describe('Queries de seleção', () => {
       console.log('Erro ao restaurar o dump!');
     }
 
-    importer.disconnect();
+    await importer.disconnect();
     sequelize = new Sequelize('SpotifyClone', process.env.MYSQL_USER, process.env.MYSQL_PASSWORD, {host:process.env.HOSTNAME, dialect: 'mysql'})
   });
 
   afterAll(async () => {
     await sequelize.query('DROP DATABASE SpotifyClone;', { type: 'RAW' });
-    sequelize.close();
+    await sequelize.close();
 
     const importer = new Importer(
       { user: process.env.MYSQL_USER, password: process.env.MYSQL_PASSWORD, host: process.env.HOSTNAME }
@@ -32,7 +32,7 @@ describe('Queries de seleção', () => {
     await importer.disconnect();
   });
 
-  describe('1 - Normalize as tabelas para a 3ª Forma Normal', () => {
+  describe.only('1 - Normalize as tabelas para a 3ª Forma Normal', () => {
     const hasForeignKey = async (table, referencedTable) => {
       const [{ REFERENCE_COUNT: referenceCount }] = await sequelize.query(
         `SELECT COUNT(COLUMN_NAME) AS REFERENCE_COUNT
