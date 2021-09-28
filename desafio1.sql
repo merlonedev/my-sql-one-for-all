@@ -111,3 +111,14 @@ VALUES
   ('Thang Of Thunder', 5, 4),
   ('Words Of Her Life', 5, 4),
   ('Without My Streets', 5, 4);
+
+INSERT INTO artist_user(user_id, artist_id)
+VALUES
+  (1, 1),
+  (1, 3),
+  (1, 4),
+  (2, 1),
+  (2, 3),
+  (3, 1),
+  (3, 2),
+  (4, 4);
