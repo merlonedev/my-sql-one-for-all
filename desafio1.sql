@@ -99,7 +99,7 @@ CREATE TABLE seguidos_artista (
         REFERENCES artistas (id_artista)
 )  ENGINE=INNODB;
 
-INSERT INTO usuarios_seguindo VALUES
+INSERT INTO seguidos_artista VALUES
 (1, 1),
 (1, 4),
 (1, 3),
@@ -109,8 +109,8 @@ INSERT INTO usuarios_seguindo VALUES
 (3, 1),
 (4, 4);
 
-DROP TABLE IF EXISTS historico_musica;
-CREATE TABLE historico_musica (
+DROP TABLE IF EXISTS historico_musicas;
+CREATE TABLE historico_musicas (
     id_usuario INT,
     id_musica INT,
     CONSTRAINT PRIMARY KEY (id_usuario, id_musica),
@@ -120,7 +120,7 @@ CREATE TABLE historico_musica (
         REFERENCES musicas (id_musica)
 )  ENGINE=INNODB;
 
-INSERT INTO historico_musica VALUES
+INSERT INTO historico_musicas VALUES
 (1, 1),
 (1, 6),
 (1, 14),
