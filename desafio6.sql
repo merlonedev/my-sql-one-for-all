@@ -6,5 +6,5 @@ CREATE VIEW faturamento_atual AS
         ROUND(SUM(plan.plano_preco), 2) AS `faturamento_total`
     FROM
         Plano AS plan
- INNER JOIN
+  INNER JOIN
         SpotifyClone.Usuario AS us ON us.plano_id = plan.plano_id;
