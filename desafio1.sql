@@ -2,7 +2,7 @@ DROP SCHEMA IF EXISTS `SpotifyClone` ;
 
 CREATE SCHEMA `SpotifyClone` ;
 
-USE `SpotifyClone` ;
+USE `SpotifyClone`;
 
 DROP TABLE IF EXISTS `SpotifyClone`.`planos` ;
 CREATE TABLE `SpotifyClone`.`planos` (
