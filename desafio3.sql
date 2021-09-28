@@ -14,5 +14,5 @@ CREATE VIEW historico_reproducao_usuarios AS
                 c.cancao_id = h.cancao_id) AS `nome`
     FROM
         SpotifyClone.hist_reproducoes h
-	ORDER BY `usuario`, `nome`
+    ORDER BY `usuario` , `nome`
 ;
