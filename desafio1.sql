@@ -61,7 +61,7 @@ CREATE TABLE usuario_segue_artista (
 INSERT INTO artista (nome)
 VALUES
 ('Walter Phoenix'),
-('Freddie Shannon'),
+('Freedie Shannon'),
 ('Lance Day'),
 ('Peter Strong');
     
