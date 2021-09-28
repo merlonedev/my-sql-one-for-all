@@ -63,7 +63,7 @@ CONSTRAINT PRIMARY KEY(user_id, song_id),
 
 INSERT INTO SpotifyClone.plans (name, price) VALUES
 ('gratuito', 0),
-('familiar', 6.99),
+('familiar', 7.99),
 ('universitário', 5.99);
 
 INSERT INTO SpotifyClone.artists (name)
