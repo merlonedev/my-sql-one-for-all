@@ -1,0 +1,11 @@
+DELIMITER $$
+
+CREATE TRIGGER trigger_usuario_delete
+BEFORE DELETE ON USUARIO
+FOR EACH ROW
+BEGIN
+DELETE from `USUARIO_ARTISTAS` WHERE usuario_id = OLD.usuario_id;
+DELETE from `USUARIO_ARTISTAS` WHERE usuario_id = OLD.usuario_id;
+END $$
+
+DELIMITER ;
