@@ -5,6 +5,6 @@ CREATE TRIGGER trigger_usuario_delete
   FOR EACH ROW
 BEGIN
   DELETE FROM Seguindo WHERE OLD.usuario_id = usuario_id;
-  DELETE FROM Historico WHERE OLD.usuario_id = usario_id;
+  DELETE FROM Historico WHERE OLD.usuario_id = usuario_id;
 END $$
 DELIMITER ;
