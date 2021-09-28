@@ -66,11 +66,11 @@ VALUES
 ('Exuberant', 1),
 ('Hallowed Steam', 2),
 ('Incandescent', 3),
-('Temporary Culture', 3);
+('Temporary Culture', 4);
 
 INSERT INTO planos(nome, valor)
 VALUES
-('gratuito', 0),
+('gratuito', 0.00),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
