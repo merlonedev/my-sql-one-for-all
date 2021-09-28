@@ -62,3 +62,9 @@ ADD FOREIGN KEY (artist_id) REFERENCES artists(id);
 ALTER TABLE user_song
 ADD FOREIGN KEY (user_id) REFERENCES users(id),
 ADD FOREIGN KEY (song_id) REFERENCES songs(id);
+
+INSERT INTO plans(plan_name, plan_value)
+VALUES
+  ('gratuito', 0),
+  ('universitário', 5.99),
+  ('familiar', 7.99);
