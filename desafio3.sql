@@ -1,17 +1,18 @@
-drop view if exists SpotifyClone.historico_reproducao_usuarios;
+use SpotifyClone;
+drop view if exists historico_reproducao_usuarios;
 
-CREATE VIEW SpotifyClone.historico_reproducao_usuarios AS
+CREATE VIEW historico_reproducao_usuarios AS
     SELECT 
         u.usuario AS usuario, c.cancao AS nome
     FROM
-        SpotifyClone.usuario AS u
+        usuario AS u
             INNER JOIN
-        SpotifyClone.usuario_historico AS us ON u.id = us.usuario_id
+        usuario_historico AS us ON u.id = us.usuario_id
             INNER JOIN
-        SpotifyClone.cancao AS c ON us.cancao_id = c.id
+        cancao AS c ON us.cancao_id = c.id
     ORDER BY u.usuario , c.cancao;
 
 SELECT 
     *
 FROM
-    SpotifyClone.historico_reproducao_usuarios;
+    historico_reproducao_usuarios;
