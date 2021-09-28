@@ -4,55 +4,55 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE artists (
+CREATE TABLE artistas (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(45) NOT NULL
-) engine = InnoDB;
+    nome VARCHAR(45) NOT NULL
+);
 
 CREATE TABLE albuns (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(45) NOT NULL,
-    artist INT NOT NULL,
-    FOREIGN KEY (artist) REFERENCES artists(id)
-) engine = InnoDB;
+    nome VARCHAR(45) NOT NULL,
+    artista_id INT NOT NULL,
+    FOREIGN KEY (artista_id) REFERENCES artistas(id)
+);
 
-CREATE TABLE plans (
+CREATE TABLE planos (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(20) NOT NULL,
-    price FLOAT NOT NULL
-) engine = InnoDB;
+    nome VARCHAR(20) NOT NULL,
+    valor FLOAT NOT NULL
+);
 
-CREATE TABLE users (
+CREATE TABLE usuarios (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(20) NOT NULL,
-    age INT NOT NULL,
-    plan INT NOT NULL,
-    FOREIGN KEY (plan) REFERENCES plans(id)
-) engine = InnoDB;
+    nome VARCHAR(20) NOT NULL,
+    idade INT NOT NULL,
+    plano_id INT NOT NULL,
+    FOREIGN KEY (plano_id) REFERENCES planos(id)
+);
 
-CREATE TABLE musics (
+CREATE TABLE musicas (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(45) NOT NULL,
-    album INT NOT NULL,
-    FOREIGN KEY (album) REFERENCES albuns(id)
-) engine = InnoDB;
+    nome VARCHAR(45) NOT NULL,
+    album_id INT NOT NULL,
+    FOREIGN KEY (album_id) REFERENCES albuns(id)
+);
 
-CREATE TABLE user_history (
-    user INT NOT NULL,
-    music INT NOT NULL,
-    PRIMARY KEY (user, music),
-    FOREIGN KEY (user) REFERENCES users(id),
-    FOREIGN KEY (music) REFERENCES musics(id)
-) engine = InnoDB;
+CREATE TABLE usuario_historico (
+    usuario_id INT NOT NULL,
+    musica_id INT NOT NULL,
+    PRIMARY KEY (usuario_id, musica_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (musica_id) REFERENCES musicas(id)
+);
 
-INSERT INTO artists (name)
+INSERT INTO artistas (nome)
 VALUES
 ('Walter Phoenix'),
 ('Peter Strong'),
 ('Lance Day'),
 ('Freedie Shannon');
 
-INSERT INTO albuns(name, artist)
+INSERT INTO albuns(nome, artista_id)
 VALUES
 ('Envious', 1),
 ('Exuberant', 1),
@@ -60,20 +60,20 @@ VALUES
 ('Incandescent', 3),
 ('Temporary Culture', 3);
 
-INSERT INTO plans(name, price)
+INSERT INTO planos(nome, valor)
 VALUES
 ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
-INSERT INTO users(name, age, plan)
+INSERT INTO usuarios(nome, idade, plano_id)
 VALUES
 ('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
 ('Roger', 45, 1);
 
-INSERT INTO musics(name, album)
+INSERT INTO musicas(nome, album_id)
 VALUES
 ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
@@ -94,7 +94,7 @@ VALUES
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
 
-INSERT INTO user_history(user, music)
+INSERT INTO usuario_historico(usuario_id, musica_id)
 VALUES
 (1, 1),
 (1, 6),
