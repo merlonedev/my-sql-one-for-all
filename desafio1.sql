@@ -81,14 +81,14 @@ INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Troubles Of My Inner Fir
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Time Fireworks', 2, 1);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Magic Circus', 3, 2);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Honey, So Do I', 3, 2);
-INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Sweetie, Lets Go Wild', 3, 2);
+INSERT INTO cancoes(nome, album_id, artista_id) VALUES("Sweetie, Let's Go Wild", 3, 2);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('She Knows', 3, 2);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Fantasy For Me', 3, 3);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Celebration Of More', 3, 3);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Rock His Everything', 3, 3);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Home Forever', 3, 3);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Diamond Power', 3, 3);
-INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Honey, Lets Be Silly', 3, 3);
+INSERT INTO cancoes(nome, album_id, artista_id) VALUES("Honey, Let's Be Silly", 3, 3);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Thang Of Thunder', 5, 4);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Words Of Her Life', 5, 4);
 INSERT INTO cancoes(nome, album_id, artista_id) VALUES('Without My Streets', 5, 4);
