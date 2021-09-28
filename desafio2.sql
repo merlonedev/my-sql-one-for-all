@@ -3,8 +3,3 @@ CREATE VIEW estatisticas_musicais AS
         (SELECT COUNT(*) FROM cancao) AS 'cancoes',
         (SELECT COUNT(*) FROM artista) AS 'artistas',
         (SELECT COUNT(*) FROM album) AS 'albuns');
-
-SELECT 
-    *
-FROM
-    estatisticas_musicais;
