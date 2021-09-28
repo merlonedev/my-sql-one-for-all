@@ -1,116 +1,140 @@
--- -----------------------------------------------------
--- Schema spotifyclone
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `spotifyclone` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `spotifyclone` ;
+DROP DATABASE IF EXISTS SpotifyClone;
+CREATE DATABASE SpotifyClone;
 
--- -----------------------------------------------------
--- Table `spotifyclone`.`artistas`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spotifyclone`.`artistas` (
-  `id_artista` INT NOT NULL AUTO_INCREMENT,
-  `artista` VARCHAR(50) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_artista`),
-  FULLTEXT INDEX `index_artista` (`artista`) VISIBLE)
-ENGINE = InnoDB
-AUTO_INCREMENT = 5
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
--- -----------------------------------------------------
--- Table `spotifyclone`.`album`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spotifyclone`.`album` (
-  `id_album` INT NOT NULL AUTO_INCREMENT,
-  `album` VARCHAR(50) NULL DEFAULT NULL,
-  `id_artista` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_album`),
-  INDEX `id_artista` (`id_artista` ASC) VISIBLE,
-  CONSTRAINT `albuns_ibfk_1`
-    FOREIGN KEY (`id_artista`)
-    REFERENCES `spotifyclone`.`artistas` (`id_artista`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 6
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
--- -----------------------------------------------------
--- Table `spotifyclone`.`planos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spotifyclone`.`planos` (
-  `id_plano` INT NOT NULL AUTO_INCREMENT,
-  `plano` VARCHAR(50) NULL DEFAULT NULL,
-  `valor` DECIMAL(3,2) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_plano`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 4
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
--- -----------------------------------------------------
--- Table `spotifyclone`.`usuarios`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spotifyclone`.`usuarios` (
-  `id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `usuario` VARCHAR(50) NULL DEFAULT NULL,
-  `idade` INT NULL DEFAULT NULL,
-  `id_plano` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_usuario`),
-  INDEX `id_plano` (`id_plano` ASC) VISIBLE,
-  CONSTRAINT `usuarios_ibfk_1`
-    FOREIGN KEY (`id_plano`)
-    REFERENCES `spotifyclone`.`planos` (`id_plano`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 5
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
--- -----------------------------------------------------
--- Table `spotifyclone`.`musicas`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spotifyclone`.`musicas` (
-  `id_musica` INT NOT NULL AUTO_INCREMENT,
-  `musica` VARCHAR(50) NULL DEFAULT NULL,
-  `id_album` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`id_musica`),
-  INDEX `id_album` (`id_album` ASC) VISIBLE,
-  CONSTRAINT `musicas_ibfk_1`
-    FOREIGN KEY (`id_album`)
-    REFERENCES `spotifyclone`.`album` (`id_album`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 19
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
--- -----------------------------------------------------
--- Table `spotifyclone`.`historico_musicas`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spotifyclone`.`historico_musicas` (
-  `id_usuario` INT NOT NULL,
-  `id_musica` INT NOT NULL,
-  PRIMARY KEY (`id_usuario`, `id_musica`),
-  INDEX `id_musica` (`id_musica` ASC) VISIBLE,
-  CONSTRAINT `historico_musicas_ibfk_1`
-    FOREIGN KEY (`id_usuario`)
-    REFERENCES `spotifyclone`.`usuarios` (`id_usuario`),
-  CONSTRAINT `historico_musicas_ibfk_2`
-    FOREIGN KEY (`id_musica`)
-    REFERENCES `spotifyclone`.`musicas` (`id_musica`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
--- -----------------------------------------------------
--- Table `spotifyclone`.`seguindo_artistas`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spotifyclone`.`seguindo_artistas` (
-  `id_usuario` INT NOT NULL,
-  `id_artista` INT NOT NULL,
-  PRIMARY KEY (`id_usuario`, `id_artista`),
-  INDEX `id_artista` (`id_artista` ASC) VISIBLE,
-  CONSTRAINT `usuarios_seguindo_ibfk_1`
-    FOREIGN KEY (`id_usuario`)
-    REFERENCES `spotifyclone`.`usuarios` (`id_usuario`),
-  CONSTRAINT `usuarios_seguindo_ibfk_2`
-    FOREIGN KEY (`id_artista`)
-    REFERENCES `spotifyclone`.`artistas` (`id_artista`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+USE SpotifyClone;
+
+DROP TABLE IF EXISTS planos;
+CREATE TABLE plano (
+    id_plano INT AUTO_INCREMENT PRIMARY KEY,
+    plano VARCHAR(50),
+    valor DEC(3 , 2 )
+)  ENGINE=INNODB;
+
+INSERT INTO planos(plano, valor) VALUES 
+('gratuito', 0.00), 
+('familiar', 7.99), 
+('universitário', 5.99);
+
+DROP TABLE IF EXISTS usuario;
+CREATE TABLE usuario (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(50),
+    idade INT,
+    id_plano INT,
+    FOREIGN KEY (id_plano)
+        REFERENCES planos (id_plano)
+)  ENGINE=INNODB;
+
+INSERT INTO usuario(usuario, idade, id_plano) VALUES 
+('Thati', 23, 1), 
+('Cintia', 35, 2), 
+('Bill', 20, 3), 
+('Roger', 45, 1);
+
+DROP TABLE IF EXISTS artista;
+CREATE TABLE artista (
+    id_artista INT AUTO_INCREMENT PRIMARY KEY,
+    artista VARCHAR(50)
+)  ENGINE=INNODB;
+
+CREATE FULLTEXT INDEX index_artista ON artista(artista);
+
+INSERT INTO artista(artista) VALUES 
+('Walter Phoenix'), 
+('Peter Strong'), 
+('Lance Day'), 
+('Freedie Shannon');
+
+DROP TABLE IF EXISTS albuns;
+CREATE TABLE albuns (
+    id_album INT AUTO_INCREMENT PRIMARY KEY,
+    album VARCHAR(50),
+    id_artista INT,
+    FOREIGN KEY (id_artista)
+        REFERENCES artistas (id_artista)
+)  ENGINE=INNODB;
+
+INSERT INTO albuns(album, id_artista) VALUES 
+('Envious', 1),
+('Exuberant', 1),
+('Hallowed Steam', 2),
+('Incandescent', 3),
+('Temporary Culture', 4);
+
+DROP TABLE IF EXISTS musicas;
+CREATE TABLE musica (
+    id_musica INT AUTO_INCREMENT PRIMARY KEY,
+    musica VARCHAR(50),
+    id_album INT,
+    FOREIGN KEY (id_album)
+        REFERENCES albuns (id_album)
+)  ENGINE=INNODB;
+
+INSERT INTO musica(musica, id_album) VALUES
+('Soul For Us', 1),
+('Reflections Of Magic', 1),
+('Dance With Her Own', 1),
+('Troubles Of My Inner Fire', 2),
+('Time Fireworks', 2),
+('Magic Circus', 3),
+('Honey, So Do I', 3),
+("Sweetie, Let's Go Wild", 3),
+('She Knows', 3),
+('Fantasy For Me', 4),
+('Celebration Of More', 4),
+('Rock His Everything', 4),
+('Home Forever', 4),
+('Diamond Power', 4),
+("Honey, Let's Be Silly", 4),
+('Thang Of Thunder', 5),
+('Words Of Her Life', 5),
+('Without My Streets', 5);
+
+
+DROP TABLE IF EXISTS seguidos_artista;
+CREATE TABLE seguidos_artista (
+    id_usuario INT,
+    id_artista INT,
+    CONSTRAINT PRIMARY KEY (id_usuario, id_artista),
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios (id_usuario),
+    FOREIGN KEY (id_artista)
+        REFERENCES artistas (id_artista)
+)  ENGINE=INNODB;
+
+INSERT INTO usuarios_seguindo VALUES
+(1, 1),
+(1, 4),
+(1, 3),
+(2, 1),
+(2, 3),
+(3, 2),
+(3, 1),
+(4, 4);
+
+DROP TABLE IF EXISTS historico_musica;
+CREATE TABLE historico_musica (
+    id_usuario INT,
+    id_musica INT,
+    CONSTRAINT PRIMARY KEY (id_usuario, id_musica),
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios (id_usuario),
+    FOREIGN KEY (id_musica)
+        REFERENCES musicas (id_musica)
+)  ENGINE=INNODB;
+
+INSERT INTO historico_musica VALUES
+(1, 1),
+(1, 6),
+(1, 14),
+(1, 16),
+(2, 13),
+(2, 17),
+(2, 2),
+(2, 15),
+(3, 4),
+(3, 16),
+(3, 6),
+(4, 3),
+(4, 18),
+(4, 11);
