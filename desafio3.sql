@@ -1,5 +1,5 @@
 CREATE VIEW historico_reproducao_usuarios AS
- SELECT 
+  SELECT 
 	usuarios.usuario AS 'usuario',
     cancoes.nome_cancao AS 'nome'
 FROM tb_cancoes_usuario as reproducoes 
