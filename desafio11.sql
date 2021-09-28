@@ -12,4 +12,3 @@ CREATE VIEW cancoes_premium AS
         usuarios.id_plano IN (2 , 3)
     GROUP BY cancoes.nome_cancao
     ORDER BY cancoes.nome_cancao ASC;
-

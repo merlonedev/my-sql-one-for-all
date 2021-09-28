@@ -6,4 +6,3 @@ albuns.album AS 'album'
 FROM tb_artistas AS `artistas` JOIN tb_albuns as albuns ON albuns.id_artista = artistas.id_artista
 WHERE artistas.nome_artista = nome_artista;
 END
-
