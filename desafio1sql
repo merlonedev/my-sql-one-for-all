@@ -1,8 +1,6 @@
 DROP DATABASE IF EXISTS SpotifyClone;
 CREATE DATABASE SpotifyClone;
-
 USE SpotifyClone;
-
 DROP TABLE IF EXISTS planos;
 CREATE TABLE plano (
     id_plano INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,7 +12,6 @@ INSERT INTO planos(plano, valor) VALUES
 ('gratuito', 0.00), 
 ('familiar', 7.99), 
 ('universitário', 5.99);
-
 DROP TABLE IF EXISTS usuario;
 CREATE TABLE usuario (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
@@ -89,7 +86,6 @@ INSERT INTO musica(musica, id_album) VALUES
 ('Thang Of Thunder', 5),
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
-
 
 DROP TABLE IF EXISTS seguidos_artista;
 CREATE TABLE seguidos_artista (
