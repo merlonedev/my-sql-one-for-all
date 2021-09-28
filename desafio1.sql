@@ -69,21 +69,21 @@ VALUES
 
 INSERT INTO artists(name)
 VALUES
-			    ('Walter Phoenix'),
+        ('Walter Phoenix'),
           ('Peter Strong'),
           ('Lance Day'),
           ('Freedie Shannon');
 
 INSERT INTO users(name, age, plan_id)
 VALUES
-			    ('Thati', 23, 1),
+        ('Thati', 23, 1),
           ('Cintia', 35, 2),
           ('Bill', 20, 3),
           ('Roger', 45, 1);
 
 INSERT INTO albuns(title, artist_id)
 VALUES
-			    ('Envious', 1),
+        ('Envious', 1),
           ('Exuberant', 1),
           ('Hallowed Steam', 2),
           ('Incandescent', 3),
@@ -91,7 +91,7 @@ VALUES
 
 INSERT INTO songs(name, artist_id, album_id)
 VALUES
-			  ('Soul For Us', 1, 1),
+      ('Soul For Us', 1, 1),
         ('Reflections Of Magic', 1, 1),
         ('Dance With Her Own', 1, 1),
         ('Troubles Of My Inner Fire', 1, 2),
