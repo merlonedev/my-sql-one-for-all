@@ -40,4 +40,3 @@ exclude_patterns:
   - "images/"
   - "tests/"
   - "node_modules/"
-  - "Estruturacao.xlsx"
