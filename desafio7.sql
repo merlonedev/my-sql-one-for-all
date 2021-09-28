@@ -1,4 +1,4 @@
-CREATE VIEW top_2_hits_do_momento AS 
+CREATE VIEW perfil_artistas AS 
 SELECT
 a.`name` AS artista,
 al.title AS album,

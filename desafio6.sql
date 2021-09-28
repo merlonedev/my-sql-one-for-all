@@ -1,4 +1,4 @@
-CREATE VIEW top_2_hits_do_momento AS 
+CREATE VIEW faturamento_atual AS 
 SELECT
 MIN(p.price) AS faturamento_minimo,
 MAX(p.price) AS faturamento_maximo,
