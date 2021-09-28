@@ -48,11 +48,11 @@ FOREIGN KEY (artista_id) REFERENCES Artista (artista_id)
 ) engine = InnoDB;
 
 CREATE TABLE Historico(
-usuario_id INT NOT NULL,
 musica_id INT NOT NULL,
-PRIMARY KEY (usuario_id, musica_id),
-FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id),
-FOREIGN KEY (musica_id) REFERENCES Musica (musica_id)
+usuario_id INT NOT NULL,
+PRIMARY KEY (musica_id, usuario_id),
+FOREIGN KEY (musica_id) REFERENCES Musica (musica_id),
+FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id)
 ) engine = InnoDB;
 
 INSERT INTO Plano (plano_nome, plano_preco)
@@ -115,19 +115,19 @@ VALUES
 (3, 1),
 (4, 4);
 
-INSERT INTO Historico (usuario_id, musica_id)
+INSERT INTO Historico (musica_id, usuario_id)
 VALUES
 (1, 1),
-(1, 6),
-(1, 14),
-(1, 16),
-(2, 13),
-(2, 17),
+(6,1),
+(14,1),
+(16,1),
+(13, 2),
+(17, 2),
 (2, 2),
-(2, 15),
-(3, 4),
-(3, 16),
-(3, 6),
+(15, 2),
 (4, 3),
-(4, 18),
-(4, 11)
+(16, 3),
+(6, 3),
+(3, 4),
+(18, 4),
+(11, 4)
