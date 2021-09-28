@@ -1,7 +1,5 @@
-DROP VIEW IF EXISTS estatisticas_musicais;
-
-CREATE VIEW estatisticas_musicais AS
-SELECT
+CREATE VIEW SpotifyClone.estatisticas_musicais AS
+(SELECT
     (SELECT COUNT(*) FROM SpotifyClone.songs) AS `cancoes`,
 	(SELECT COUNT(*) FROM SpotifyClone.artists) AS `artistas`,
-    (SELECT COUNT(*) FROM SpotifyClone.albums) AS `albuns`;
+    (SELECT COUNT(*) FROM SpotifyClone.albums) AS `albuns`);
