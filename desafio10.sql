@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` FUNCTION `quantidade_musicas_no_historico`(usuario VARCHAR(50)) RETURNS int
+CREATE FUNCTION `quantidade_musicas_no_historico`(usuario VARCHAR(50)) RETURNS int
     READS SQL DATA
 BEGIN
 DECLARE result INT;
