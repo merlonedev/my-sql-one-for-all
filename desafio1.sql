@@ -1,15 +1,10 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
 DROP DATABASE IF EXISTS `SpotifyClone` ;
 
-CREATE DATABASE IF NOT EXISTS `SpotifyClone` ;
+CREATE DATABASE `SpotifyClone` ;
+
 USE `SpotifyClone` ;
 
-DROP TABLE IF EXISTS `SpotifyClone`.`album` ;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`album` (
+CREATE TABLE `album` (
   `id_album` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(250) NOT NULL,
   `id_artista` INT NOT NULL,
@@ -23,18 +18,14 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`album` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `SpotifyClone`.`artista` ;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artista` (
+CREATE TABLE `artista` (
   `id_artista` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(250) NOT NULL,
   PRIMARY KEY (`id_artista`),
   UNIQUE INDEX `nome_UNIQUE` (`nome` ASC) VISIBLE)
 ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `SpotifyClone`.`cancao` ;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cancao` (
+CREATE TABLE `cancao` (
   `id_cancao` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(250) NOT NULL,
   `id_album` INT NOT NULL,
@@ -47,9 +38,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cancao` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `SpotifyClone`.`plano` ;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`plano` (
+CREATE TABLE `plano` (
   `id_plano` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `valor` INT NOT NULL,
@@ -58,9 +47,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`plano` (
   UNIQUE INDEX `valor_UNIQUE` (`valor` ASC) VISIBLE)
 ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `SpotifyClone`.`usuario` ;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario` (
+CREATE TABLE `usuario` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `idade` INT NOT NULL,
@@ -75,9 +62,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `SpotifyClone`.`usuario_ouviu_cancao` ;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario_ouviu_cancao` (
+CREATE TABLE `usuario_ouviu_cancao` (
   `id_usuario` INT NOT NULL,
   `id_cancao` INT NOT NULL,
   `id_album` INT NOT NULL,
@@ -96,9 +81,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario_ouviu_cancao` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `SpotifyClone`.`usuario_segue_artista` ;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario_segue_artista` (
+CREATE TABLE `usuario_segue_artista` (
   `id_usuario` INT NOT NULL,
   `id_artista` INT NOT NULL,
   PRIMARY KEY (`id_usuario`, `id_artista`),
@@ -115,12 +98,6 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario_segue_artista` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
 
 INSERT INTO artista (nome)
 VALUES
