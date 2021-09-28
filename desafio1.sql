@@ -53,77 +53,77 @@ FOREIGN KEY(usuario_id) REFERENCES usuarios(usuario_id)
 
 INSERT INTO planos(plano, valor)
 VALUES
-	('gratuito', 0.00),
-	('universitario', 5.99),
-  ('familiar', 7.99);
+('gratuito', 0.00),
+('universitario', 5.99),
+('familiar', 7.99);
     
 INSERT INTO usuarios(usuario, idade, plano_id)
 VALUES
-	('Thati', 23, 1),
-	('Cintia', 35, 3),
-	('Bill', 20, 2),
-	('Roger', 45, 1);
+('Thati', 23, 1),
+('Cintia', 35, 3),
+('Bill', 20, 2),
+('Roger', 45, 1);
 
 INSERT INTO artistas(artista)
 VALUES
-	('Walter Phoenix'),
-	('Peter Strong'),
-	('Lance Day'),
-	('Freedie Shannon');
+('Walter Phoenix'),
+('Peter Strong'),
+('Lance Day'),
+('Freedie Shannon');
     
 INSERT INTO albuns(album, artista_id)
 VALUES
-	('Envious', 1),
-	('Exuberant', 1),
-	('Hallowed Steam', 2),
-	('Incandescent', 3),
-	('Temporary Culture', 4);
+('Envious', 1),
+('Exuberant', 1),
+('Hallowed Steam', 2),
+('Incandescent', 3),
+('Temporary Culture', 4);
     
 INSERT INTO cancoes(cancao, album_id)
 VALUES
-	('Soul For Us', 1),
-	('Magic Circus', 3),
-	('Diamond Power', 4),
-	('Thang Of Thunder', 5),
-	('Home Forever', 4),
-	('Words Of Her Life', 5),
-	('Reflections Of Magic', 1),
-	('Honey, Let\'s Be Silly', 4),
-	('Troubles Of My Inner Fire', 2),
-	('Dance With Her Own', 1), 
-	('Without My Streets', 5),
-	('Celebration Of More', 4),
-	('Time Fireworks', 2),
-	('Honey, So Do I', 3),
-	('Sweetie, Let\'s Go Wild', 3),
-	('She Knows', 3),
-	('Fantasy For Me', 4),
-	('Rock His Everything', 4);
+('Soul For Us', 1),
+('Magic Circus', 3),
+('Diamond Power', 4),
+('Thang Of Thunder', 5),
+('Home Forever', 4),
+('Words Of Her Life', 5),
+('Reflections Of Magic', 1),
+('Honey, Let\'s Be Silly', 4),
+('Troubles Of My Inner Fire', 2),
+('Dance With Her Own', 1), 
+('Without My Streets', 5),
+('Celebration Of More', 4),
+('Time Fireworks', 2),
+('Honey, So Do I', 3),
+('Sweetie, Let\'s Go Wild', 3),
+('She Knows', 3),
+('Fantasy For Me', 4),
+('Rock His Everything', 4);
     
 INSERT INTO reproducoes(cancao_id, usuario_id)
 VALUES
-	(1, 1),
-	(2, 1),
-	(3, 1),
-	(4, 1),
-	(5, 2),
-	(6, 2),
-	(7, 2),
-	(8, 2),
-	(9, 3),
-	(4, 3),
-	(2, 3),
-	(10, 4),
-	(11, 4),
-	(12, 4);
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 2),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 3),
+(4, 3),
+(2, 3),
+(10, 4),
+(11, 4),
+(12, 4);
     
 INSERT INTO seguindo(usuario_id, artista_id)
 VALUES
-	(1, 1),
-	(1, 4),
-	(1, 3),
-	(2, 1),
-	(2, 3),
-	(3, 2),
-	(3, 1),
-	(4, 4);
+(1, 1),
+(1, 4),
+(1, 3),
+(2, 1),
+(2, 3),
+(3, 2),
+(3, 1),
+(4, 4);
