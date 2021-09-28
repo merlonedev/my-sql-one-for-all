@@ -25,3 +25,10 @@ CREATE TABLE albums(
   table_name VARCHAR(50) NOT NULL,
   artist_id INT NOT NULL
 ) engine = innoDB;
+
+CREATE TABLE songs(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  song_name VARCHAR(50) NOT NULL,
+  album_id INT NOT NULL,
+  artist_id INT NOT NULL
+) engine = innoDB;
