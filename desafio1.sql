@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS usuario_artista(
 id_usuario INT NOT NULL,
 id_artista INT NOT NULL,
 PRIMARY KEY (id_usuario, id_artista),
-FOREIGN KEY (id_artista) REFERENCES artista(id_artista),
-FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
+FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+FOREIGN KEY (id_artista) REFERENCES artista(id_artista)
 ) ENGINE = InnoDB;
 
 -- Table usuario_musicas
@@ -73,8 +73,8 @@ CREATE TABLE IF NOT EXISTS usuario_musicas(
 id_usuario INT NOT NULL,
 id_musica INT NOT NULL,
 PRIMARY KEY (id_usuario, id_musica),
-FOREIGN KEY (id_musica) REFERENCES musicas(id_musica),
-FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
+FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+FOREIGN KEY (id_musica) REFERENCES musicas(id_musica)
 ) ENGINE = InnoDB;
 
 -- Inserts
@@ -152,5 +152,5 @@ VALUES
 (3, 16),
 (3, 6),
 (4, 3),
-(4, 8),
+(4, 18),
 (4, 11);
