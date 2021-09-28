@@ -36,7 +36,7 @@ INSERT INTO SpotifyClone.artists (artist_name)
 VALUES("Walter Phoenix"),
 ("Peter Strong"),
 ("Lance Day"),
-("Freddie Shannon");
+("Freedie Shannon");
 
 Create Table SpotifyClone.albums (
 album_id int primary key auto_increment,

@@ -1,5 +1,6 @@
 CREATE VIEW perfil_artistas AS
-SELECT 
+SELECT
+DISTINCT
 a.artist_name as artista,
 al.album_name as album,
 COUNT(uf.artist_id) as seguidores
