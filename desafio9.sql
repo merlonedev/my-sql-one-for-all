@@ -17,6 +17,8 @@ ON
   al.artista_id = ar.artista_id
 WHERE
   ar.artista = nome_artista;
+ORDER BY
+  `artista`
 END $$
 
 DELIMITER ;
