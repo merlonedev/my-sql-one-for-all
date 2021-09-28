@@ -47,7 +47,7 @@ CREATE TABLE history(
     song_id INT NOT NULL,
     PRIMARY KEY (user_id, song_id),
     CONSTRAINT FOREIGN KEY (user_id) REFERENCES users (user_id),
-	CONSTRAINT FOREIGN KEY (song_id) REFERENCES songs (song_id)
+CONSTRAINT FOREIGN KEY (song_id) REFERENCES songs (song_id)
 ) engine = InnoDB;
 
 CREATE TABLE follows(
