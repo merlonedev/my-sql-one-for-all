@@ -15,7 +15,6 @@ CREATE TABLE artists (
     name VARCHAR(50) NOT NULL
 );
 
-
 CREATE TABLE albuns (
     album_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
@@ -44,7 +43,7 @@ CREATE TABLE users (
         REFERENCES plans (plan_id)
 );
 
-CREATE TABLE following_artists (
+CREATE TABLE user_artist (
     user_id INT NOT NULL,
     artist_id INT NOT NULL,
     FOREIGN KEY (user_id)
@@ -53,7 +52,7 @@ CREATE TABLE following_artists (
         REFERENCES artists (artist_id)
 );
 
-CREATE TABLE reproductions_history (
+CREATE TABLE user_song (
     user_id INT NOT NULL,
     song_id INT NOT NULL,
     FOREIGN KEY (user_id)
@@ -63,27 +62,27 @@ CREATE TABLE reproductions_history (
 );
 
 INSERT INTO plans(name, price)
-	VALUES
+VALUES
           ('Gratuito', 0),
           ('Familiar', 7.99),
           ('Universitário', 5.99);
 
 INSERT INTO artists(name)
-	VALUES
+VALUES
 			    ('Walter Phoenix'),
           ('Peter Strong'),
           ('Lance Day'),
           ('Freedie Shannon');
 
 INSERT INTO users(name, age, plan_id)
-	VALUES
+VALUES
 			    ('Thati', 23, 1),
           ('Cintia', 35, 2),
           ('Bill', 20, 3),
           ('Roger', 45, 1);
 
 INSERT INTO albuns(title, artist_id)
-	VALUES
+VALUES
 			    ('Envious', 1),
           ('Exuberant', 1),
           ('Hallowed Steam', 2),
@@ -91,7 +90,7 @@ INSERT INTO albuns(title, artist_id)
           ('Temporary Culture', 4);
 
 INSERT INTO songs(name, artist_id, album_id)
-	VALUES
+VALUES
 			  ('Soul For Us', 1, 1),
         ('Reflections Of Magic', 1, 1),
         ('Dance With Her Own', 1, 1),
@@ -111,8 +110,8 @@ INSERT INTO songs(name, artist_id, album_id)
         ('Words Of Her Life', 4, 5),
         ('Without My Streets', 4, 5);
 
-INSERT INTO following_artists(user_id, artist_id)
-	VALUES
+INSERT INTO user_artist(user_id, artist_id)
+VALUES
         (1, 1),
         (1, 4),
         (1, 3),
@@ -122,8 +121,8 @@ INSERT INTO following_artists(user_id, artist_id)
         (3, 1),
         (4, 4);
 
-INSERT INTO reproductions_history(user_id, song_id)
-	VALUES
+INSERT INTO user_song(user_id, song_id)
+VALUES
         (1, 1),
         (1, 6),
         (1, 14),
