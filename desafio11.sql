@@ -8,4 +8,3 @@ JOIN SpotifyClone.user AS u ON u.user_id = rh.user_id
 WHERE u.plan_id = 2 OR u.plan_id = 3
 GROUP BY nome
 ORDER BY nome;
-    

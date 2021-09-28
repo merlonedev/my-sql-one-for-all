@@ -8,4 +8,3 @@ JOIN SpotifyClone.user AS u ON u.user_id = rh.user_id
 GROUP BY cancao
 ORDER BY reproducoes DESC, cancao
 LIMIT 2;
-    
