@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.songs (
 CREATE TABLE IF NOT EXISTS SpotifyClone.users_follows (
     user_id INT NOT NULL,
     artist_id INT NOT NULL,
-	CONSTRAINT PRIMARY KEY(user_id, artist_id),
+CONSTRAINT PRIMARY KEY(user_id, artist_id),
     FOREIGN KEY (user_id)
         REFERENCES SpotifyClone.users (id),
     FOREIGN KEY (artist_id)
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.users_follows (
 CREATE TABLE IF NOT EXISTS SpotifyClone.users_history (
     user_id INT NOT NULL,
     song_id INT NOT NULL,
-	CONSTRAINT PRIMARY KEY(user_id, song_id),
+CONSTRAINT PRIMARY KEY(user_id, song_id),
     FOREIGN KEY (user_id)
         REFERENCES SpotifyClone.users (id),
     FOREIGN KEY (song_id)
