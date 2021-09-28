@@ -15,4 +15,3 @@ CREATE VIEW historico_reproducao_usuarios AS
     FROM
         user_songs_listened AS t1
     ORDER BY 1 , 2;
-    

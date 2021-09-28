@@ -12,4 +12,3 @@ CREATE VIEW estatisticas_musicais AS
                 COUNT(Album_ID)
             FROM
                 albums) AS 'albuns';
-                
