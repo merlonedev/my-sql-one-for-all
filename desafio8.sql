@@ -1,16 +1,14 @@
 DELIMITER $$ 
 CREATE TRIGGER trigger_usuario_delete
-AFTER
+BEFORE
   DELETE ON user FOR EACH ROW BEGIN
 DELETE FROM
-  seguindo s
+  seguindo 
 WHERE
-  s.user_id = old.id;
-
+  OLD.id = user_id;
 DELETE FROM
-  historico h
+  historico
 WHERE
-  h.user_id = old.id;
-
+  OLD.id = user_id;
 END $$ 
-DELIMITER;
+DELIMITER ;
