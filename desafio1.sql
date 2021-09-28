@@ -54,3 +54,7 @@ ADD FOREIGN KEY (artist_id) REFERENCES artists(id);
 ALTER TABLE songs
 ADD FOREIGN KEY (album_id) REFERENCES albums(id),
 ADD FOREIGN KEY (artist_id) REFERENCES artists(id);
+
+ALTER TABLE artist_user
+ADD FOREIGN KEY (user_id) REFERENCES users(id),
+ADD FOREIGN KEY (artist_id) REFERENCES artists(id);
