@@ -1,7 +1,7 @@
 CREATE VIEW historico_reproducao_usuarios
 AS
 SELECT
-	u.usuario
+u.usuario
 AS
   `usuario`,
   c.cancao
