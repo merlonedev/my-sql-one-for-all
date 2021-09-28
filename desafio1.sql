@@ -110,6 +110,8 @@ Create Table SpotifyClone.user_follow (
 user_id int not null,
 artist_id int not null,
 constraint primary key(user_id, artist_id)
+foreign key (user_id) references users(user_id),
+foreign key (artist_id) references artists(artist_id)
 );
 
 INSERT INTO SpotifyClone.user_follow (user_id, artist_id) 
