@@ -82,9 +82,10 @@ VALUES ("Soul For Us", 1, 1),
 ("Without My Streets", 5, 4);
 
 Create Table SpotfiyClone.histories (
-history_id int primary key auto_increment,
+history_id int unique auto_increment,
 user_id int not null,
 song_id int not null,
+constraint primary key (user_id, song_id),
 foreign key (user_id) references users(user_id),
 foreign key (song_id) references songs(song_id)
 );
@@ -97,7 +98,7 @@ VALUES (1, 1),
 (2, 13),
 (2, 17),
 (2, 2),
-(2, 17),
+(2, 15),
 (3, 4),
 (3, 16),
 (3, 6),
