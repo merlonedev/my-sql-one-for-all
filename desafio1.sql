@@ -1,5 +1,5 @@
--- CREATE DATABASE IF NOT EXISTS SpotifyClone;
--- USE SpotifyClone;
+CREATE DATABASE IF NOT EXISTS SpotifyClone;
+USE SpotifyClone;
 -- CRIANDO TABELA planos
 CREATE TABLE planos (
     plano_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -42,14 +42,16 @@ CREATE TABLE usuario_cancoes (
     usuario_id INT NOT NULL,
     cancao_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
-    FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
+    FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id),
+    CONSTRAINT PRIMARY KEY(usuario_id, cancao_id)
 ) engine = InnoDB;
 -- CRIANDO TABELA usuario_artistas
 CREATE TABLE usuario_artistas (
     usuario_id INT NOT NULL,
     artista_id INT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
-    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
+    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
+    CONSTRAINT PRIMARY KEY(usuario_id, artista_id)
 ) engine = InnoDB;
 -- POPULANDO TABELA PLANOS
 INSERT INTO planos(nome, valor) VALUES('gratuito', 0);
