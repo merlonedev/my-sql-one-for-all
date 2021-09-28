@@ -13,7 +13,7 @@ CREATE TABLE artists(
 CREATE TABLE plans(
     id_plan INT AUTO_INCREMENT,
     plan_name VARCHAR(16) NOT NULL,
-    plan_cost BOOL NOT NULL,
+    plan_cost DECIMAL(5,2) NOT NULL,
     PRIMARY KEY (id_plan)
 ) engine = InnoDB;
 
