@@ -1,5 +1,4 @@
 use SpotifyClone;
-drop view if exists SpotifyClone.estatisticas_musicais;
 
 CREATE VIEW estatisticas_musicais AS
     SELECT 
