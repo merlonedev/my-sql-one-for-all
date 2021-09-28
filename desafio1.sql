@@ -8,10 +8,10 @@ DROP TABLE IF EXISTS `SpotifyClone`.`planos` ;
 CREATE TABLE `SpotifyClone`.`planos` (
   `plano_id` INT NOT NULL AUTO_INCREMENT,
   `plano` VARCHAR(20) NOT NULL,
-  `plano_preco` DOUBLE NOT NULL,
+  `plano_preco` DEC(3, 2) NOT NULL,
   PRIMARY KEY (`plano_id`));
 
-INSERT INTO `SpotifyClone`.`planos` (`plano_id`, `plano`, `plano_preco`) VALUES (1, 'gratuito', 0);
+INSERT INTO `SpotifyClone`.`planos` (`plano_id`, `plano`, `plano_preco`) VALUES (1, 'gratuito', 0.00);
 INSERT INTO `SpotifyClone`.`planos` (`plano_id`, `plano`, `plano_preco`) VALUES (2, 'universitario', 5.99);
 INSERT INTO `SpotifyClone`.`planos` (`plano_id`, `plano`, `plano_preco`) VALUES (3, 'familiar', 7.99);
 
