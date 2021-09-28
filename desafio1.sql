@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 CREATE TABLE SpotifyClone.planos(
     id INT PRIMARY KEY AUTO_INCREMENT,
     plano VARCHAR(50) NOT NULL,
-    valor DOUBLE
+    valor DECIMAL(5,2) NOT NULL
 );
 
 INSERT INTO SpotifyClone.planos(plano, valor)
