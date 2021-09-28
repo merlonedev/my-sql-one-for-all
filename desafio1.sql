@@ -111,7 +111,7 @@ VALUES
   ('Time Fireworks', 1, 2),
   ('Magic Circus',	2, 3),
   ('Honey, So Do I', 2, 3),
-  ('Sweetie, Let’s Go Wild',	2, 3),
+  ("Sweetie, Let's Go Wild",	2, 3),
   ('She Knows', 2,	3),
   ('Fantasy For Me', 3, 4),
   ('Celebration Of More', 3, 4),
