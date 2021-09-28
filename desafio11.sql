@@ -13,4 +13,3 @@ CREATE VIEW cancoes_premium AS
         pl.nome_plano IN ('universitário' , 'familiar')
     GROUP BY nome
     ORDER BY nome;
-    

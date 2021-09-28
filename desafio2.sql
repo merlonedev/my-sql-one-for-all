@@ -9,4 +9,3 @@ CREATE VIEW estatisticas_musicais AS
         albuns AS al ON al.album_id = mu.album_id
             JOIN
         artistas AS ar ON al.artista_id = ar.artista_id;
-        
