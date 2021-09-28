@@ -118,7 +118,7 @@ VALUES
   ('Rock His Everything', 3, 4),
   ('Home Forever', 3,	4),
   ('Diamond Power', 3,	4),
-  ('Honey, Let’s Be Silly', 3, 4),
+  ("Honey, Let's Be Silly", 3, 4),
   ('Thang Of Thunder',	4, 5),
   ('Words Of Her Life', 4,	5),
   ('Without My Streets', 4, 5);
