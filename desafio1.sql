@@ -4,78 +4,78 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE plano(
+CREATE TABLE Plano(
 plano_id INT PRIMARY KEY AUTO_INCREMENT,
 plano_nome VARCHAR(15) NOT NULL,
 plano_preco DECIMAL(5,2) NOT NULL
 ) engine = InnoDB;
 
-CREATE TABLE artista(
+CREATE TABLE Artista(
 artista_id INT PRIMARY KEY AUTO_INCREMENT,
 artista_nome VARCHAR(50) NOT NULL
 ) engine = InnoDB;
 
-CREATE TABLE usuario(
+CREATE TABLE Usuario(
 usuario_id INT PRIMARY KEY AUTO_INCREMENT,
 usuario_nome VARCHAR(50) NOT NULL,
 usuario_idade INT NOT NULL,
 plano_id INT,
-FOREIGN KEY (plano_id) REFERENCES plano (plano_id)
+FOREIGN KEY (plano_id) REFERENCES Plano (plano_id)
 ) engine = InnoDB;
 
-CREATE TABLE album(
+CREATE TABLE Album(
 album_id INT PRIMARY KEY AUTO_INCREMENT,
 album_nome VARCHAR(50) NOT NULL,
 artista_id INT NOT NULL,
-    FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
+    FOREIGN KEY (artista_id) REFERENCES Artista (artista_id)
 ) engine = InnoDB;
 
-CREATE TABLE musica(
+CREATE TABLE Musica(
 musica_id INT PRIMARY KEY AUTO_INCREMENT,
 musica_nome VARCHAR(50) NOT NULL,
 artista_id INT NOT NULL,
 album_id INT NOT NULL,
-FOREIGN KEY (artista_id) REFERENCES artista (artista_id),
-FOREIGN KEY (album_id) REFERENCES album (album_id)
+FOREIGN KEY (artista_id) REFERENCES Artista (artista_id),
+FOREIGN KEY (album_id) REFERENCES Album (album_id)
 ) engine = InnoDB;
 
-CREATE TABLE seguindo(
+CREATE TABLE Seguindo(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
-CONSTRAINT PRIMARY KEY (usuario_id, artista_id),
-FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
-FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
+PRIMARY KEY (usuario_id, artista_id),
+FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id),
+FOREIGN KEY (artista_id) REFERENCES Artista (artista_id)
 ) engine = InnoDB;
 
-CREATE TABLE historico(
+CREATE TABLE Historico(
 usuario_id INT NOT NULL,
 musica_id INT NOT NULL,
-CONSTRAINT PRIMARY KEY (usuario_id, musica_id),
-FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
-FOREIGN KEY (musica_id) REFERENCES musica (musica_id)
+PRIMARY KEY (usuario_id, musica_id),
+FOREIGN KEY (usuario_id) REFERENCES Usuario (usuario_id),
+FOREIGN KEY (musica_id) REFERENCES Musica (musica_id)
 ) engine = InnoDB;
 
-INSERT INTO plano (plano_nome, plano_preco)
+INSERT INTO Plano (plano_nome, plano_preco)
 VALUES
 ('gratuito', 0),
 ('universitário', 5.99),
 ('familiar', 7.99);
 
-INSERT INTO usuario (usuario_nome, usuario_idade, plano_id)
+INSERT INTO Usuario (usuario_nome, usuario_idade, plano_id)
 VALUES
 ('Thati', 23, 1),
 ('Cintia', 35, 3),
 ('Bill', 20, 2),
 ('Roger', 45, 1);
 
-INSERT INTO artista (artista_nome)
+INSERT INTO Artista (artista_nome)
 VALUES
 ('Walter Phoenix'),
 ('Peter Strong'),
 ('Lance Day'),
 ('Freedie Shannon');
   
-INSERT INTO album (album_nome, artista_id)
+INSERT INTO Album (album_nome, artista_id)
 VALUES
 ('Envious', 1),
 ('Exuberant',	1),
@@ -83,7 +83,7 @@ VALUES
 ('Incandescent', 3),
 ('Temporary Culture', 4);
     
-INSERT INTO musica (musica_nome, artista_id, album_id)
+INSERT INTO Musica (musica_nome, artista_id, album_id)
 VALUES
 ('Soul For Us', 1, 1),
 ('Reflections Of Magic', 1, 1),
@@ -92,19 +92,19 @@ VALUES
 ('Time Fireworks', 1, 2),
 ('Magic Circus', 2, 3),
 ('Honey, So Do I', 2, 3),
-("Sweetie, Let's Go Wild", 2, 3),
+('Sweetie, Let"s Go Wild', 2, 3),
 ('She Knows', 2, 3),
 ('Fantasy For Me', 3, 4),
 ('Celebration Of More', 3, 4),
 ('Rock His Everything', 3, 4),
 ('Home Forever', 3, 4),
 ('Diamond Power', 3, 4),
-("Honey, Let's Be Silly", 3, 4),
+('Honey, Let"s Be Silly', 3, 4),
 ('Thang Of Thunder', 4, 5),
 ('Words Of Her Life', 4, 5),
 ('Without My Streets', 4, 5);
     
-INSERT INTO seguindo (usuario_id, artista_id)
+INSERT INTO Seguindo (usuario_id, artista_id)
 VALUES
 (1, 1),
 (1, 4),
@@ -115,7 +115,7 @@ VALUES
 (3, 1),
 (4, 4);
   
-INSERT INTO historico (usuario_id, musica_id)
+INSERT INTO Historico (usuario_id, musica_id)
 VALUES
 (1, 1),
 (1, 6),
