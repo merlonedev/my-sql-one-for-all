@@ -2,53 +2,53 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE IF NOT EXISTS planos(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(20) NOT NULL,
-    valor INT NOT NULL
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(20) NOT NULL,
+valor INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS usuarios(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    idade INT NOT NULL,
-    plano_id INT NOT NULL,
-    FOREIGN KEY (plano_id) REFERENCES planos(id)
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL,
+idade INT NOT NULL,
+plano_id INT NOT NULL,
+FOREIGN KEY (plano_id) REFERENCES planos(id)
 );
 
 CREATE TABLE IF NOT EXISTS artistas(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS albuns(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    artista_id INT NOT NULL,
-    FOREIGN KEY (artista_id) REFERENCES artistas(id)
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL,
+artista_id INT NOT NULL,
+FOREIGN KEY (artista_id) REFERENCES artistas(id)
 );
 
 CREATE TABLE IF NOT EXISTS usuario_artista(
-	usuario_id INT NOT NULL,
-    artista_id INT NOT NULL,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (artista_id) REFERENCES artistas(id),
-    CONSTRAINT PRIMARY KEY (usuario_id, artista_id)
+usuario_id INT NOT NULL,
+artista_id INT NOT NULL,
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+FOREIGN KEY (artista_id) REFERENCES artistas(id),
+CONSTRAINT PRIMARY KEY (usuario_id, artista_id)
 );
 
 CREATE TABLE IF NOT EXISTS cancoes(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL,
-    album_id INT NOT NULL,
-    FOREIGN KEY (album_id) REFERENCES albuns(id)
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(100) NOT NULL,
+album_id INT NOT NULL,
+FOREIGN KEY (album_id) REFERENCES albuns(id)
 );
 
 CREATE TABLE IF NOT EXISTS usuario_historico(
-	usuario_id INT NOT NULL,
-    cancao_id INT NOT NULL,
-    data_reproducao DATETIME NOT NULL,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (cancao_id) REFERENCES cancoes(id),
-    CONSTRAINT PRIMARY KEY (usuario_id, cancao_id)
+usuario_id INT NOT NULL,
+cancao_id INT NOT NULL,
+data_reproducao DATETIME NOT NULL,
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+FOREIGN KEY (cancao_id) REFERENCES cancoes(id),
+CONSTRAINT PRIMARY KEY (usuario_id, cancao_id)
 );
 
 INSERT INTO planos(nome, valor) VALUES
