@@ -56,21 +56,18 @@ CONSTRAINT PRIMARY KEY(usuario_id, artista_id)
 ) engine = InnoDB;
 
 INSERT INTO planos (plano_name, valor_plano)
-VALUES
-('gratuito', 0.00),
+VALUES ('gratuito', 0.00),
 ('familiar', 7.99),
 ('universitário', '5.99');
 
 INSERT INTO users (name, idade, plano_id)
-VALUES
-('Thati', 23, 1),
+VALUES ('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
 ('Roger', 45, 1);
 
 INSERT INTO artistas (artista_name)
-VALUES
-('Walter Phoenix'),
+VALUES ('Walter Phoenix'),
 ('Peter Strong'),
 ('Lance Day'),
 ('Freedie Shannon');
