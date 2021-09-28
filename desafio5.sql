@@ -1,5 +1,5 @@
 CREATE VIEW top_2_hits_do_momento AS
- SELECT 
+  SELECT 
         songs.song_title AS cancao,
         COUNT(his.song_id) AS reproducoes
     FROM
