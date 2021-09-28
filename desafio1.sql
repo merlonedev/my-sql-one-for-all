@@ -4,8 +4,6 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-
-DROP TABLE IF EXISTS `tb_cancoes_usuario`;
 CREATE TABLE `tb_cancoes_usuario` (
   `id_usuario` int NOT NULL,
   `id_cancao` int NOT NULL,
@@ -15,8 +13,6 @@ CREATE TABLE `tb_cancoes_usuario` (
   CONSTRAINT `usuario_id_fk` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`usuario_id`)
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `tb_planos`;
-
 CREATE TABLE `tb_planos` (
   `id_plano` int NOT NULL AUTO_INCREMENT,
   `nome_plano` varchar(45) NOT NULL,
@@ -25,7 +21,6 @@ CREATE TABLE `tb_planos` (
   UNIQUE KEY `id_plano_UNIQUE` (`id_plano`)
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `tb_usuarios`;
 CREATE TABLE `tb_usuarios` (
   `usuario_id` int NOT NULL AUTO_INCREMENT,
   `usuario` varchar(50) NOT NULL,
@@ -36,7 +31,6 @@ CREATE TABLE `tb_usuarios` (
   CONSTRAINT `fk_id_plano` FOREIGN KEY (`id_plano`) REFERENCES `tb_planos` (`id_plano`)
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `tb_artistas`;
 CREATE TABLE `tb_artistas` (
   `id_artista` int NOT NULL AUTO_INCREMENT,
   `nome_artista` varchar(45) NOT NULL,
@@ -44,7 +38,6 @@ CREATE TABLE `tb_artistas` (
   UNIQUE KEY `id_artista_UNIQUE` (`id_artista`)
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `tb_artistas_usuarios`;
 CREATE TABLE `tb_artistas_usuarios` (
   `id_usuario` int NOT NULL,
   `id_artista` int NOT NULL,
@@ -54,7 +47,6 @@ CREATE TABLE `tb_artistas_usuarios` (
   CONSTRAINT `fk_usuario_id` FOREIGN KEY (`id_usuario`) REFERENCES `tb_usuarios` (`usuario_id`)
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `tb_cancoes`;
 CREATE TABLE `tb_cancoes` (
   `id_cancao` int NOT NULL AUTO_INCREMENT,
   `nome_cancao` varchar(70) NOT NULL,
@@ -65,7 +57,6 @@ CREATE TABLE `tb_cancoes` (
   CONSTRAINT `fk_album_idD` FOREIGN KEY (`album_id`) REFERENCES `tb_albuns` (`album_id`)
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `tb_albuns`;
 CREATE TABLE `tb_albuns` (
   `album_id` int NOT NULL AUTO_INCREMENT,
   `album` varchar(45) NOT NULL,
