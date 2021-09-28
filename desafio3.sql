@@ -8,4 +8,3 @@ CREATE VIEW historico_reproducao_usuarios AS
           JOIN
       SpotifyClone.musicas AS m ON m.musica_id = uh.musica_id
   ORDER BY u.nome , m.nome);
-    
