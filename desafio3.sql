@@ -7,4 +7,5 @@ FROM
     JOIN
     usuarios AS u ON u.id = uh.usuario_id
     JOIN
-    musicas AS m ON m.id = uh.musica_id;
+    musicas AS m ON m.id = uh.musica_id
+ORDER BY usuario, nome;
