@@ -9,4 +9,4 @@ artistas ON artistas.artista_id = usuario_artistas.artista_id
 GROUP BY artista 
 ORDER BY seguidores DESC, artista ASC
 LIMIT 3;
-DROP VIEW top_3_artistas;
+-- DROP VIEW top_3_artistas;
