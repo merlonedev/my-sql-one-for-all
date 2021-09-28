@@ -7,7 +7,7 @@ USE SpotifyClone;
 CREATE TABLE signatures(
     signature_id INT(10) NOT NULL AUTO_INCREMENT,
     signature_type VARCHAR(50) NOT NULL,
-    value FLOAT(5, 2) NOT NULL,
+    value DECIMAL(4, 2) NOT NULL,
     PRIMARY KEY (signature_id)
 ) engine = InnoDB;
 
@@ -60,7 +60,7 @@ CREATE TABLE history(
 
 INSERT INTO signatures(signature_type, value)
 VALUES
-  ('gratuito', 0.00),
+  ('gratuito', 0),
   ('familiar', 7.99),
   ('universitário', 5.99);
 
