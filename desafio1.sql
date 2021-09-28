@@ -11,7 +11,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `services` (
   `svc_id` INT NOT NULL AUTO_INCREMENT,
   `svc_name` VARCHAR(50) NOT NULL,
-  `svc_price` DECIMAL NOT NULL,
+  `svc_price` DECIMAL(4,2) NOT NULL,
   PRIMARY KEY (`svc_id`))
 ENGINE = InnoDB;
 
