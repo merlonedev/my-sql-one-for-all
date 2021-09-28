@@ -1,7 +1,7 @@
 CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 DROP TABLE IF EXISTS planos;
-CREATE TABLE plano (
+CREATE TABLE planos (
     id_plano INT AUTO_INCREMENT PRIMARY KEY,
     plano VARCHAR(45),
     valor DEC(3 , 2 )
@@ -11,8 +11,9 @@ INSERT INTO planos(plano, valor) VALUES
 ('gratuito', 0.00), 
 ('familiar', 7.99), 
 ('universitário', 5.99);
-DROP TABLE IF EXISTS usuario;
-CREATE TABLE usuario (
+
+DROP TABLE IF EXISTS usuarios;
+CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(45),
     idade INT,
@@ -20,24 +21,22 @@ CREATE TABLE usuario (
     FOREIGN KEY (id_plano)
         REFERENCES planos (id_plano)
 )  ENGINE=INNODB;
-INSERT INTO usuario(usuario, idade, id_plano) VALUES 
+
+INSERT INTO usuarios(usuario, idade, id_plano) VALUES 
 ('Thati', 23, 1), 
 ('Cintia', 35, 2), 
 ('Bill', 20, 3), 
 ('Roger', 45, 1);
 
-DROP TABLE IF EXISTS artista;
-CREATE TABLE artista (
-    id_artista
-INT 
-    AUTO_INCREMENT
-PRIMARY KEY,
+DROP TABLE IF EXISTS artistas;
+CREATE TABLE artistas (
+    id_artista INT AUTO_INCREMENT PRIMARY KEY,
     artista VARCHAR(45)
-)   ENGINE=INNODB;
+)  ENGINE=INNODB;
 
-CREATE FULLTEXT INDEX index_artista ON artista(artista);
+CREATE FULLTEXT INDEX index_artista ON artistas(artista);
 
-INSERT INTO artista(artista) VALUES 
+INSERT INTO artistas(artista) VALUES 
 ('Walter Phoenix'), 
 ('Peter Strong'), 
 ('Lance Day'), 
@@ -60,7 +59,7 @@ INSERT INTO albuns(album, id_artista) VALUES
 ('Temporary Culture', 4);
 
 DROP TABLE IF EXISTS musicas;
-CREATE TABLE musica (
+CREATE TABLE musicas (
     id_musica INT AUTO_INCREMENT PRIMARY KEY,
     musica VARCHAR(45),
     id_album INT,
@@ -68,7 +67,7 @@ CREATE TABLE musica (
         REFERENCES albuns (id_album)
 )  ENGINE=INNODB;
 
-INSERT INTO musica(musica, id_album) VALUES
+INSERT INTO musicas(musica, id_album) VALUES
 ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
 ('Dance With Her Own', 1),
@@ -88,8 +87,9 @@ INSERT INTO musica(musica, id_album) VALUES
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
 
-DROP TABLE IF EXISTS seguidos_artista;
-CREATE TABLE seguidos_artista (
+
+DROP TABLE IF EXISTS seguindo_artistas;
+CREATE TABLE seguindo_artistas (
     id_usuario INT,
     id_artista INT,
     CONSTRAINT PRIMARY KEY (id_usuario, id_artista),
@@ -99,7 +99,7 @@ CREATE TABLE seguidos_artista (
         REFERENCES artistas (id_artista)
 )  ENGINE=INNODB;
 
-INSERT INTO seguidos_artista VALUES
+INSERT INTO seguindo_artistas VALUES
 (1, 1),
 (1, 4),
 (1, 3),
