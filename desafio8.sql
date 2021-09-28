@@ -8,5 +8,3 @@ BEGIN
   DELETE FROM spotifyclone.historico WHERE usuario_id = OLD.usuario_id;
 END $$
 DELIMITER ;
-
-  
