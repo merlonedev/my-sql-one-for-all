@@ -14,7 +14,7 @@ FROM
         artistas
     WHERE
         artista = nome) AS art ON art.id = alb.artista_id 
-	ORDER BY album;
+ORDER BY album;
 END $$
 
 DELIMITER ;

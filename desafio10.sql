@@ -16,7 +16,7 @@ FROM
         usuarios
     WHERE
         usuario = 'Bill') AS u ON u.id = uc.usuario_id INTO musicas_historico;
-	RETURN musicas_historico;
+RETURN musicas_historico;
 END $$
 
 DELIMITER ;
