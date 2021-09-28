@@ -6,7 +6,7 @@ CREATE TABLE subscriptions(
 subscription_id INT PRIMARY KEY AUTO_INCREMENT,
 subscription_title VARCHAR(50) NOT NULL,
 subscription_price DECIMAL(4, 2) NOT NULL
-)  engine = InnoDB;
+)  ENGINE = INNODB;
 
 CREATE TABLE users(
 user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -14,19 +14,19 @@ user_name VARCHAR(30) NOT NULL,
 user_age INT NOT NULL,
 subscription_id INT NOT NULL,
 FOREIGN KEY (subscription_id) REFERENCES subscriptions(subscription_id)
-)  engine = InnoDB;
+)  ENGINE = INNODB;
 
 CREATE TABLE artists(
 artist_id INT PRIMARY KEY AUTO_INCREMENT,
 artist_name VARCHAR(80) NOT NULL
-)  engine = InnoDB;
+)  ENGINE = INNODB;
 
 CREATE TABLE albums(
 album_id INT PRIMARY KEY AUTO_INCREMENT,
 album_title VARCHAR(80) NOT NULL,
 artist_id INT NOT NULL,
 FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
-)  engine = InnoDB;
+)  ENGINE = INNODB;
 
 CREATE TABLE songs(
 song_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -35,7 +35,7 @@ album_id INT NOT NULL,
 artist_id INT NOT NULL,
 FOREIGN KEY (album_id) REFERENCES albums(album_id),
 FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
-)  engine = InnoDB;
+)  ENGINE = INNODB;
 
 CREATE TABLE rep_history(
 user_id INT NOT NULL,
@@ -43,7 +43,7 @@ song_id INT NOT NULL,
 CONSTRAINT PRIMARY KEY(user_id, song_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id),
 FOREIGN KEY (song_id) REFERENCES songs(song_id)
-)  engine = InnoDB;
+)  ENGINE = INNODB;
 
 CREATE TABLE user_follows(
     user_id INT NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE user_follows(
         REFERENCES users (user_id),
     FOREIGN KEY (artist_id)
         REFERENCES artists (artist_id)
-)  ENGINE=INNODB;
+)  ENGINE = INNODB;
 
 INSERT INTO subscriptions(subscription_title, subscription_price)
 VALUES
