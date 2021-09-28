@@ -6,14 +6,14 @@ USE SpotifyClone;
 
 CREATE TABLE Plano (
     id INT NOT NULL AUTO_INCREMENT,
-    valor_plano DECIMAL,
+    valor_plano DECIMAL(3,2),
     plano VARCHAR(25),
     PRIMARY KEY (id)
 )  ENGINE = InnoDB;
 
 INSERT INTO Plano (valor_plano, plano)
 VALUES
-(0, 'Gratuito'),
+(0.0, 'Gratuito'),
 (7.99, 'Familiar'),
 (5.99, 'Universitário');
 
