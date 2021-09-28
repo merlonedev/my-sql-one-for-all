@@ -121,8 +121,8 @@ VALUES
   (1, 3),
   (2, 1),
   (2, 3),
+  (3, 1),
   (3, 2),
-  (3, 3),
   (4, 4);
 
 INSERT INTO usuarios_cancoes (usuario_id, cancao_id)
