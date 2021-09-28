@@ -1,10 +1,6 @@
 CREATE VIEW faturamento_atual AS
-    SELECT 
-        ROUND(MIN(plan.plano_preco), 2) AS `faturamento_minimo`,
-        ROUND(MAX(plan.plano_preco), 2) AS `faturamento_maximo`,
-        ROUND(AVG(plan.plano_preco), 2) AS `faturamento_medio`,
-        ROUND(SUM(plan.plano_preco), 2) AS `faturamento_total`
-    FROM
-        Plano AS plan
-  INNER JOIN
-        SpotifyClone.Usuario AS us ON us.plano_id = plan.plano_id;
+SELECT MIN(p.plano_preco) faturamento_minimo, MAX(p.plano_preco) faturamento_maximo,
+ROUND(AVG(p.plano_preco), 2) faturamento_medio, SUM(p.plano_preco) faturamento_total
+FROM spotifyclone.plano p
+INNER JOIN spotifyclone.usuario u
+ON p.plano_id = u.plano_id;
