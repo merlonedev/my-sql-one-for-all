@@ -44,7 +44,7 @@ CREATE TABLE songs(
 
 CREATE TABLE user_song(
     user_id INT,
-	song_id INT,
+    song_id INT,
     PRIMARY KEY (user_id, song_id),
     FOREIGN KEY (user_id) REFERENCES `user`(id),
     FOREIGN KEY (song_id) references songs(id)
@@ -52,7 +52,7 @@ CREATE TABLE user_song(
 
 CREATE TABLE user_artist(
     user_id INT,
-	artist_id INT,
+    artist_id INT,
     PRIMARY KEY (user_id, artist_id),
     FOREIGN KEY (user_id) REFERENCES `user`(id),
     FOREIGN KEY (artist_id) references artist(id)
