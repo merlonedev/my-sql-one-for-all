@@ -1,51 +1,37 @@
-DROP DATABASE IF EXISTS SpotifyClone ;
+DROP SCHEMA IF EXISTS SpotifyClone;
 
-CREATE DATABASE SpotifyClone ;
+CREATE SCHEMA SpotifyClone;
 
-USE SpotifyClone ;
-
-CREATE TABLE album (
-  id_album INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(250) NOT NULL,
-  id_artista INT NOT NULL,
-  PRIMARY KEY (id_album, id_artista),
-  UNIQUE INDEX nome_UNIQUE (nome ASC) VISIBLE,
-  INDEX fk_album_artista1_idx (id_artista ASC) VISIBLE,
-  CONSTRAINT fk_album_artista1
-    FOREIGN KEY (id_artista)
-    REFERENCES SpotifyClone.artista (id_artista)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+USE SpotifyClone;
 
 CREATE TABLE artista (
   id_artista INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(250) NOT NULL,
-  PRIMARY KEY (id_artista),
-  UNIQUE INDEX nome_UNIQUE (nome ASC) VISIBLE)
-ENGINE = InnoDB;
+  PRIMARY KEY (id_artista)
+) ENGINE = InnoDB;
+
+CREATE TABLE album (
+  id_album INT AUTO_INCREMENT,
+  nome VARCHAR(250) NOT NULL,
+  id_artista INT NOT NULL,
+  PRIMARY KEY (id_album),
+  FOREIGN KEY (id_artista) REFERENCES artista(id_artista)
+) ENGINE = InnoDB;
 
 CREATE TABLE cancao (
   id_cancao INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(250) NOT NULL,
   id_album INT NOT NULL,
-  PRIMARY KEY (id_cancao, id_album),
-  INDEX fk_cancao_album1_idx (id_album ASC) VISIBLE,
-  CONSTRAINT fk_cancao_album1
-    FOREIGN KEY (id_album)
-    REFERENCES SpotifyClone.album (id_album)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  PRIMARY KEY (id_cancao),
+  FOREIGN KEY (id_album) REFERENCES album(id_album)
+) ENGINE = InnoDB;
 
 CREATE TABLE plano (
   id_plano INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(45) NOT NULL,
   valor INT NOT NULL,
-  PRIMARY KEY (id_plano),
-  UNIQUE INDEX nome_UNIQUE (nome ASC) VISIBLE,
-  UNIQUE INDEX valor_UNIQUE (valor ASC) VISIBLE)
-ENGINE = InnoDB;
+  PRIMARY KEY (id_plano)
+) ENGINE = InnoDB;
 
 CREATE TABLE usuario (
   id_usuario INT NOT NULL AUTO_INCREMENT,
@@ -53,51 +39,24 @@ CREATE TABLE usuario (
   idade INT NOT NULL,
   id_plano INT NOT NULL,
   PRIMARY KEY (id_usuario),
-  UNIQUE INDEX nome_UNIQUE (nome ASC) VISIBLE,
-  INDEX fk_usuario_plano_idx (id_plano ASC) VISIBLE,
-  CONSTRAINT fk_usuario_plano
-    FOREIGN KEY (id_plano)
-    REFERENCES SpotifyClone.plano (id_plano)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  FOREIGN KEY (id_plano) REFERENCES plano(id_plano)
+) ENGINE = InnoDB;
 
 CREATE TABLE usuario_ouviu_cancao (
   id_usuario INT NOT NULL,
   id_cancao INT NOT NULL,
-  id_album INT NOT NULL,
-  PRIMARY KEY (id_usuario, id_cancao, id_album),
-  INDEX fk_usuario_has_cancao_cancao1_idx (id_cancao ASC, id_album ASC) VISIBLE,
-  INDEX fk_usuario_has_cancao_usuario1_idx (id_usuario ASC) VISIBLE,
-  CONSTRAINT fk_usuario_has_cancao_usuario1
-    FOREIGN KEY (id_usuario)
-    REFERENCES SpotifyClone.usuario (id_usuario)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_usuario_has_cancao_cancao1
-    FOREIGN KEY (id_cancao , id_album)
-    REFERENCES SpotifyClone.cancao (id_cancao , id_album)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  PRIMARY KEY (id_usuario, id_cancao),
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+  FOREIGN KEY (id_cancao) REFERENCES cancao(id_cancao)
+) ENGINE = InnoDB;
 
 CREATE TABLE usuario_segue_artista (
   id_usuario INT NOT NULL,
   id_artista INT NOT NULL,
   PRIMARY KEY (id_usuario, id_artista),
-  INDEX fk_usuario_has_artista_artista1_idx (id_artista ASC) VISIBLE,
-  INDEX fk_usuario_has_artista_usuario1_idx (id_usuario ASC) VISIBLE,
-  CONSTRAINT fk_usuario_has_artista_usuario1
-    FOREIGN KEY (id_usuario)
-    REFERENCES SpotifyClone.usuario (id_usuario)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT fk_usuario_has_artista_artista1
-    FOREIGN KEY (id_artista)
-    REFERENCES SpotifyClone.artista (id_artista)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+  FOREIGN KEY (id_artista) REFERENCES artista(id_artista)
+) ENGINE = InnoDB;
 
 INSERT INTO artista (nome)
 VALUES
@@ -159,19 +118,19 @@ VALUES
 (3, 1),
 (4, 2);
 
-INSERT INTO usuario_ouviu_cancao (id_usuario, id_cancao, id_album)
+INSERT INTO usuario_ouviu_cancao (id_usuario, id_cancao)
 VALUES
-(1, 1, 1),
-(1, 6, 3),
-(1, 14, 4),
-(1, 16, 5),
-(2, 13, 4),
-(2, 17, 5),
-(2, 2, 1),
-(2, 15, 4),
-(3, 4, 2),
-(3, 16, 5),
-(3, 6, 3),
-(4, 3, 1),
-(4, 18, 5),
-(4, 11, 4);
+(1, 1),
+(1, 6),
+(1, 14),
+(1, 16),
+(2, 13),
+(2, 17),
+(2, 2),
+(2, 15),
+(3, 4),
+(3, 16),
+(3, 6),
+(4, 3),
+(4, 18),
+(4, 11);
