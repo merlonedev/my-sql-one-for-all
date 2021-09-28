@@ -40,9 +40,9 @@ CREATE TABLE musicas (
 )  ENGINE=INNODB;
 
 CREATE TABLE reproducoes (
-	usuario_id INT NOT NULL,
+    usuario_id INT NOT NULL,
     musica_id INT NOT NULL,
-    PRIMARY KEY (usuario_id, musica_id),
+    PRIMARY KEY (usuario_id , musica_id),
     FOREIGN KEY (usuario_id)
         REFERENCES usuarios (usuario_id),
     FOREIGN KEY (musica_id)
