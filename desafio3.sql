@@ -1,5 +1,3 @@
-DROP VIEW IF EXISTS SpotifyClone.historico_reproducao_usuarios;
-
 CREATE VIEW SpotifyClone.historico_reproducao_usuarios AS
     SELECT 
         u.usuario AS 'usuario', c.cancao AS 'nome'
@@ -10,8 +8,3 @@ CREATE VIEW SpotifyClone.historico_reproducao_usuarios AS
             INNER JOIN
         SpotifyClone.cancao AS c ON us.cancao_id = c.id
     ORDER BY u.usuario , c.cancao;
-
-SELECT 
-    *
-FROM
-    SpotifyClone.historico_reproducao_usuarios;
