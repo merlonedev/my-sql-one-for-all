@@ -1,6 +1,6 @@
 CREATE VIEW historico_reproducao_usuarios AS
     SELECT 
-        usuarios.usuario, cancoes.cancao
+        usuarios.usuario, cancoes.cancao AS nome
     FROM
         usuariosCancoes
             JOIN
