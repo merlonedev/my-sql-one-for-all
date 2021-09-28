@@ -1,6 +1,6 @@
 CREATE VIEW SpotifyClone.historico_reproducao_usuarios AS
     SELECT 
-        u.usuario AS 'usuario', c.cancao AS 'nome'
+        u.usuario AS usuario, c.cancao AS nome
     FROM
         SpotifyClone.usuario AS u
             INNER JOIN
