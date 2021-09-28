@@ -117,4 +117,3 @@ INSERT INTO history (user, music)
     (4, 3),
     (4, 18),
     (4, 11);
-  
