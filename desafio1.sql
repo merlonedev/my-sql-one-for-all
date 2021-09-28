@@ -14,3 +14,8 @@ CREATE TABLE plans(
   plan_name VARCHAR(50) NOT NULL,
   plan_value DOUBLE
 ) engine = innoDB;
+
+CREATE TABLE artists(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  artist_name VARCHAR(50) NOT NULL
+) engine = innoDB;
