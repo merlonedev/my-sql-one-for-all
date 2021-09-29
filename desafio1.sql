@@ -13,7 +13,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-
 CREATE TABLE usuario (
   usuario_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   usuario VARCHAR(20) NOT NULL,
@@ -30,7 +29,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-
 CREATE TABLE artista (
   artista_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   artista VARCHAR(25) NOT NULL,
@@ -38,7 +36,6 @@ CREATE TABLE artista (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
-
 
 CREATE TABLE album (
   album_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -55,7 +52,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-
 CREATE TABLE cancao (
   cancao_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   cancao VARCHAR(45) NULL,
@@ -70,7 +66,6 @@ CREATE TABLE cancao (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
-
 
 CREATE TABLE usuario_artista (
   usuario_id INT UNSIGNED NOT NULL,
@@ -91,7 +86,6 @@ CREATE TABLE usuario_artista (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
-
 
 CREATE TABLE usuario_cancao (
   usuario_id INT UNSIGNED NOT NULL,
