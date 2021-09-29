@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS SpotifyClone;
 
 DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS Account;
+DROP TABLE IF EXISTS Accounts;
 DROP TABLE IF EXISTS History;
 DROP TABLE IF EXISTS Songs;
 DROP TABLE IF EXISTS Followers;
@@ -16,9 +16,9 @@ USE SpotifyClone;
 CREATE TABLE Users (
 id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 name VARCHAR(64) NOT NULL,
-idade INT NOT NULL);
+age INT NOT NULL);
 
-CREATE TABLE Account (
+CREATE TABLE Accounts (
 user_id INT NOT NULL PRIMARY KEY,
 plan_id INT NOT NULL DEFAULT 1);
 
@@ -51,8 +51,8 @@ id INT NOT NULL PRIMARY KEY,
 price INT NOT NULL DEFAULT 0,
 name VARCHAR(16) NOT NULL);
 
-ALTER TABLE Account ADD CONSTRAINT Account_user_id_Users_id FOREIGN KEY (user_id) REFERENCES Users(id);
-ALTER TABLE Account ADD CONSTRAINT Account_plan_id_Plans_id FOREIGN KEY (plan_id) REFERENCES Plans(id);
+ALTER TABLE Accounts ADD CONSTRAINT Accounts_user_id_Users_id FOREIGN KEY (user_id) REFERENCES Users(id);
+ALTER TABLE Accounts ADD CONSTRAINT Accounts_plan_id_Plans_id FOREIGN KEY (plan_id) REFERENCES Plans(id);
 ALTER TABLE History ADD CONSTRAINT History_user_id_Users_id FOREIGN KEY (user_id) REFERENCES Users(id);
 ALTER TABLE History ADD CONSTRAINT History_song_id_Songs_id FOREIGN KEY (song_id) REFERENCES Songs(id);
 ALTER TABLE Songs ADD CONSTRAINT Songs_artist_id_Artists_id FOREIGN KEY (artist_id) REFERENCES Artists(id);
