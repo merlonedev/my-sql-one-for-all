@@ -1,7 +1,7 @@
 DELIMITER $
 
 CREATE FUNCTION SpotifyClone.quantidade_musicas_no_historico(
-	id_usuario INT
+    id_usuario INT
 )
 RETURNS INT READS SQL DATA
 
