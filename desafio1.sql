@@ -1,24 +1,26 @@
-DROP DATABASE IF EXISTS SpotifyClone;                                                                             
-                                                                                                                      
+DROP DATABASE IF EXISTS SpotifyClone;
+
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Account;
 DROP TABLE IF EXISTS History;
 DROP TABLE IF EXISTS Songs;
 DROP TABLE IF EXISTS Followers;
 DROP TABLE IF EXISTS Artists;
-DROP TABLE IF EXISTS Album;
+DROP TABLE IF EXISTS Albums;
+DROP TABLE IF EXISTS Plans;
 
 
-CREATE DATABASE SpotifyClone;                                                                                                                                                                                      
+CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE Users (
 id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-name VARCHAR(64) NOT NULL);
+name VARCHAR(64) NOT NULL,
+idade INT NOT NULL);
 
 CREATE TABLE Account (
 user_id INT NOT NULL PRIMARY KEY,
-premium BOOL NOT NULL DEFAULT 'FALSE');
+plan_id INT NOT NULL DEFAULT 1);
 
 CREATE TABLE History (
 user_id INT NOT NULL PRIMARY KEY,
@@ -38,15 +40,23 @@ CREATE TABLE Artists (
 id INT NOT NULL PRIMARY KEY,
 name VARCHAR(64) NOT NULL);
 
-CREATE TABLE Album (
+CREATE TABLE Albums (
 id INT NOT NULL PRIMARY KEY,
-song_id INT NOT NULL);
+name VARCHAR(64) NOT NULL,
+song_id INT NOT NULL,
+artist_id INT NOT NULL);
 
+CREATE TABLE Plans (
+id INT NOT NULL PRIMARY KEY,
+price INT NOT NULL DEFAULT 0,
+name VARCHAR(16) NOT NULL);
 
 ALTER TABLE Account ADD CONSTRAINT Account_user_id_Users_id FOREIGN KEY (user_id) REFERENCES Users(id);
+ALTER TABLE Account ADD CONSTRAINT Account_plan_id_Plans_id FOREIGN KEY (plan_id) REFERENCES Plans(id);
 ALTER TABLE History ADD CONSTRAINT History_user_id_Users_id FOREIGN KEY (user_id) REFERENCES Users(id);
 ALTER TABLE History ADD CONSTRAINT History_song_id_Songs_id FOREIGN KEY (song_id) REFERENCES Songs(id);
 ALTER TABLE Songs ADD CONSTRAINT Songs_artist_id_Artists_id FOREIGN KEY (artist_id) REFERENCES Artists(id);
 ALTER TABLE Followers ADD CONSTRAINT Followers_user_id_Users_id FOREIGN KEY (user_id) REFERENCES Users(id);
 ALTER TABLE Followers ADD CONSTRAINT Followers_artist_id_Artists_id FOREIGN KEY (artist_id) REFERENCES Artists(id);
-ALTER TABLE Album ADD CONSTRAINT Album_song_id_Songs_id FOREIGN KEY (song_id) REFERENCES Songs(id);
+ALTER TABLE Albums ADD CONSTRAINT Albums_song_id_Songs_id FOREIGN KEY (song_id) REFERENCES Songs(id);
+ALTER TABLE Albums ADD CONSTRAINT Albums_artist_id_Artists_id FOREIGN KEY (artist_id) REFERENCES Artists(id);
