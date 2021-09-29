@@ -7,5 +7,4 @@ BEGIN
 DELETE from `USUARIO_ARTISTAS` WHERE usuario_id = OLD.usuario_id;
 DELETE from `USUARIO_MUSICAS` WHERE usuario_id = OLD.usuario_id;
 END $$
-
 DELIMITER ;
