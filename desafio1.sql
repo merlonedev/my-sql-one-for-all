@@ -29,7 +29,7 @@ CREATE TABLE cancao (
 CREATE TABLE plano (
   id_plano INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(45) NOT NULL,
-  valor INT NOT NULL,
+  valor DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (id_plano)
 ) ENGINE = InnoDB;
 
