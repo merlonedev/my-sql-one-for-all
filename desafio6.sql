@@ -1,9 +1,9 @@
 CREATE VIEW SpotifyClone.faturamento_atual AS
 SELECT
-    MIN(p.price) AS `faturamento_minimo`,
-    MAX(p.price) AS `faturamento_maximo`,
+    ROUND(MIN(p.price), 2) AS `faturamento_minimo`,
+    ROUND(MAX(p.price), 2) AS `faturamento_maximo`,
     ROUND(AVG(p.price), 2) AS `faturamento_medio`,
-    SUM(p.price) AS `faturamento_total`
+    ROUND(SUM(p.price), 2) AS `faturamento_total`
 FROM
     SpotifyClone.plans AS p
         JOIN
