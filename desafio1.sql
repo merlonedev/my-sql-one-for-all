@@ -8,10 +8,7 @@ CREATE TABLE plano (
 plano_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 plano VARCHAR(25) NOT NULL,
 valor DECIMAL(10, 2) NOT NULL,
-PRIMARY KEY (plano_id))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+PRIMARY KEY (plano_id));
 
 CREATE TABLE usuario (
 usuario_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -19,58 +16,40 @@ usuario VARCHAR(20) NOT NULL,
 idade INT UNSIGNED NOT NULL,
 plano_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (usuario_id),
-FOREIGN KEY (plano_id) REFERENCES plano (plano_id))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+FOREIGN KEY (plano_id) REFERENCES plano (plano_id));
 
 CREATE TABLE artista (
 artista_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 artista VARCHAR(25) NOT NULL,
-PRIMARY KEY (artista_id))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+PRIMARY KEY (artista_id));
 
 CREATE TABLE album (
 album_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 album VARCHAR(45) NOT NULL,
 artista_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (album_id),
-FOREIGN KEY (artista_id) REFERENCES artista (artista_id))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+FOREIGN KEY (artista_id) REFERENCES artista (artista_id));
 
 CREATE TABLE cancao (
 cancao_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 cancao VARCHAR(45) NULL,
 album_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (cancao_id),
-FOREIGN KEY (album_id) REFERENCES album (album_id))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+FOREIGN KEY (album_id) REFERENCES album (album_id));
 
 CREATE TABLE usuario_artista (
 usuario_id INT UNSIGNED NOT NULL,
 artista_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
-FOREIGN KEY (artista_id) REFERENCES artista (artista_id))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+FOREIGN KEY (artista_id) REFERENCES artista (artista_id));
 
 CREATE TABLE usuario_cancao (
 usuario_id INT UNSIGNED NOT NULL,
 cancao_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (usuario_id, cancao_id),
 FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
-FOREIGN KEY (cancao_id) REFERENCES cancao (cancao_id))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+FOREIGN KEY (cancao_id) REFERENCES cancao (cancao_id));
 
 INSERT INTO plano (plano, valor)
 VALUES
