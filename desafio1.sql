@@ -6,20 +6,14 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`planos`(
+CREATE TABLE `planos`(
 plano_id INT NOT NULL AUTO_INCREMENT,
 plano_name VARCHAR(30) NOT NULL,
 plano_value DECIMAL(5,2) NOT NULL,
 PRIMARY KEY (`plano_id`)
 ) engine = InnoDB;
 
-INSERT INTO `SpotifyClone`.`planos` (plano_name, plano_value)
-VALUES
-('gratuito', 0),
-('universitário', 5.99),
-('familiar', 7.99);
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
+CREATE TABLE `usuarios` (
 `user_id` INT NOT NULL AUTO_INCREMENT,
 `username` VARCHAR(25) NOT NULL,
 `age` SMALLINT NOT NULL,
@@ -33,27 +27,14 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `SpotifyClone`.`usuarios` (username, age, plano_id)
-VALUES
-('Thati', 23, 1),
-('Cintia', 35, 2),
-('Bill', 20, 3),
-('Roger', 45, 1);
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artistas` (
+CREATE TABLE `artistas` (
 `artist_id` INT NOT NULL AUTO_INCREMENT,
 `artist_name` VARCHAR(25) NOT NULL,
 PRIMARY KEY (`artist_id`))
 ENGINE = InnoDB;
 
-INSERT INTO `SpotifyClone`.`artistas` (artist_name)
-VALUES
-('Walter Phoenix'),
-('Peter Strong'),
-('Lance Day'),
-('Freedie Shannon');
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albums` (
+CREATE TABLE `albums` (
 `album_id` INT NOT NULL AUTO_INCREMENT,
 `album_name` VARCHAR(30) NOT NULL,
 `artist_id` INT NOT NULL,
@@ -66,15 +47,7 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `SpotifyClone`.`albums` (album_name, artist_id)
-VALUES
-('Envious', 1),
-('Exuberant', 1),
-('Hallowed Steam', 2),
-('Incandescent', 3),
-('Temporary Culture', 4);
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musics` (
+CREATE TABLE `musics` (
 `music_id` INT NOT NULL AUTO_INCREMENT,
 `music_name` VARCHAR(35) NOT NULL,
 `album_id` INT NOT NULL,
@@ -87,7 +60,65 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `SpotifyClone`.`musics` (music_name, album_id)
+CREATE TABLE `historico` (
+`user_id` INT NOT NULL,
+`music_id` INT NOT NULL,
+INDEX `fk_historico_1_idx` (`user_id` ASC) VISIBLE,
+INDEX `fk_historico_2_idx` (`music_id` ASC) VISIBLE,
+PRIMARY KEY (`user_id`, `music_id`),
+CONSTRAINT `fk_historico_1`
+FOREIGN KEY (`user_id`)
+REFERENCES `SpotifyClone`.`usuarios` (`user_id`)
+ON DELETE CASCADE
+ON UPDATE NO ACTION,
+CONSTRAINT `fk_historico_2`
+FOREIGN KEY (`music_id`)
+REFERENCES `SpotifyClone`.`musics` (`music_id`)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE `user_follow` (
+`user_id` INT NOT NULL,
+`artist_id` INT NOT NULL,
+INDEX `fk_user_follow_1_idx` (`artist_id` ASC) VISIBLE,
+INDEX `fk_user_follow_2_idx` (`user_id` ASC) VISIBLE,
+PRIMARY KEY (`user_id`, `artist_id`),
+CONSTRAINT `fk_user_follow_1`
+FOREIGN KEY (`artist_id`)
+REFERENCES `artistas` (`artist_id`)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION,
+CONSTRAINT `fk_user_follow_2`
+FOREIGN KEY (`user_id`)
+REFERENCES `usuarios` (`user_id`)
+ON DELETE CASCADE
+ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+INSERT INTO `artistas` (artist_name)
+VALUES
+('Walter Phoenix'),
+('Peter Strong'),
+('Lance Day'),
+('Freedie Shannon');
+
+INSERT INTO `albums` (album_name, artist_id)
+VALUES
+('Envious', 1),
+('Exuberant', 1),
+('Hallowed Steam', 2),
+('Incandescent', 3),
+('Temporary Culture', 4);
+
+INSERT INTO `planos` (plano_name, plano_value)
+VALUES
+('gratuito', 0),
+('universitário', 5.99),
+('familiar', 7.99);
+
+INSERT INTO `musics` (music_name, album_id)
 VALUES
 ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
@@ -108,25 +139,14 @@ VALUES
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
-`user_id` INT NOT NULL,
-`music_id` INT NOT NULL,
-INDEX `fk_historico_1_idx` (`user_id` ASC) VISIBLE,
-INDEX `fk_historico_2_idx` (`music_id` ASC) VISIBLE,
-PRIMARY KEY (`user_id`, `music_id`),
-CONSTRAINT `fk_historico_1`
-FOREIGN KEY (`user_id`)
-REFERENCES `SpotifyClone`.`usuarios` (`user_id`)
-ON DELETE CASCADE
-ON UPDATE NO ACTION,
-CONSTRAINT `fk_historico_2`
-FOREIGN KEY (`music_id`)
-REFERENCES `SpotifyClone`.`musics` (`music_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+INSERT INTO `usuarios` (username, age, plano_id)
+VALUES
+('Thati', 23, 1),
+('Cintia', 35, 2),
+('Bill', 20, 3),
+('Roger', 45, 1);
 
-INSERT INTO `SpotifyClone`.`historico` (user_id, music_id)
+INSERT INTO `historico` (user_id, music_id)
 VALUES
 (1, 1),
 (2, 2),
@@ -142,26 +162,8 @@ VALUES
 (3, 16),
 (2, 17),
 (4, 18);
-  
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`user_follow` (
-`user_id` INT NOT NULL,
-`artist_id` INT NOT NULL,
-INDEX `fk_user_follow_1_idx` (`artist_id` ASC) VISIBLE,
-INDEX `fk_user_follow_2_idx` (`user_id` ASC) VISIBLE,
-PRIMARY KEY (`user_id`, `artist_id`),
-CONSTRAINT `fk_user_follow_1`
-FOREIGN KEY (`artist_id`)
-REFERENCES `SpotifyClone`.`artistas` (`artist_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION,
-CONSTRAINT `fk_user_follow_2`
-FOREIGN KEY (`user_id`)
-REFERENCES `SpotifyClone`.`usuarios` (`user_id`)
-ON DELETE CASCADE
-ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
-INSERT INTO `SpotifyClone`.`user_follow` (user_id, artist_id)
+INSERT INTO `user_follow` (user_id, artist_id)
 VALUES
 (1, 1),
 (2, 1),
