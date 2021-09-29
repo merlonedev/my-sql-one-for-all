@@ -2,8 +2,6 @@
 -- *A primeira coluna deve exibir a quantidade total de canções. Dê a essa coluna o alias "cancoes".
 -- *A segunda coluna deve exibir a quantidade total de artistas e deverá ter o alias "artistas".
 -- *A terceira coluna deve exibir a quantidade de álbuns e deverá ter o alias "albuns".
-DROP VIEW IF EXISTS estatisticas_musicais;
-USE SpotifyClone;
 CREATE VIEW estatisticas_musicais AS
     SELECT COUNT(cancao_id) AS `cancoes`,
     (SELECT COUNT(artista_id) FROM SpotifyClone.artistas) AS `artistas`,
