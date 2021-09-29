@@ -7,6 +7,11 @@ USE SpotifyClone;
       plano_title VARCHAR(50) NOT NULL,
       valor_plano decimal(8,2) NOT NULL
     )ENGINE=INNODB;
+    
+    INSERT INTO plano (plano_title, valor_plano) VALUES
+      ('gratuito', 0.00),
+      ('familiar', 7.99),
+      ('universitario', 5.99);
 
     CREATE TABLE usuario(
       user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -16,10 +21,22 @@ USE SpotifyClone;
       FOREIGN KEY (plano_id) REFERENCES plano (plano_id)
     )ENGINE=INNODB;
     
-      CREATE TABLE artista(
+    INSERT INTO usuario (nome, idade, plano_id) VALUES 
+      ("Thati", 23,1),
+      ("Cintia", 35,2),
+      ("Bill", 20,3),
+      ("Roger", 45,1);
+      
+    CREATE TABLE artista(
       artista_id INT PRIMARY KEY AUTO_INCREMENT,
       artista_nome VARCHAR(50) NOT NULL
     )ENGINE=INNODB;
+    
+    INSERT INTO artista (artista_nome) VALUES
+      ("Walter Phoenix"),
+      ("Peter Strong"),
+      ("Lance Day"),
+      ("Freedie Shannon");
     
     CREATE TABLE album(
       album_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -28,6 +45,13 @@ USE SpotifyClone;
       FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
     )ENGINE=INNODB;
     
+    INSERT INTO album (album_title, artista_id) VALUES
+      ("Envious", 1),
+      ("Exuberant", 1),
+      ("Hallowed Steam", 2),
+      ("Incandescent", 3),
+      ("Temporary Culture", 4);
+    
     CREATE TABLE cancao(
       cancao_id INT PRIMARY KEY AUTO_INCREMENT,
       cancao_title VARCHAR(50) NOT NULL,
@@ -35,73 +59,6 @@ USE SpotifyClone;
       FOREIGN KEY (album_id) REFERENCES album (album_id)
     )ENGINE=INNODB;
     
-    CREATE TABLE historico(
-      historico_id INT PRIMARY KEY AUTO_INCREMENT,
-      user_id INT NOT NULL,
-      cancao_id INT NOT NULL,
-      FOREIGN KEY (user_id) REFERENCES usuario (user_id),
-      FOREIGN KEY (cancao_id) REFERENCES cancao (cancao_id)
-    )ENGINE=INNODB;
-    
-    CREATE TABLE seguindo(
-      seguido_id INT PRIMARY KEY AUTO_INCREMENT,
-      user_id INT NOT NULL,
-      artista_id INT NOT NULL,
-      FOREIGN KEY (user_id) REFERENCES usuario (user_id),
-      FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
-    )ENGINE=INNODB;
-    
-    
-    INSERT INTO usuario (nome, idade, plano_id) VALUES 
-      ("Thati", 23,1),
-      ("Cintia", 35,2),
-      ("Bill", 20,3),
-      ("Roger", 45,1);
-
-    INSERT INTO plano (plano_title, valor_plano) VALUES
-      ('gratuito', 0.00),
-      ('familiar', 7.99),
-      ('universitario', 5.99);
-      
-    INSERT INTO historico (user_id, cancao_id) VALUES
-      (1,1),
-      (1,6),
-      (1,14),
-      (1,16),
-      (2,13),
-      (2,17),
-      (2,2),
-      (2,15),
-      (3,4),
-      (3,16),
-      (3,6),
-      (4,3),
-      (4,18),
-      (4,11);
-
-    INSERT INTO seguindo (user_id, artista_id) VALUES
-      (1,1),
-      (1,4),
-      (1,3),
-      (2,1),
-      (2,3),
-      (3,2),
-      (3,1),
-      (4,4);
-      
-    INSERT INTO artista (artista_nome) VALUES
-      ("Walter Phoenix"),
-      ("Peter Strong"),
-      ("Lance Day"),
-      ("Freedie Shannon");
-      
-    INSERT INTO album (album_title, artista_id) VALUES
-      ("Envious", 1),
-      ("Exuberant", 1),
-      ("Hallowed Steam", 2),
-      ("Incandescent", 3),
-      ("Temporary Culture", 4);
-      
     INSERT INTO cancao (cancao_title, album_id) VALUES
         ("Soul For Us", 1),
         ( "Reflections Of Magic", 1),
@@ -121,3 +78,45 @@ USE SpotifyClone;
         ("Thang Of Thunder", 5),
         ("Words Of Her Life", 5),
         ("Without My Streets", 5);
+    
+    CREATE TABLE historico(
+      historico_id INT PRIMARY KEY AUTO_INCREMENT,
+      user_id INT NOT NULL,
+      cancao_id INT NOT NULL,
+      FOREIGN KEY (user_id) REFERENCES usuario (user_id),
+      FOREIGN KEY (cancao_id) REFERENCES cancao (cancao_id)
+    )ENGINE=INNODB;
+    
+    INSERT INTO historico (user_id, cancao_id) VALUES
+      (1,1),
+      (1,6),
+      (1,14),
+      (1,16),
+      (2,13),
+      (2,17),
+      (2,2),
+      (2,15),
+      (3,4),
+      (3,16),
+      (3,6),
+      (4,3),
+      (4,18),
+      (4,11);
+    
+    CREATE TABLE seguindo(
+      seguido_id INT PRIMARY KEY AUTO_INCREMENT,
+      user_id INT NOT NULL,
+      artista_id INT NOT NULL,
+      FOREIGN KEY (user_id) REFERENCES usuario (user_id),
+      FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
+    )ENGINE=INNODB;
+    
+    INSERT INTO seguindo (user_id, artista_id) VALUES
+      (1,1),
+      (1,4),
+      (1,3),
+      (2,1),
+      (2,3),
+      (3,2),
+      (3,1),
+      (4,4);
