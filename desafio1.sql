@@ -46,7 +46,7 @@ CREATE TABLE Cancoes(
 CREATE TABLE Historico(
     Id_Usuario INT NOT NULL,
     Id_Cancao INT NOT NULL,
-	PRIMARY KEY(Id_Usuario, Id_Cancao),
+PRIMARY KEY(Id_Usuario, Id_Cancao),
     FOREIGN KEY(Id_Usuario) REFERENCES Usuario(Id),
     FOREIGN KEY(Id_Cancao) REFERENCES Cancoes(Id)
 ) engine = InnoDB;
@@ -94,7 +94,7 @@ VALUES
 VALUES
     ('Soul For Us', 1, 1),
     ('Reflections Of Magic', 1, 1),
-	('Dance With Her Own', 1, 1),
+('Dance With Her Own', 1, 1),
     ('Troubles Of My Inner Fire', 2, 1),
     ('Time Fireworks', 2, 1),
     ('Magic Circus', 3, 2),
@@ -127,4 +127,4 @@ VALUES
   (4, 3),
   (4, 18),
   (4, 11);
-  
+ 
