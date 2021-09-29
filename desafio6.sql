@@ -7,4 +7,4 @@ CREATE VIEW faturamento_atual AS
     FROM
         SpotifyClone.plans p
             JOIN
-        SpotifyClone.users u ON u.plan_id = p.id;
+		SpotifyClone.users u ON u.plan_id = p.id;
