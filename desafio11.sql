@@ -1,3 +1,4 @@
+CREATE VIEW cancoes_premium AS
 SELECT 
   S.song_name AS `nome`,
   COUNT(US.song_id) AS `reproducoes`
