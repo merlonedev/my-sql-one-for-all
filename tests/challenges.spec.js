@@ -1,7 +1,7 @@
 const { readFileSync } = require('fs');
 const { Sequelize } = require('sequelize');
 const Importer = require('mysql-import');
-
+jest.setTimeout(15000);
 describe('Queries de seleção', () => {
   let sequelize;
 
@@ -14,7 +14,7 @@ describe('Queries de seleção', () => {
       await importer.import('./desafio1.sql');
     }
     catch(error) {
-      console.log('Erro ao restaurar o dump!');
+      console.log('Erro ao restaurar o dump!',error);
     }
 
     importer.disconnect();

@@ -1,9 +1,11 @@
+DROP DATABASE IF EXISTS SpotifyClone;
+CREATE DATABASE if NOT EXISTS SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE Plano(
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Tipo_Plano VARCHAR(20) NOT NULL,
-    Valor_Plano DECIMAL(3,2) NOT NULL -- nenhum valor passou de 9,99. Então pode ser (3,2)
+    Valor_Plano DECIMAL(3,2) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE Usuario(
