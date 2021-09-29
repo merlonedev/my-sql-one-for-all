@@ -9,7 +9,7 @@ USE SpotifyClone;
 CREATE TABLE `planos`(
 plano_id INT NOT NULL AUTO_INCREMENT,
 plano_name VARCHAR(30) NOT NULL,
-plano_value DECIMAL(5,2) NOT NULL,
+plano_value DECIMAL(10,2) NOT NULL,
 PRIMARY KEY (`plano_id`)
 ) engine = InnoDB;
 
@@ -97,54 +97,54 @@ ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
-INSERT INTO `artistas` (artist_name)
+INSERT INTO `artistas`
 VALUES
-('Walter Phoenix'),
-('Peter Strong'),
-('Lance Day'),
-('Freedie Shannon');
+(1,'Walter Phoenix'),
+(2,'Peter Strong'),
+(3,'Lance Day'),
+(4,'Freedie Shannon');
 
-INSERT INTO `albums` (album_name, artist_id)
+INSERT INTO `albums`
 VALUES
-('Envious', 1),
-('Exuberant', 1),
-('Hallowed Steam', 2),
-('Incandescent', 3),
-('Temporary Culture', 4);
+(1,'Envious', 1),
+(2,'Exuberant', 1),
+(3,'Hallowed Steam', 2),
+(4,'Incandescent', 3),
+(5,'Temporary Culture', 4);
 
-INSERT INTO `planos` (plano_name, plano_value)
+INSERT INTO `planos`
 VALUES
-('gratuito', 0),
-('universitário', 5.99),
-('familiar', 7.99);
+(1,'gratuito', 0),
+(2,'universitário', 5.99),
+(3,'familiar', 7.99);
 
-INSERT INTO `musics` (music_name, album_id)
+INSERT INTO `musics`
 VALUES
-('Soul For Us', 1),
-('Reflections Of Magic', 1),
-('Dance With Her Own', 1),
-('Troubles Of My Inner Fire', 2),
-('Time Fireworks', 2),
-('Magic Circus', 3),
-('Honey, So Do I', 3),
-('Let\'s Go Wild', 3),
-('She Knows', 3),
-('Fantasy For Me', 4),
-('Celebration Of More', 4),
-('Rock His Everything', 4),
-('Home Forever', 4),
-('Diamond Power', 4),
-('Honey, Let\'s Be Silly', 4),
-('Thang Of Thunder', 5),
-('Words Of Her Life', 5),
-('Without My Streets', 5);
+(1,'Soul For Us', 1),
+(2,'Reflections Of Magic', 1),
+(3,'Dance With Her Own', 1),
+(4,'Troubles Of My Inner Fire', 2),
+(5,'Time Fireworks', 2),
+(6,'Magic Circus', 3),
+(7,'Honey, So Do I', 3),
+(8,'Let\'s Go Wild', 3),
+(9,'She Knows', 3),
+(10,'Fantasy For Me', 4),
+(11,'Celebration Of More', 4),
+(12,'Rock His Everything', 4),
+(13,'Home Forever', 4),
+(14,'Diamond Power', 4),
+(15,'Honey, Let\'s Be Silly', 4),
+(16,'Thang Of Thunder', 5),
+(17,'Words Of Her Life', 5),
+(18,'Without My Streets', 5);
 
-INSERT INTO `usuarios` (username, age, plano_id)
+INSERT INTO `usuarios`
 VALUES
-('Thati', 23, 1),
-('Cintia', 35, 2),
-('Bill', 20, 3),
-('Roger', 45, 1);
+(1,'Thati', 23, 1),
+(2,'Cintia', 35, 2),
+(3,'Bill', 20, 3),
+(4,'Roger', 45, 1);
 
 INSERT INTO `historico` (user_id, music_id)
 VALUES
