@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS SpotifyClone;
 CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 DROP TABLE IF EXISTS planos;
