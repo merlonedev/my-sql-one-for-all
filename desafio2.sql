@@ -6,4 +6,3 @@ USE SpotifyClone;
     (SELECT COUNT(*) FROM artista) AS artistas,
     COUNT(al.album_id) AS albuns
   FROM album as al;
-    
