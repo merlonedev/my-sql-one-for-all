@@ -11,6 +11,9 @@ CREATE TABLE Artistas (
 CREATE TABLE Albuns (
     id INT AUTO_INCREMENT,
     album VARCHAR(50) NOT NULL,
+    id_artista INT,
+    FOREIGN KEY (id_artista)
+        REFERENCES Artistas (id),
     PRIMARY KEY (id)
 )  ENGINE=INNODB;
 
@@ -68,13 +71,13 @@ VALUES
   ('Lance Day'),
   ('Freedie Shannon');
 
-INSERT INTO Albuns (album)
+INSERT INTO Albuns (album, id_artista)
 VALUES
-  ('Envious'),
-  ('Exuberant'),
-  ('Hallowed Steam'),
-  ('Incandescent'),
-  ('Temporary Culture');
+  ('Envious', 1),
+  ('Exuberant', 1),
+  ('Hallowed Steam', 2),
+  ('Incandescent', 3 ),
+  ('Temporary Culture', 4);  
 
 INSERT INTO Musicas (nome, id_artista, id_album)
 VALUES
@@ -116,10 +119,6 @@ VALUES
   (1, 6),
   (1, 14),
   (1, 16),
-  (2, 13),
-  (2, 17),
-  (2, 2),
-  (2, 15),
   (2, 13),
   (2, 17),
   (2, 2),
