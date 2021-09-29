@@ -3,7 +3,7 @@ USE SpotifyClone;
 CREATE TABLE Plano(
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Tipo_Plano VARCHAR(20) NOT NULL,
-    Valor_Plano DOUBLE NOT NULL
+    Valor_Plano DECIMAL(3,2) NOT NULL -- nenhum valor passou de 9,99. Então pode ser (3,2)
 ) engine = InnoDB;
 
 CREATE TABLE Usuario(
@@ -22,7 +22,7 @@ CREATE TABLE Artista(
 CREATE TABLE Follow(
     Id_Usuario INT NOT NULL,
     Id_Artista INT NOT NULL,
-    PRIMARY KEY(Id_Usuario, Id_Artista),
+    CONSTRAINT PRIMARY KEY(Id_Usuario, Id_Artista),
     FOREIGN KEY(Id_Usuario) REFERENCES Usuario(Id),
     FOREIGN KEY(Id_Artista) REFERENCES Artista(Id)
 ) engine = InnoDB;
@@ -46,7 +46,7 @@ CREATE TABLE Cancoes(
 CREATE TABLE Historico(
     Id_Usuario INT NOT NULL,
     Id_Cancao INT NOT NULL,
-PRIMARY KEY(Id_Usuario, Id_Cancao),
+CONSTRAINT PRIMARY KEY(Id_Usuario, Id_Cancao),
     FOREIGN KEY(Id_Usuario) REFERENCES Usuario(Id),
     FOREIGN KEY(Id_Cancao) REFERENCES Cancoes(Id)
 ) engine = InnoDB;
