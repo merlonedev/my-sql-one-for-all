@@ -16,17 +16,15 @@ PRIMARY KEY (`plano_id`)
 CREATE TABLE `usuarios` (
 `user_id` INT NOT NULL AUTO_INCREMENT,
 `username` VARCHAR(25) NOT NULL,
-`age` SMALLINT NOT NULL,
+`age` INT NOT NULL,
 `plano_id` INT NOT NULL,
 PRIMARY KEY (`user_id`),
-INDEX `fk_users_1_idx` (`plano_id` ASC) VISIBLE,
+INDEX `fk_users_1_idx` (`plano_id`),
 CONSTRAINT `fk_users_1`
 FOREIGN KEY (`plano_id`)
-REFERENCES `SpotifyClone`.`planos` (`plano_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION)
+REFERENCES `planos` (`plano_id`)
+)
 ENGINE = InnoDB;
-
 
 CREATE TABLE `artistas` (
 `artist_id` INT NOT NULL AUTO_INCREMENT,
@@ -39,12 +37,11 @@ CREATE TABLE `albums` (
 `album_name` VARCHAR(30) NOT NULL,
 `artist_id` INT NOT NULL,
 PRIMARY KEY (`album_id`),
-INDEX `fk_albums_1_idx` (`artist_id` ASC) VISIBLE,
+INDEX `fk_albums_1_idx` (`artist_id`),
 CONSTRAINT `fk_albums_1`
 FOREIGN KEY (`artist_id`)
-REFERENCES `SpotifyClone`.`artistas` (`artist_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION)
+REFERENCES `artistas` (`artist_id`)
+)
 ENGINE = InnoDB;
 
 CREATE TABLE `musics` (
@@ -52,48 +49,43 @@ CREATE TABLE `musics` (
 `music_name` VARCHAR(35) NOT NULL,
 `album_id` INT NOT NULL,
 PRIMARY KEY (`music_id`),
-INDEX `fk_musics_1_idx` (`album_id` ASC) VISIBLE,
+INDEX `fk_musics_1_idx` (`album_id`) ,
 CONSTRAINT `fk_musics_1`
 FOREIGN KEY (`album_id`)
-REFERENCES `SpotifyClone`.`albums` (`album_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION)
+REFERENCES `albums` (`album_id`)
+)
 ENGINE = InnoDB;
 
 CREATE TABLE `historico` (
 `user_id` INT NOT NULL,
 `music_id` INT NOT NULL,
-INDEX `fk_historico_1_idx` (`user_id` ASC) VISIBLE,
-INDEX `fk_historico_2_idx` (`music_id` ASC) VISIBLE,
+INDEX `fk_historico_1_idx` (`user_id`) ,
+INDEX `fk_historico_2_idx` (`music_id`),
 PRIMARY KEY (`user_id`, `music_id`),
 CONSTRAINT `fk_historico_1`
 FOREIGN KEY (`user_id`)
-REFERENCES `SpotifyClone`.`usuarios` (`user_id`)
+REFERENCES `usuarios` (`user_id`)
 ON DELETE CASCADE
 ON UPDATE NO ACTION,
 CONSTRAINT `fk_historico_2`
 FOREIGN KEY (`music_id`)
-REFERENCES `SpotifyClone`.`musics` (`music_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION)
+REFERENCES `musics` (`music_id`)
+)
 ENGINE = InnoDB;
 
 CREATE TABLE `user_follow` (
 `user_id` INT NOT NULL,
 `artist_id` INT NOT NULL,
-INDEX `fk_user_follow_1_idx` (`artist_id` ASC) VISIBLE,
-INDEX `fk_user_follow_2_idx` (`user_id` ASC) VISIBLE,
+INDEX `fk_user_follow_1_idx` (`artist_id`),
+INDEX `fk_user_follow_2_idx` (`user_id`),
 PRIMARY KEY (`user_id`, `artist_id`),
 CONSTRAINT `fk_user_follow_1`
 FOREIGN KEY (`artist_id`)
-REFERENCES `artistas` (`artist_id`)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION,
+REFERENCES `artistas` (`artist_id`),
 CONSTRAINT `fk_user_follow_2`
 FOREIGN KEY (`user_id`)
 REFERENCES `usuarios` (`user_id`)
-ON DELETE CASCADE
-ON UPDATE NO ACTION)
+)
 ENGINE = InnoDB;
 
 
