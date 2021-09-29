@@ -291,27 +291,27 @@ describe("Queries de seleção", () => {
     });
   });
 
-  describe("6 - Exibe o relatório de faturamento da empresa", () => {
-    it("Verifica o desafio 6", async () => {
-      const challengeQuery = readFileSync("desafio6.sql", "utf8");
+  // describe("6 - Exibe o relatório de faturamento da empresa", () => {
+  //   it("Verifica o desafio 6", async () => {
+  //     const challengeQuery = readFileSync("desafio6.sql", "utf8");
 
-      await sequelize.query(challengeQuery, { type: "RAW" });
+  //     await sequelize.query(challengeQuery, { type: "RAW" });
 
-      const result = await sequelize.query("SELECT * FROM faturamento_atual;", {
-        type: "SELECT",
-      });
-      const expectedResult = [
-        {
-          faturamento_maximo: "7.99",
-          faturamento_medio: "3.50",
-          faturamento_minimo: "0.00",
-          faturamento_total: "13.98",
-        },
-      ];
+  //     const result = await sequelize.query("SELECT * FROM faturamento_atual;", {
+  //       type: "SELECT",
+  //     });
+  //     const expectedResult = [
+  //       {
+  //         faturamento_maximo: "7.99",
+  //         faturamento_medio: "3.50",
+  //         faturamento_minimo: "0.00",
+  //         faturamento_total: "13.98",
+  //       },
+  //     ];
 
-      expect(result).toEqual(expectedResult);
-    });
-  });
+  //     expect(result).toEqual(expectedResult);
+  //   });
+  // });
 
   describe("7 - Exibe uma relação de todos os álbuns produzidos por cada artista", () => {
     it("Verifica o desafio 7", async () => {
@@ -338,72 +338,85 @@ describe("Queries de seleção", () => {
     });
   });
 
-  // describe('9 - Crie uma procedure chamada `albuns_do_artista` que, dado o nome da pessoa artista, retorna todos seus álbuns', () => {
-  //   it('Verifica o desafio 9', async () => {
-  //     const challengeQuery = readFileSync('desafio9.sql', 'utf8').trim();
-  //     const createProcedureQuery = /CREATE PROCEDURE.*END/si.exec(challengeQuery)[0];
+  describe("9 - Crie uma procedure chamada `albuns_do_artista` que, dado o nome da pessoa artista, retorna todos seus álbuns", () => {
+    it("Verifica o desafio 9", async () => {
+      const challengeQuery = readFileSync("desafio9.sql", "utf8").trim();
+      const createProcedureQuery = /CREATE PROCEDURE.*END/is.exec(
+        challengeQuery
+      )[0];
 
-  //     await sequelize.query(createProcedureQuery);
+      await sequelize.query(createProcedureQuery);
 
-  //     const result = await sequelize.query('CALL albuns_do_artista(\'Walter Phoenix\');');
-  //     const expectedResult = [
-  //       { album: 'Envious', artista: 'Walter Phoenix' },
-  //       { album: 'Exuberant', artista: 'Walter Phoenix' },
-  //     ];
+      const result = await sequelize.query(
+        "CALL albuns_do_artista('Walter Phoenix');"
+      );
+      const expectedResult = [
+        { album: "Envious", artista: "Walter Phoenix" },
+        { album: "Exuberant", artista: "Walter Phoenix" },
+      ];
 
-  //     expect(result).toEqual(expectedResult);
-  //   });
-  // });
+      expect(result).toEqual(expectedResult);
+    });
+  });
 
-  // describe('10 - Crie uma function chamada de `quantidade_musicas_no_historico` que exibe a quantidade de músicas que estão presente atualmente no histórico de reprodução de uma pessoa usuária', () => {
-  //   it('Verifica o desafio 10', async () => {
-  //     const {
-  //       tabela_que_contem_usuario: userTable,
-  //       coluna_usuario: userColumn,
-  //     } = JSON.parse(readFileSync('desafio1.json', 'utf8'));
-  //     const challengeQuery = readFileSync('desafio10.sql', 'utf8').trim();
-  //     const createFunctionQuery = /CREATE FUNCTION.*END/si.exec(challengeQuery)[0];
-  //     const [{ COLUMN_NAME: userIdColumn }] = await sequelize.query(`
-  //       SELECT COLUMN_NAME
-  //       FROM information_schema.KEY_COLUMN_USAGE
-  //       WHERE TABLE_SCHEMA = 'SpotifyClone' AND TABLE_NAME = '${userTable}' AND CONSTRAINT_NAME = 'PRIMARY';
-  //     `, { type: 'SELECT' });
-  //     const userId = (await sequelize.query(
-  //       `SELECT ${userIdColumn} FROM ${userTable} WHERE ${userColumn} = 'Bill';`,
-  //       { type: 'SELECT' },
-  //     ))[0][userIdColumn];
+  describe("10 - Crie uma function chamada de `quantidade_musicas_no_historico` que exibe a quantidade de músicas que estão presente atualmente no histórico de reprodução de uma pessoa usuária", () => {
+    it("Verifica o desafio 10", async () => {
+      const {
+        tabela_que_contem_usuario: userTable,
+        coluna_usuario: userColumn,
+      } = JSON.parse(readFileSync("desafio1.json", "utf8"));
+      const challengeQuery = readFileSync("desafio10.sql", "utf8").trim();
+      const createFunctionQuery = /CREATE FUNCTION.*END/is.exec(
+        challengeQuery
+      )[0];
+      const [{ COLUMN_NAME: userIdColumn }] = await sequelize.query(
+        `
+        SELECT COLUMN_NAME
+        FROM information_schema.KEY_COLUMN_USAGE
+        WHERE TABLE_SCHEMA = 'SpotifyClone' AND TABLE_NAME = '${userTable}' AND CONSTRAINT_NAME = 'PRIMARY';
+      `,
+        { type: "SELECT" }
+      );
+      const userId = (
+        await sequelize.query(
+          `SELECT ${userIdColumn} FROM ${userTable} WHERE ${userColumn} = 'Bill';`,
+          { type: "SELECT" }
+        )
+      )[0][userIdColumn];
 
-  //     await sequelize.query(createFunctionQuery);
+      await sequelize.query(createFunctionQuery);
 
-  //     const result = await sequelize.query(
-  //       `SELECT quantidade_musicas_no_historico(${userId}) AS quantidade_musicas_no_historico;`,
-  //       { type: 'SELECT' },
-  //     );
+      const result = await sequelize.query(
+        `SELECT quantidade_musicas_no_historico(${userId}) AS quantidade_musicas_no_historico;`,
+        { type: "SELECT" }
+      );
 
-  //     expect(result).toEqual([{ quantidade_musicas_no_historico: 3 }]);
-  //   });
-  // });
+      expect(result).toEqual([{ quantidade_musicas_no_historico: 3 }]);
+    });
+  });
 
-  // describe('11 - Crie uma `VIEW` chamada `cancoes_premium` que exiba o nome e a quantidade de vezes que cada canção foi tocada por pessoas usuárias do plano familiar ou universitário', () => {
-  //   it('Verifica o desafio 11', async () => {
-  //     const createViewQuery = readFileSync('desafio11.sql', 'utf8').trim();
+  describe("11 - Crie uma `VIEW` chamada `cancoes_premium` que exiba o nome e a quantidade de vezes que cada canção foi tocada por pessoas usuárias do plano familiar ou universitário", () => {
+    it("Verifica o desafio 11", async () => {
+      const createViewQuery = readFileSync("desafio11.sql", "utf8").trim();
 
-  //     await sequelize.query(createViewQuery);
+      await sequelize.query(createViewQuery);
 
-  //     const result = await sequelize.query('SELECT * FROM cancoes_premium;', { type: 'SELECT' });
-  //     const expectedResult = [
-  //       { nome: 'Home Forever', reproducoes: 1 },
-  //       { nome: 'Honey, Let\'s Be Silly', reproducoes: 1 },
-  //       { nome: 'Magic Circus', reproducoes: 1 },
-  //       { nome: 'Reflections Of Magic', reproducoes: 1 },
-  //       { nome: 'Thang Of Thunder', reproducoes: 1 },
-  //       { nome: 'Troubles Of My Inner Fire', reproducoes: 1 },
-  //       { nome: 'Words Of Her Life', reproducoes: 1 },
-  //     ];
+      const result = await sequelize.query("SELECT * FROM cancoes_premium;", {
+        type: "SELECT",
+      });
+      const expectedResult = [
+        { nome: "Home Forever", reproducoes: 1 },
+        { nome: "Honey, Let's Be Silly", reproducoes: 1 },
+        { nome: "Magic Circus", reproducoes: 1 },
+        { nome: "Reflections Of Magic", reproducoes: 1 },
+        { nome: "Thang Of Thunder", reproducoes: 1 },
+        { nome: "Troubles Of My Inner Fire", reproducoes: 1 },
+        { nome: "Words Of Her Life", reproducoes: 1 },
+      ];
 
-  //     expect(result).toEqual(expectedResult);
-  //   });
-  // });
+      expect(result).toEqual(expectedResult);
+    });
+  });
 });
 
 describe("Queries de deleção", () => {
