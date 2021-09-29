@@ -111,11 +111,9 @@ VALUES
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
 `user_id` INT NOT NULL,
 `music_id` INT NOT NULL,
-`history_id` INT NOT NULL AUTO_INCREMENT,
 INDEX `fk_historico_1_idx` (`user_id` ASC) VISIBLE,
 INDEX `fk_historico_2_idx` (`music_id` ASC) VISIBLE,
 PRIMARY KEY (`user_id`, `music_id`),
-UNIQUE INDEX `history_id_UNIQUE` (`history_id` ASC) VISIBLE,
 CONSTRAINT `fk_historico_1`
 FOREIGN KEY (`user_id`)
 REFERENCES `SpotifyClone`.`usuarios` (`user_id`)
