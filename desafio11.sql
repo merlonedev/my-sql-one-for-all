@@ -17,7 +17,7 @@ FROM
     FROM
         SpotifyClone.users_songs AS us
     WHERE
-		us.user_id IN
+        us.user_id IN
         (
         SELECT
             u.id
