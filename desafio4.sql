@@ -5,4 +5,3 @@ INNER JOIN usuario_artistas_seguidos AS uas ON uas.artista_id = a.artista_id
 GROUP BY uas.artista_id
 ORDER BY `seguidores` DESC, `artista`
 LIMIT 3;
-
