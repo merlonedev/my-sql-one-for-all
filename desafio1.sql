@@ -131,6 +131,21 @@ VALUES
 (17,'Words Of Her Life', 5),
 (18,'Without My Streets', 5);
 
+--  Array [
+--         Object {
+--     -     "cancao": "Magic Circus",
+--     -     "reproducoes": 2,
+--     +     "cancao": "Celebration Of More",
+--     +     "reproducoes": 14,
+--         },
+--         Object {
+--     -     "cancao": "Thang Of Thunder",
+--     -     "reproducoes": 2,
+--     +     "cancao": "Dance With Her Own",
+--     +     "reproducoes": 14,
+--         },
+--       ]
+
 INSERT INTO `usuarios`
 VALUES
 (1,'Thati', 23, 1),
