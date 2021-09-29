@@ -10,5 +10,4 @@ BEGIN
   INTO total_music;
   RETURN total_music;  
 END $$
-
 DELIMITER ;
