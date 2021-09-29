@@ -22,7 +22,7 @@ CREATE TABLE usuario (
   INDEX fk_usuario_idx (plano_id ASC) VISIBLE,
   CONSTRAINT fk_usuario_plano
     FOREIGN KEY (plano_id)
-    REFERENCES SpotifyClone.plano (plano_id)
+    REFERENCES plano (plano_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -45,7 +45,7 @@ CREATE TABLE album (
   INDEX fk_album_idx (artista_id ASC) VISIBLE,
   CONSTRAINT fk_album
     FOREIGN KEY (artista_id)
-    REFERENCES SpotifyClone.artista (artista_id)
+    REFERENCES artista (artista_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -60,7 +60,7 @@ CREATE TABLE cancao (
   INDEX fk_cancao_idx (album_id ASC) VISIBLE,
   CONSTRAINT fk_cancao
     FOREIGN KEY (album_id)
-    REFERENCES SpotifyClone.album (album_id)
+    REFERENCES album (album_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -75,12 +75,12 @@ CREATE TABLE usuario_artista (
   INDEX fk_usuario_artista_usuario_idx (usuario_id ASC) VISIBLE,
   CONSTRAINT fk_usuario_artista_usuario
     FOREIGN KEY (usuario_id)
-    REFERENCES SpotifyClone.usuario (usuario_id)
+    REFERENCES usuario (usuario_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT fk_usuario_artista_artista
     FOREIGN KEY (artista_id)
-    REFERENCES SpotifyClone.artista (artista_id)
+    REFERENCES artista (artista_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -95,66 +95,66 @@ CREATE TABLE usuario_cancao (
   INDEX fk_usuario_cancao_usuario_idx (usuario_id ASC) VISIBLE,
   CONSTRAINT fk_usuario_cancao_usuario
     FOREIGN KEY (usuario_id)
-    REFERENCES SpotifyClone.usuario (usuario_id)
+    REFERENCES usuario (usuario_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT fk_usuario_cancao_cancao
     FOREIGN KEY (cancao_id)
-    REFERENCES SpotifyClone.cancao (cancao_id)
+    REFERENCES cancao (cancao_id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-INSERT INTO plano (plano_id, plano, valor)
+INSERT INTO plano (plano, valor)
 VALUES
-(1, 'gratuito', 0),
-(2, 'universitario', 5.99),
-(3, 'familiar', 7.99);
+('gratuito', 0),
+('universitario', 5.99),
+('familiar', 7.99);
 
-INSERT INTO usuario (usuario_id, usuario, idade, plano_id)
+INSERT INTO usuario (usuario, idade, plano_id)
 VALUES
-(1, 'Thati', 23, 1),
-(2, 'Cinthia', 35, 3),
-(3, 'Bill', 20, 2),
-(4, 'Roger', 45, 1);
+('Thati', 23, 1),
+('Cinthia', 35, 3),
+('Bill', 20, 2),
+('Roger', 45, 1);
 
-INSERT INTO artista (artista_id, artista)
+INSERT INTO artista (artista)
 VALUES
-(1, 'Walter Phoenix'),
-(2, 'Peter Strong'),
-(3, 'Lance Day'),
-(4, 'Freedie Shannon');
+('Walter Phoenix'),
+('Peter Strong'),
+('Lance Day'),
+('Freedie Shannon');
 
-INSERT INTO album (album_id, album, artista_id)
+INSERT INTO album (album, artista_id)
 VALUES
-(1, 'Envious', 1),
-(2, 'Exuberant', 1),
-(3, 'Hallowed Steam', 2),
-(4, 'Incandescent', 3),
-(5, 'Temporary Culture', 4);
+('Envious', 1),
+('Exuberant', 1),
+('Hallowed Steam', 2),
+('Incandescent', 3),
+('Temporary Culture', 4);
 
-INSERT INTO cancao (cancao_id, cancao, album_id)
+INSERT INTO cancao (cancao, album_id)
 VALUES 
-(1, 'Soul For Us', 1),
-(2, 'Reflections Of Magic', 1),
-(3, 'Dance With Her Own', 1),
-(4, 'Troubles Of My Inner Fire', 2),
-(5, 'Time Fireworks', 2),
-(6, 'Magic Circus', 3),
-(7, 'Honey, So Do I', 3),
-(8, 'Sweetie Let\'s Go Wild', 3),
-(9, 'She Knows', 3),
-(10, 'Fantasy For Me', 4),
-(11, 'Celebration Of More', 4),
-(12, 'Rock His Everything', 4),
-(13, 'Home Forever', 4),
-(14, 'Diamond Power', 4),
-(15, 'Honey, Let\'s Be Silly', 4),
-(16, 'Thang Of Thunder', 5),
-(17, 'Words Of Her Life', 5),
-(18, 'Without My Streets', 5);
+('Soul For Us', 1),
+('Reflections Of Magic', 1),
+('Dance With Her Own', 1),
+('Troubles Of My Inner Fire', 2),
+('Time Fireworks', 2),
+('Magic Circus', 3),
+('Honey, So Do I', 3),
+('Sweetie Let\'s Go Wild', 3),
+('She Knows', 3),
+('Fantasy For Me', 4),
+('Celebration Of More', 4),
+('Rock His Everything', 4),
+('Home Forever', 4),
+('Diamond Power', 4),
+('Honey, Let\'s Be Silly', 4),
+('Thang Of Thunder', 5),
+('Words Of Her Life', 5),
+('Without My Streets', 5);
 
 INSERT INTO usuario_artista (usuario_id, artista_id)
 VALUES
