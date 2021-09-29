@@ -3,7 +3,7 @@ SELECT
   U.user_name AS `usuario`,
   S.song_name AS `nome`
 FROM
-  user_song AS US
+  SpotifyClone.user_song AS US
 JOIN
   SpotifyClone.users AS U
 ON
