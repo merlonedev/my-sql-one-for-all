@@ -19,14 +19,14 @@ VALUES
 DROP TABLE IF EXISTS usuarios;
 CREATE TABLE usuarios (
     usuario_id INT  AUTO_INCREMENT PRIMARY KEY,
-    usuario_name VARCHAR(50) ,
+    usuario VARCHAR(50) ,
     usuario_idade INT,
     plano_id INT,
     FOREIGN KEY (plano_id)
         REFERENCES planos (plano_id)
 )  ENGINE=INNODB;
 
-INSERT INTO usuarios (usuario_name, usuario_idade, plano_id)
+INSERT INTO usuarios (usuario, usuario_idade, plano_id)
 VALUES
 ('Thati', 23, 1),
 ('Cintia', 35, 2),
@@ -36,10 +36,10 @@ VALUES
 DROP TABLE IF EXISTS artistas;
 CREATE TABLE artistas (
     artista_id INT  AUTO_INCREMENT PRIMARY KEY,
-    artista_name VARCHAR(50)
+    artista VARCHAR(50)
 )  ENGINE=INNODB;
 
-INSERT INTO artistas (artista_name)
+INSERT INTO artistas (artista)
 VALUES
 ('Walter Phoenix'),
 ('Peter Strong'),
@@ -49,13 +49,13 @@ VALUES
 DROP TABLE IF EXISTS albuns;
 CREATE TABLE albuns (
     album_id INT  AUTO_INCREMENT PRIMARY KEY,
-    album_name VARCHAR(100),
+    album VARCHAR(100),
     artista_id INT,
     FOREIGN KEY (artista_id)
         REFERENCES artistas (artista_id)
 )  ENGINE=INNODB;
 
-INSERT INTO albuns (album_name, artista_id)
+INSERT INTO albuns (album, artista_id)
 VALUES
 ('Envious', 1),
 ('Exuberant', 1),
@@ -66,16 +66,16 @@ VALUES
 DROP TABLE IF EXISTS cancoes;
 CREATE TABLE cancoes (
     cancao_id INT   AUTO_INCREMENT PRIMARY KEY,
-    cancao_name VARCHAR(100),
+    cancao VARCHAR(100),
     album_id INT,
     FOREIGN KEY (album_id)
         REFERENCES albuns (album_id)
 )  ENGINE=INNODB;
 
-INSERT INTO cancoes (cancao_name, album_id)
+INSERT INTO cancoes (cancao, album_id)
 VALUES
 ("Soul For Us", 1),
-("Reflection Of Magic", 1),
+("Reflections Of Magic", 1),
 ("Dance With Her Own", 1),
 ("Troubles Of My Inner Fire", 2),
 ("Time Fireworks", 2),
@@ -87,7 +87,7 @@ VALUES
 ("Celebration Of More", 4),
 ("Rock His Everthing", 4),
 ("Home Forever", 4),
-("Diamando Power", 4),
+("Diamond Power", 4),
 ("Honey, Let's Be Silly", 4),
 ("Thang Of Thunder", 5),
 ("Words Of Her Life", 5),
