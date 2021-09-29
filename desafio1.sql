@@ -116,7 +116,7 @@ VALUES
 INSERT INTO usuario (usuario, idade, plano_id)
 VALUES
 ('Thati', 23, 1),
-('Cinthia', 35, 3),
+('Cintia', 35, 3),
 ('Bill', 20, 2),
 ('Roger', 45, 1);
 
