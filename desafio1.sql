@@ -80,11 +80,11 @@ USE SpotifyClone;
         ("Without My Streets", 5);
     
     CREATE TABLE historico(
-      historico_id INT PRIMARY KEY AUTO_INCREMENT,
       user_id INT NOT NULL,
       cancao_id INT NOT NULL,
       FOREIGN KEY (user_id) REFERENCES usuario (user_id),
-      FOREIGN KEY (cancao_id) REFERENCES cancao (cancao_id)
+      FOREIGN KEY (cancao_id) REFERENCES cancao (cancao_id),
+      PRIMARY KEY (user_id, cancao_id)
     )ENGINE=INNODB;
     
     INSERT INTO historico (user_id, cancao_id) VALUES
@@ -104,11 +104,11 @@ USE SpotifyClone;
       (4,11);
     
     CREATE TABLE seguindo(
-      seguido_id INT PRIMARY KEY AUTO_INCREMENT,
       user_id INT NOT NULL,
       artista_id INT NOT NULL,
       FOREIGN KEY (user_id) REFERENCES usuario (user_id),
-      FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
+      FOREIGN KEY (artista_id) REFERENCES artista (artista_id),
+      PRIMARY KEY (user_id, artista_id)
     )ENGINE=INNODB;
     
     INSERT INTO seguindo (user_id, artista_id) VALUES
