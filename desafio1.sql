@@ -19,8 +19,6 @@ VALUES
 ('universitário', 5.99),
 ('familiar', 7.99);
 
-DROP TABLE IF EXISTS `SpotifyClone`.`usuarios` ;
-
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
 `user_id` INT NOT NULL AUTO_INCREMENT,
 `username` VARCHAR(25) NOT NULL,
@@ -41,7 +39,6 @@ VALUES
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
 ('Roger', 45, 1);
-DROP TABLE IF EXISTS `SpotifyClone`.`artistas` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artistas` (
 `artist_id` INT NOT NULL AUTO_INCREMENT,
@@ -55,8 +52,6 @@ VALUES
 ('Peter Strong'),
 ('Lance Day'),
 ('Freedie Shannon');
-
-DROP TABLE IF EXISTS `SpotifyClone`.`albums` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albums` (
 `album_id` INT NOT NULL AUTO_INCREMENT,
@@ -78,7 +73,6 @@ VALUES
 ('Hallowed Steam', 2),
 ('Incandescent', 3),
 ('Temporary Culture', 4);
-DROP TABLE IF EXISTS `SpotifyClone`.`musics` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musics` (
 `music_id` INT NOT NULL AUTO_INCREMENT,
@@ -113,8 +107,6 @@ VALUES
 ('Thang Of Thunder', 5),
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
-
-DROP TABLE IF EXISTS `SpotifyClone`.`historico` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
 `user_id` INT NOT NULL,
@@ -153,8 +145,6 @@ VALUES
 (2, 17),
 (4, 18);
   
-DROP TABLE IF EXISTS `SpotifyClone`.`user_follow` ;
-
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`user_follow` (
 `user_id` INT NOT NULL,
 `artist_id` INT NOT NULL,
