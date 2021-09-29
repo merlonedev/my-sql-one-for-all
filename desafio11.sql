@@ -6,5 +6,5 @@ CREATE VIEW cancoes_premium AS
     SpotifyClone.songs s
   JOIN SpotifyClone.historic h ON h.song_id = s.song_id
   WHERE h.user_id IN (SELECT user_id FROM SpotifyClone.users WHERE svc_id IN (2,3)) 
-  GROUP BY `cancao`
-  ORDER BY `cancao`;
+  GROUP BY `nome`
+  ORDER BY `nome`;
