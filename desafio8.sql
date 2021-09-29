@@ -5,13 +5,13 @@ BEFORE DELETE ON SpotifyClone.users
 FOR EACH ROW
 
 BEGIN
-    DELETE FROM SpotifyClone.users_artists AS ua
+    DELETE FROM SpotifyClone.users_artists
     WHERE
-        OLD.id = ua.user_id;
+        OLD.id = user_id;
 
-    DELETE FROM SpotifyClone.users_songs AS us
+    DELETE FROM SpotifyClone.users_songs
     WHERE
-        OLD.id = us.user_id;
+        OLD.id = user_id;
 END $
 
 DELIMITER ;
