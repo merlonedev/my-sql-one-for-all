@@ -11,4 +11,4 @@ CREATE VIEW top_3_artistas AS
         user_artists_listened AS t1
     GROUP BY Artist_ID
     ORDER BY 2 DESC, 1
-	LIMIT 3;
+    LIMIT 3;

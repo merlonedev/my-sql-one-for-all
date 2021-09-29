@@ -6,7 +6,7 @@ CREATE TRIGGER `trigger_usuario_delete`
 BEGIN
 DELETE FROM user_artists_listened 
 WHERE 
-	User_ID = OLD.User_ID;
+    User_ID = OLD.User_ID;
     
 DELETE FROM user_songs_listened 
 WHERE
