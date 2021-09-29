@@ -49,6 +49,7 @@ CREATE TABLE Usuario (
 CREATE TABLE HistoricoReproducao (
     id_usuario INT,
     id_musica INT,
+    PRIMARY KEY(id_usuario, id_musica),
     FOREIGN KEY (id_usuario)
         REFERENCES Usuario (id),
     FOREIGN KEY (id_musica)
@@ -58,6 +59,7 @@ CREATE TABLE HistoricoReproducao (
 CREATE TABLE seguindoArtistas (
     id_usuario INT,
     id_artista INT,
+    PRIMARY KEY(id_usuario, id_artista),
     FOREIGN KEY (id_usuario)
         REFERENCES Usuario (id),
     FOREIGN KEY (id_artista)
