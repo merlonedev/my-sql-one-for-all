@@ -3,59 +3,59 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-DROP TABLE IF EXISTS plano;
-CREATE TABLE plano (
+DROP TABLE IF EXISTS planos;
+CREATE TABLE planos (
     plano_id INT  AUTO_INCREMENT PRIMARY KEY,
     plano_type VARCHAR(30),
     plano_valor DECIMAL(3, 2)
 )  ENGINE=INNODB;
 
-INSERT INTO plano(plano_type, plano_valor)
+INSERT INTO planos (plano_type, plano_valor)
 VALUES
 ('gratuito', 0.00),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
-DROP TABLE IF EXISTS users;
-CREATE TABLE users (
+DROP TABLE IF EXISTS usuarios;
+CREATE TABLE usuarios (
     usuario_id INT  AUTO_INCREMENT PRIMARY KEY,
-    usuario_nome VARCHAR(50) ,
+    usuario_name VARCHAR(50) ,
     usuario_idade INT,
     plano_id INT,
     FOREIGN KEY (plano_id)
-        REFERENCES plano (plano_id)
+        REFERENCES planos (plano_id)
 )  ENGINE=INNODB;
 
-INSERT INTO users(usuario_nome, usuario_idade, plano_id)
+INSERT INTO usuarios (usuario_name, usuario_idade, plano_id)
 VALUES
 ('Thati', 23, 1),
-('Cintia', 35, 3),
-('Bill', 20, 2),
+('Cintia', 35, 2),
+('Bill', 20, 3),
 ('Roger', 45, 1);
 
-DROP TABLE IF EXISTS cantor;
-CREATE TABLE cantor (
+DROP TABLE IF EXISTS artistas;
+CREATE TABLE artistas (
     artista_id INT  AUTO_INCREMENT PRIMARY KEY,
     artista_name VARCHAR(50)
 )  ENGINE=INNODB;
 
-INSERT INTO cantor(artista_name)
+INSERT INTO artistas (artista_name)
 VALUES
 ('Walter Phoenix'),
 ('Peter Strong'),
 ('Lance Day'),
 ('Freedie Shannon');
 
-DROP TABLE IF EXISTS album;
-CREATE TABLE album (
+DROP TABLE IF EXISTS albuns;
+CREATE TABLE albuns (
     album_id INT  AUTO_INCREMENT PRIMARY KEY,
     album_name VARCHAR(100),
     artista_id INT,
     FOREIGN KEY (artista_id)
-        REFERENCES cantor (artista_id)
+        REFERENCES artistas (artista_id)
 )  ENGINE=INNODB;
 
-INSERT INTO album (album_name, artista_id)
+INSERT INTO albuns (album_name, artista_id)
 VALUES
 ('Envious', 1),
 ('Exuberant', 1),
@@ -65,14 +65,14 @@ VALUES
 
 DROP TABLE IF EXISTS cancoes;
 CREATE TABLE cancoes (
-    cancoes_id INT   AUTO_INCREMENT PRIMARY KEY,
+    cancao_id INT   AUTO_INCREMENT PRIMARY KEY,
     cancao_name VARCHAR(100),
     album_id INT,
     FOREIGN KEY (album_id)
-        REFERENCES album (album_id)
+        REFERENCES albuns (album_id)
 )  ENGINE=INNODB;
 
-INSERT INTO cancoes(cancao_name, album_id)
+INSERT INTO cancoes (cancao_name, album_id)
 VALUES
 ("Soul For Us", 1),
 ("Reflection Of Magic", 1),
@@ -99,9 +99,9 @@ CREATE TABLE seguindo (
     artista_id INT,
     CONSTRAINT PRIMARY KEY (usuario_id , artista_id),
     FOREIGN KEY (usuario_id)
-        REFERENCES users (usuario_id),
+        REFERENCES usuarios (usuario_id),
     FOREIGN KEY (artista_id)
-        REFERENCES cantor (artista_id)
+        REFERENCES artistas (artista_id)
 )  ENGINE=INNODB;
 
 INSERT INTO seguindo (usuario_id, artista_id)
@@ -118,15 +118,15 @@ VALUES
 DROP TABLE IF EXISTS historico;
 CREATE TABLE historico (
     usuario_id INT,
-    cancoes_id INT,
-    CONSTRAINT PRIMARY KEY (usuario_id , cancoes_id),
+    cancao_id INT,
+    CONSTRAINT PRIMARY KEY (usuario_id , cancao_id),
     FOREIGN KEY (usuario_id)
-        REFERENCES users (usuario_id),
-    FOREIGN KEY (cancoes_id)
-        REFERENCES cancoes (cancoes_id)
+        REFERENCES usuarios (usuario_id),
+    FOREIGN KEY (cancao_id)
+        REFERENCES cancoes (cancao_id)
 )  ENGINE=INNODB;
 
-INSERT INTO historico (usuario_id, cancoes_id)
+INSERT INTO historico (usuario_id, cancao_id)
 VALUES
 (1, 1),
 (1, 6),
