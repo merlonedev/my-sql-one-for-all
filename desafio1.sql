@@ -53,7 +53,7 @@ PRIMARY KEY(Id_Usuario, Id_Cancao),
 
 INSERT INTO Plano(Tipo_Plano, Valor_Plano) -- acho que tem que seguir a sequencia das tabelas criadas
 VALUES
-  ('gratuito', 0),
+  ('gratuito', 0.00),
   ('universitário', 5.99),
   ('familiar', 7.99); -- pelo ID ser PK auto increment, já se entende que gratuito tem id=1; universitario id=2 e familiar id=3
 
