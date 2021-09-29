@@ -25,19 +25,19 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 CREATE TABLE artista (
-  artista_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  artista VARCHAR(25) NOT NULL,
-  PRIMARY KEY (artista_id))
+artista_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+artista VARCHAR(25) NOT NULL,
+PRIMARY KEY (artista_id))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 CREATE TABLE album (
-	album_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	album VARCHAR(45) NOT NULL,
-	artista_id INT UNSIGNED NOT NULL,
-	PRIMARY KEY (album_id),
-	FOREIGN KEY (artista_id) REFERENCES artista (artista_id))
+album_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+album VARCHAR(45) NOT NULL,
+artista_id INT UNSIGNED NOT NULL,
+PRIMARY KEY (album_id),
+FOREIGN KEY (artista_id) REFERENCES artista (artista_id))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
