@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
 CREATE DATABASE SpotifyClone;
 
+USE SpotifyClone;
+
 CREATE TABLE users(
   id INT PRIMARY KEY AUTO_INCREMENT,
   user_name VARCHAR(50) NOT NULL,
@@ -75,7 +77,7 @@ VALUES
   ('Cintia', 35, 3),
   ('Bill', 20, 2),
   ('Roger', 45, 1);
-
+  
 INSERT INTO artists(artist_name)
 VALUES
   ('Walter Phoenix'),
@@ -90,7 +92,7 @@ VALUES
   ('Hallowed Steam', 2),
   ('Incandescent', 3),
   ('Temporary Culture', 4);
-
+  
 INSERT INTO songs(song_name, album_id, artist_id)
 VALUES
   ('Soul For Us', 1, 1),
