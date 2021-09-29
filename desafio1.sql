@@ -19,7 +19,7 @@ CREATE TABLE albuns (
 CREATE TABLE planos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(20) NOT NULL,
-    valor FLOAT NOT NULL
+    valor NUMERIC(4,2) NOT NULL
 );
 
 CREATE TABLE usuarios (
