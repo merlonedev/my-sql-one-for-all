@@ -1,4 +1,3 @@
-USE SpotifyClone;
 CREATE VIEW cancoes_premium AS
     (SELECT 
         m.nome AS 'nome', COUNT(uh.musica_id) AS 'reproducoes'
