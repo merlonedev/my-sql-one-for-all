@@ -1,0 +1,9 @@
+DELIMITER $$
+CREATE TRIGGER trigger_usuario_delete
+	AFTER DELETE ON usuarios
+    FOR EACH ROW
+BEGIN
+	DELETE FROM historico_reproducao WHERE usuario_id = OLD.usuario_id;
+    DELETE FROM seguindo_artistas WHERE usuario_id = OLD.usuario_id;
+END $$
+DELIMITER ;
