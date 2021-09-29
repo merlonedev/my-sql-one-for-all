@@ -5,10 +5,9 @@ BEFORE DELETE ON usuarios
 FOR EACH ROW 
 BEGIN
 DELETE FROM usuariosArtistas
-WHERE usuario_id = OLD.usuario_id;
+WHERE usuariosArtistas.usuario_id = OLD.usuario_id;
 DELETE FROM usuariosCancoes 
-WHERE
-    usuario_id = OLD.usuario_id;
+WHERE usuario_id = OLD.usuario_id;
 END $$
 
 DELIMITER ;
