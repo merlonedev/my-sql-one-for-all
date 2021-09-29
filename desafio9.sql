@@ -1,5 +1,3 @@
-USE SpotifyClone;
-
 DELIMITER $$
 CREATE PROCEDURE albuns_do_artista(IN artist VARCHAR(64))
 BEGIN
@@ -13,5 +11,3 @@ BEGIN
   ORDER BY `album`;
 END $$
 DELIMITER ;
-
-CALL albuns_do_artista('Walter Phoenix');
