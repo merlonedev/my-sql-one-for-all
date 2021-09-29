@@ -13,4 +13,3 @@ END $$
 
 DELIMITER ;
 
-SELECT quantidade_musicas_no_historico(3);
