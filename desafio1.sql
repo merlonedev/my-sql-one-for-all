@@ -41,7 +41,6 @@ VALUES
   ('Cintia', 35, 2),
   ('Bill', 20, 3),
   ('Roger', 45, 1);
- 
 DROP TABLE IF EXISTS `SpotifyClone`.`artistas` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artistas` (
@@ -79,7 +78,6 @@ VALUES
   ('Hallowed Steam', 2),
   ('Incandescent', 3),
   ('Temporary Culture', 4);
- 
 DROP TABLE IF EXISTS `SpotifyClone`.`musics` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musics` (
@@ -185,4 +183,4 @@ VALUES
   (1, 3),
   (2, 3),
   (3, 4);
-  
+ 
