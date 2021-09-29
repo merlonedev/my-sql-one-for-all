@@ -14,7 +14,7 @@ CREATE TABLE users(
 CREATE TABLE plans(
   id INT PRIMARY KEY AUTO_INCREMENT,
   plan_name VARCHAR(50) NOT NULL,
-  plan_value DOUBLE
+  plan_value DECIMAL(4, 2)
 ) engine = innoDB;
 
 CREATE TABLE artists(
@@ -67,9 +67,9 @@ ADD FOREIGN KEY (song_id) REFERENCES songs(id);
 
 INSERT INTO plans(plan_name, plan_value)
 VALUES
-  ('gratuito', 0),
-  ('universitário', 5.99),
-  ('familiar', 7.99);
+  ('gratuito', '0.00'),
+  ('universitário', '5.99'),
+  ('familiar', '7.99');
 
 INSERT INTO users(user_name, age, plan_id)
 VALUES
